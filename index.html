@@ -9,6 +9,14 @@
 </head>
 
 <body>
+  <!-- Formulario oculto para Netlify Forms detection -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <textarea name="message"></textarea>
+  </form>
+
   <!-- Navbar sticky fuera del wrapper de Barba -->
   <nav id="navbar-container">
     <!-- Navbar sticky se montará aquí -->

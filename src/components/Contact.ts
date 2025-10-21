@@ -113,8 +113,11 @@ export function Contact(): HTMLElement {
           </div>
         </div>
         
-        <form name="contact" method="POST" data-netlify="true" class="contact-form space-y-6">
+        <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form space-y-6">
           <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
           
           <div class="text-center mb-8">
             <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-lg">
@@ -565,42 +568,50 @@ function setupFormValidation(container: HTMLElement) {
 			// Crear FormData para Netlify
 			const formData = new FormData(form);
 
+			// Enviar con AJAX para manejar la respuesta
 			fetch("/", {
 				method: "POST",
 				headers: { "Content-Type": "application/x-www-form-urlencoded" },
 				body: new URLSearchParams(formData as any).toString(),
 			})
-				.then(() => {
-					// Mostrar mensaje de éxito con animación
-					form.style.display = "none";
-					successMessage.classList.remove("hidden");
+				.then((response) => {
+					console.log("Form successfully submitted");
+					console.log("Response status:", response.status);
 
-					// Reset después de 5 segundos
-					setTimeout(() => {
-						form.reset();
-						form.style.display = "block";
-						successMessage.classList.add("hidden");
-						submitBtn.disabled = false;
-						submitBtn.classList.remove("loading");
-						submitBtn.textContent = originalText || t("contact.form.send");
-						wordCount.textContent = `0 ${t("contact.wordCount")}`;
-						wordCount.classList.remove("text-red-400");
-						wordCount.classList.add("text-gray-600");
+					if (response.ok) {
+						// Mostrar mensaje de éxito con animación
+						form.style.display = "none";
+						successMessage.classList.remove("hidden");
 
-						// Limpiar errores con animación
-						form.querySelectorAll(".error-message").forEach((error) => {
-							error.classList.add("hidden");
-						});
-						form.querySelectorAll("input, textarea").forEach((input) => {
-							input.classList.remove("border-red-400");
-						});
-						form.querySelectorAll(".form-group").forEach((group) => {
-							group.classList.remove("error");
-						});
-					}, 5000);
+						// Reset después de 5 segundos
+						setTimeout(() => {
+							form.reset();
+							form.style.display = "block";
+							successMessage.classList.add("hidden");
+							submitBtn.disabled = false;
+							submitBtn.classList.remove("loading");
+							submitBtn.textContent = originalText || t("contact.form.send");
+							wordCount.textContent = `0 ${t("contact.wordCount")}`;
+							wordCount.classList.remove("text-red-400");
+							wordCount.classList.add("text-gray-600");
+
+							// Limpiar errores con animación
+							form.querySelectorAll(".error-message").forEach((error) => {
+								error.classList.add("hidden");
+							});
+							form.querySelectorAll("input, textarea").forEach((input) => {
+								input.classList.remove("border-red-400");
+							});
+							form.querySelectorAll(".form-group").forEach((group) => {
+								group.classList.remove("error");
+							});
+						}, 5000);
+					} else {
+						throw new Error(`HTTP error! status: ${response.status}`);
+					}
 				})
 				.catch((error) => {
-					console.error("Error:", error);
+					console.error("Error submitting form:", error);
 					submitBtn.disabled = false;
 					submitBtn.classList.remove("loading");
 					submitBtn.textContent = originalText || t("contact.form.send");

@@ -22,6 +22,11 @@ export const de = {
 			"Wir sind lokale Experten, die leidenschaftlich die natürliche und kulturelle Schönheit von Quintana Roo teilen. Mit über 10 Jahren Erfahrung haben wir Tausende von Reisenden durch die Wunder der Riviera Maya geführt.",
 		textInfo:
 			"Unser Engagement ist es, authentische, nachhaltige und sichere Erlebnisse anzubieten, die die Umwelt und die lokalen Gemeinschaften respektieren. Jede Tour ist so konzipiert, dass sie Erinnerungen schafft, die ein Leben lang halten.",
+		stats: {
+			destinations: "Reiseziele",
+			clients: "Glückliche Kunden",
+			experience: "Jahre Erfahrung",
+		},
 		mission: {
 			title: "Mission",
 			text:
@@ -75,10 +80,91 @@ export const de = {
 				id: "legacy-chichen",
 				title: "Legacy of Chichen",
 				description:
-					"Erkunden Sie die majestätische Maya-Stadt Chichén Itzá und entdecken Sie die Geheimnisse eines der neuen Weltwunder der modernen Welt.",
-				image: "chichen-itza.jpg",
+					"Erkunden Sie die majestätische Maya-Stadt Chichén Itzá und entdecken Sie die Geheimnisse eines der neuen Weltwunder der Moderne.",
+				image: "about-uno.jpg",
 				location: "Chichén Itzá, Yucatán",
 				duration: "10 Stunden",
+				fullDescription:
+					"Begeben Sie sich auf eine außergewöhnliche Reise durch die Zeit in Chichén Itzá, einem der Neuen Sieben Weltwunder. Diese umfassende Tour ermöglicht es Ihnen, die Pracht der Maya-Zivilisation zu erkunden, während Sie durch die imposante Kukulkán-Pyramide, das astronomische Observatorium El Caracol und die heilige Cenote Sagrado gehen. Unsere Expertenführer enthüllen Ihnen die astronomischen Geheimnisse und Ahnenlegenden, die diesen Ort einzigartig auf der Welt machen.",
+				includes: [
+					{
+						icon: "🚐",
+						title: "Privater Transport",
+						description: "Klimatisiertes Fahrzeug exklusiv für Ihre Gruppe",
+					},
+					{
+						icon: "👨‍🏫",
+						title: "Zertifizierter Reiseführer",
+						description: "Experte für Maya-Kultur und alte Geschichte",
+					},
+					{
+						icon: "🎫",
+						title: "Eintrittsgebühren Inklusive",
+						description: "Vollständiger Zugang zur archäologischen Zone",
+					},
+					{
+						icon: "🌮",
+						title: "Regionales Essen",
+						description:
+							"Buffet-Mittagessen mit authentischen yukatekischen Gerichten",
+					},
+					{
+						icon: "💧",
+						title: "Wasser und Snacks",
+						description: "Ständige Hydratation während der gesamten Tour",
+					},
+					{
+						icon: "📸",
+						title: "Fotosession",
+						description: "Zeit für die besten Aufnahmen",
+					},
+				],
+				itinerary: [
+					{
+						time: "7:00",
+						title: "Abholung vom Hotel",
+						description: "Reise beginnt im klimatisierten Privattransport",
+					},
+					{
+						time: "9:30",
+						title: "Ankunft in Chichén Itzá",
+						description: "Beginn der geführten Tour durch die archäologische Zone",
+					},
+					{
+						time: "12:30",
+						title: "Buffet-Mittagessen",
+						description: "Genießen Sie authentische yukatekische Küche",
+					},
+					{
+						time: "14:00",
+						title: "Besuch der Cenote Ik Kil",
+						description: "Freie Zeit zum Schwimmen in dieser heiligen Cenote",
+					},
+					{
+						time: "16:00",
+						title: "Rückkehr",
+						description: "Rückkehr zu Ihrem Hotel mit unvergesslichen Erinnerungen",
+					},
+				],
+				recommendations: [
+					"Bequeme und leichte Baumwollkleidung",
+					"Bequeme Wanderschuhe (vermeiden Sie Sandalen)",
+					"Hut oder Mütze und Sonnenbrille",
+					"Biologisch abbaubares Sonnenschutzmittel",
+					"Badeanzug und Handtuch für die Cenote",
+					"Kamera oder Smartphone mit vollem Akku",
+					"Bargeld für Souvenirs und Trinkgelder",
+				],
+				gallery: [
+					"/about-uno.jpg",
+					"/about-dos.jpg",
+					"/about-tres.jpg",
+					"/about-cuatro.jpg",
+				],
+				activityLevel: "Moderat",
+				ageRestriction: "Alle Altersgruppen willkommen",
+				groupSize: "Kleine Gruppen (maximal 12 Personen)",
+				pickupArea: "Cancún, Playa del Carmen, Tulum",
 			},
 			{
 				id: "mystic-waters",
@@ -277,11 +363,58 @@ export const de = {
 	footer: {
 		brand: "Sacred Routes Expeditions",
 		description:
-			"Ideen mit modernster Technologie in digitale Realität verwandeln.",
+			"Entdecken Sie die Magie der Riviera Maya mit authentischen Touren und einzigartigen Erlebnissen. Ihr Abenteuer beginnt hier.",
 		quickLinks: "Schnelle Links",
-		services: "Dienstleistungen",
+		tours: "Unsere Touren",
 		contact: "Kontakt",
 		followUs: "Folgen Sie Uns",
 		rights: "Alle Rechte vorbehalten.",
+		phone: "Telefon",
+		email: "Email",
+		location: "Standort",
+		newsletter: "Newsletter",
+		newsletterText: "Erhalten Sie exklusive Angebote und Neuigkeiten",
+		subscribe: "Abonnieren",
+	},
+	tourPage: {
+		notFound: {
+			title: "Tour nicht gefunden",
+			description: "Entschuldigung, die gesuchte Tour existiert nicht.",
+			button: "Zurück zur Startseite",
+		},
+		aboutTour: "Über diese Tour",
+		activityLevel: "Aktivitätsniveau",
+		ages: "Alter",
+		transport: "Transport",
+		transportType: "Privat",
+		included: {
+			title: "Was ist Inbegriffen?",
+			description:
+				"Alles ist abgedeckt, damit Sie sich nur ums Genießen kümmern müssen",
+		},
+		gallery: {
+			title: "Galerie",
+		},
+		itinerary: {
+			title: "Tagesablauf",
+			description: "Ein perfekt organisiertes Erlebnis von Anfang bis Ende",
+		},
+		cta: {
+			title: "Bereit für das Abenteuer?",
+			description: "Buchen Sie jetzt und erleben Sie ein unvergessliches Erlebnis",
+			bookButton: "Jetzt Buchen",
+			whatsappButton: "WhatsApp",
+			guarantee:
+				"💰 Bestpreisgarantie | 🔒 Sichere Buchung | ⚡ Sofortige Bestätigung",
+		},
+		recommendations: {
+			title: "Empfehlungen",
+			description:
+				"Bereiten Sie sich vor, um Ihr Erlebnis in vollen Zügen zu genießen",
+			importantTitle: "Wichtig",
+			importantText:
+				"Wir holen Sie direkt an Ihrem Hotel in {area} ab. Vergessen Sie nicht Ihre Kamera und viel Begeisterung für ein einzigartiges Erlebnis.",
+		},
+		backButton: "Alle Touren ansehen",
 	},
 };

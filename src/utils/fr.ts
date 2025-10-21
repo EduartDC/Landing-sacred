@@ -22,6 +22,11 @@ export const fr = {
 			"Nous sommes des experts locaux passionnés par le partage de la beauté naturelle et culturelle de Quintana Roo. Avec plus de 10 ans d'expérience, nous avons guidé des milliers de voyageurs à travers les merveilles de la Riviera Maya.",
 		textInfo:
 			"Notre engagement est d'offrir des expériences authentiques, durables et sûres, en respectant l'environnement et les communautés locales. Chaque tour est conçu pour créer des souvenirs qui dureront toute une vie.",
+		stats: {
+			destinations: "Destinations",
+			clients: "Clients Satisfaits",
+			experience: "Années d'Expérience",
+		},
 		mission: {
 			title: "Mission",
 			text:
@@ -76,9 +81,89 @@ export const fr = {
 				title: "Legacy of Chichen",
 				description:
 					"Explorez la majestueuse cité maya de Chichén Itzá et découvrez les secrets de l'une des nouvelles merveilles du monde moderne.",
-				image: "chichen-itza.jpg",
+				image: "about-uno.jpg",
 				location: "Chichén Itzá, Yucatán",
 				duration: "10 heures",
+				fullDescription:
+					"Embarquez pour un voyage extraordinaire à travers le temps à Chichén Itzá, l'une des Nouvelles Sept Merveilles du Monde. Cette visite complète vous permet d'explorer la grandeur de la civilisation maya en parcourant l'imposante pyramide de Kukulkán, l'observatoire astronomique El Caracol et le cenote sacré. Nos guides experts vous révéleront les mystères astronomiques et les légendes ancestrales qui font de ce site un lieu unique au monde.",
+				includes: [
+					{
+						icon: "🚐",
+						title: "Transport Privé",
+						description: "Véhicule climatisé exclusif pour votre groupe",
+					},
+					{
+						icon: "👨‍🏫",
+						title: "Guide Certifié",
+						description: "Expert en culture maya et histoire ancienne",
+					},
+					{
+						icon: "🎫",
+						title: "Entrées Incluses",
+						description: "Accès complet à la zone archéologique",
+					},
+					{
+						icon: "🌮",
+						title: "Repas Régional",
+						description: "Déjeuner buffet avec plats yucatèques authentiques",
+					},
+					{
+						icon: "💧",
+						title: "Eau et Collations",
+						description: "Hydratation constante tout au long de la visite",
+					},
+					{
+						icon: "📸",
+						title: "Séance Photo",
+						description: "Temps dédié pour capturer les meilleurs moments",
+					},
+				],
+				itinerary: [
+					{
+						time: "7:00",
+						title: "Prise en Charge à l'Hôtel",
+						description: "Début du voyage en transport privé climatisé",
+					},
+					{
+						time: "9:30",
+						title: "Arrivée à Chichén Itzá",
+						description: "Début de la visite guidée de la zone archéologique",
+					},
+					{
+						time: "12:30",
+						title: "Déjeuner Buffet",
+						description: "Profitez de la cuisine yucatèque authentique",
+					},
+					{
+						time: "14:00",
+						title: "Visite du Cenote Ik Kil",
+						description: "Temps libre pour nager dans ce cenote sacré",
+					},
+					{
+						time: "16:00",
+						title: "Retour",
+						description: "Retour à votre hôtel avec des souvenirs inoubliables",
+					},
+				],
+				recommendations: [
+					"Vêtements confortables et légers en coton",
+					"Chaussures confortables pour marcher (évitez les sandales)",
+					"Chapeau ou casquette et lunettes de soleil",
+					"Crème solaire biodégradable",
+					"Maillot de bain et serviette pour le cenote",
+					"Appareil photo ou smartphone avec batterie complète",
+					"Espèces pour souvenirs et pourboires",
+				],
+				gallery: [
+					"/about-uno.jpg",
+					"/about-dos.jpg",
+					"/about-tres.jpg",
+					"/about-cuatro.jpg",
+				],
+				activityLevel: "Modéré",
+				ageRestriction: "Tous les âges bienvenus",
+				groupSize: "Petits groupes (maximum 12 personnes)",
+				pickupArea: "Cancún, Playa del Carmen, Tulum",
 			},
 			{
 				id: "mystic-waters",
@@ -278,11 +363,57 @@ export const fr = {
 	footer: {
 		brand: "Sacred Routes Expeditions",
 		description:
-			"Transformer les idées en réalité numérique avec une technologie de pointe.",
+			"Découvrez la magie de la Riviera Maya avec des circuits authentiques et des expériences uniques. Votre aventure commence ici.",
 		quickLinks: "Liens Rapides",
-		services: "Services",
+		tours: "Nos Circuits",
 		contact: "Contact",
 		followUs: "Suivez-nous",
 		rights: "Tous droits réservés.",
+		phone: "Téléphone",
+		email: "Email",
+		location: "Emplacement",
+		newsletter: "Newsletter",
+		newsletterText: "Recevez des offres exclusives et des nouvelles",
+		subscribe: "S'abonner",
+	},
+	tourPage: {
+		notFound: {
+			title: "Tour introuvable",
+			description: "Désolé, le tour que vous recherchez n'existe pas.",
+			button: "Retour à l'accueil",
+		},
+		aboutTour: "À propos de ce Tour",
+		activityLevel: "Niveau d'activité",
+		ages: "Âges",
+		transport: "Transport",
+		transportType: "Privé",
+		included: {
+			title: "Qu'est-ce qui est Inclus?",
+			description: "Tout est couvert pour que vous ne pensiez qu'à profiter",
+		},
+		gallery: {
+			title: "Galerie",
+		},
+		itinerary: {
+			title: "Itinéraire de la Journée",
+			description: "Une expérience parfaitement organisée du début à la fin",
+		},
+		cta: {
+			title: "Prêt pour l'Aventure?",
+			description:
+				"Réservez maintenant et vivez une expérience dont vous vous souviendrez pour toujours",
+			bookButton: "Réserver Maintenant",
+			whatsappButton: "WhatsApp",
+			guarantee:
+				"💰 Meilleur prix garanti | 🔒 Réservation sécurisée | ⚡ Confirmation instantanée",
+		},
+		recommendations: {
+			title: "Recommandations",
+			description: "Préparez-vous pour profiter au maximum de votre expérience",
+			importantTitle: "Important",
+			importantText:
+				"Nous viendrons vous chercher directement à votre hôtel à {area}. N'oubliez pas votre appareil photo et beaucoup d'enthousiasme pour vivre une expérience unique.",
+		},
+		backButton: "Voir tous les tours",
 	},
 };

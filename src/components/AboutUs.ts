@@ -28,7 +28,7 @@ export function AboutUs(): HTMLElement {
 							</svg>
 						</div>
 						<div class="text-2xl font-bold text-gray-800 mb-1">50+</div>
-						<div class="text-sm text-gray-600">Destinos</div>
+						<div class="text-sm text-gray-600">${t("about.stats.destinations")}</div>
 					</div>
 					<div class="text-center">
 						<div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -37,7 +37,7 @@ export function AboutUs(): HTMLElement {
 							</svg>
 						</div>
 						<div class="text-2xl font-bold text-gray-800 mb-1">10k+</div>
-						<div class="text-sm text-gray-600">Clientes Felices</div>
+						<div class="text-sm text-gray-600">${t("about.stats.clients")}</div>
 					</div>
 					<div class="text-center">
 						<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -46,7 +46,7 @@ export function AboutUs(): HTMLElement {
 							</svg>
 						</div>
 						<div class="text-2xl font-bold text-gray-800 mb-1">10</div>
-						<div class="text-sm text-gray-600">Años de Experiencia</div>
+						<div class="text-sm text-gray-600">${t("about.stats.experience")}</div>
 					</div>
 				</div>
 			</div>

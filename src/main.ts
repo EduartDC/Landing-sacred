@@ -1,5 +1,6 @@
 import "./style.css";
 import { Home, addComponentToHome } from "./pages/Home";
+import { Tour } from "./pages/Tour";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { AboutUs } from "./components/AboutUs";
@@ -37,6 +38,43 @@ export function mountComponent(component: HTMLElement | string): void {
 	}
 }
 
+// Función para cargar la Home page
+function loadHomePage() {
+	mountComponent(Home());
+	setTimeout(() => {
+		addComponentToHome(Hero());
+		addComponentToHome(AboutUs());
+		addComponentToHome(Info());
+		addComponentToHome(Services());
+		addComponentToHome(Testimonials());
+		addComponentToHome(Contact());
+		addComponentToHome(Footer());
+	}, 100);
+}
+
+// Función para cargar la página del Tour
+function loadTourPage(tourId: string) {
+	const mainContent = document.getElementById("main-content");
+	if (mainContent) {
+		mainContent.innerHTML = "";
+		const tourPage = Tour(tourId);
+		mainContent.appendChild(tourPage);
+		mainContent.appendChild(Footer());
+	}
+}
+
+// Router simple basado en hash
+function handleRouting() {
+	const hash = window.location.hash;
+
+	if (hash.startsWith("#tour/")) {
+		const tourId = hash.replace("#tour/", "");
+		loadTourPage(tourId);
+	} else {
+		loadHomePage();
+	}
+}
+
 // Inicializar la aplicación
 document.addEventListener("DOMContentLoaded", async () => {
 	createLayout();
@@ -47,19 +85,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 		navbarContainer.appendChild(Navbar());
 	}
 
-	// Montar el componente Home
-	mountComponent(Home());
+	// Manejar routing inicial
+	handleRouting();
 
-	setTimeout(() => {
-		// Ya no agregamos el Navbar aquí, ya está montado arriba
-		addComponentToHome(Hero());
-		addComponentToHome(AboutUs());
-		addComponentToHome(Info());
-		addComponentToHome(Services());
-		addComponentToHome(Testimonials());
-		addComponentToHome(Contact());
-		addComponentToHome(Footer());
-	}, 100);
+	// Escuchar cambios en el hash para routing
+	window.addEventListener("hashchange", handleRouting);
 
 	// Inicializar sistema de transiciones después de que se monte todo
 	setTimeout(async () => {

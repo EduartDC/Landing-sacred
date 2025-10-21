@@ -290,9 +290,11 @@ export function Services(): HTMLElement {
 
 	const handleTourClick = (tourId: string | null) => {
 		if (tourId) {
-			console.log(`Tour seleccionado: ${tourId}`);
-			// Aquí puedes agregar la lógica para mostrar detalles del tour
-			// Por ejemplo, abrir un modal o navegar a una página de detalles
+			console.log(`Navegando a tour: ${tourId}`);
+			// Navegar a la página del tour con el ID
+			window.location.hash = `tour/${tourId}`;
+			// Scroll suave al top
+			window.scrollTo({ top: 0, behavior: "smooth" });
 		}
 	};
 

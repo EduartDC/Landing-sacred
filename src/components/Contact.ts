@@ -113,7 +113,7 @@ export function Contact(): HTMLElement {
           </div>
         </div>
         
-        <form name="contact" method="POST" data-netlify="true" class="contact-form space-y-6">
+        <form name="contact" netlify class="contact-form space-y-6">
           <input type="hidden" name="form-name" value="contact" />
           
           <div class="text-center mb-8">

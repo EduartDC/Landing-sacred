@@ -92,8 +92,134 @@
     gap: 0;
   }
 
-  /* Optimización del texto para móviles */
-  @media (max-width: 768px) {
+  /* ===== MEDIA QUERIES - MOBILE FIRST ===== */
+
+  /* Mobile (320px - 640px) */
+  @media (max-width: 640px) {
+    body {
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: 1.75rem !important;
+      line-height: 1.2 !important;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem !important;
+      line-height: 1.3 !important;
+      padding: 0 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem !important;
+      line-height: 1.3 !important;
+    }
+
+    p,
+    li {
+      font-size: 0.9rem !important;
+      line-height: 1.6 !important;
+    }
+
+    /* Imágenes responsivas */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Botones en móviles */
+    button,
+    .btn,
+    a.button {
+      min-height: 44px;
+      padding: 0.75rem 1.5rem !important;
+      font-size: 0.9rem !important;
+    }
+
+    /* Iconos en móviles - mínimo 24x24px */
+    svg {
+      min-width: 24px;
+      min-height: 24px;
+    }
+
+    /* Center component - ancho completo en móviles */
+    .center-component {
+      width: 100% !important;
+      padding: 1.5rem 1rem !important;
+      margin: 0 !important;
+      border-radius: 0 !important;
+    }
+
+    /* Hero section - pantalla completa en móviles */
+    section#home,
+    .hero-container {
+      min-height: 100vh !important;
+      min-height: -webkit-fill-available !important;
+      height: 100vh !important;
+      height: -webkit-fill-available !important;
+      width: 100vw !important;
+      overflow: hidden !important;
+    }
+
+    /* Video del Hero - asegurar cobertura completa */
+    .hero-video {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      transform: translateX(-50%) translateY(-50%) !important;
+      object-fit: cover !important;
+      z-index: 0 !important;
+    }
+
+    /* Contenido del Hero - mejorar legibilidad */
+    section#home .relative.z-20 {
+      padding: 1rem !important;
+    }
+
+    /* Título del Hero en móviles */
+    section#home h1 {
+      font-size: 2rem !important;
+      line-height: 1.1 !important;
+      margin-bottom: 1rem !important;
+      padding: 0 0.5rem !important;
+    }
+
+    /* Subtítulo del Hero en móviles */
+    section#home p {
+      font-size: 1rem !important;
+      line-height: 1.5 !important;
+      margin-bottom: 1.5rem !important;
+      padding: 0 1rem !important;
+    }
+
+    /* Botones del Hero en móviles */
+    section#home button {
+      width: 100% !important;
+      max-width: 320px !important;
+      margin: 0 auto !important;
+      padding: 1rem 2rem !important;
+      font-size: 1rem !important;
+    }
+
+    /* Contenedor de botones del Hero */
+    section#home .flex.flex-col {
+      gap: 1rem !important;
+      padding: 0 1rem !important;
+    }
+  }
+
+  /* Tablet Portrait (641px - 768px) */
+  @media (min-width: 641px) and (max-width: 768px) {
+    body {
+      font-size: 15px;
+    }
+
     h1 {
       font-size: 2rem !important;
       line-height: 1.2 !important;
@@ -109,16 +235,24 @@
       line-height: 1.3 !important;
     }
 
-    p,
-    li {
-      font-size: 0.95rem !important;
-      line-height: 1.6 !important;
+    button,
+    .btn,
+    a.button {
+      min-height: 44px;
+      padding: 0.875rem 1.75rem !important;
     }
 
-    /* Optimizar imágenes en móviles */
-    img {
-      max-width: 100%;
-      height: auto;
+    .center-component {
+      width: 95% !important;
+      padding: 2rem 1.5rem !important;
+    }
+  }
+
+  /* Tablet Landscape (769px - 1024px) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .center-component {
+      width: 85% !important;
+      padding: 2rem 1.75rem !important;
     }
   }
 
@@ -211,6 +345,218 @@
     box-shadow: none;
     /* Sin sombra para apariencia más limpia */
   }
+
+  /* ===== OPTIMIZACIONES POR COMPONENTE ===== */
+
+  /* AboutUs - Estadísticas y galería */
+  @media (max-width: 640px) {
+
+    /* Iconos de estadísticas más pequeños en móvil */
+    .center-component .w-16.h-16 {
+      width: 3rem !important;
+      height: 3rem !important;
+    }
+
+    .center-component .w-16.h-16 svg {
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+    }
+
+    /* Números de estadísticas */
+    .center-component .text-2xl {
+      font-size: 1.5rem !important;
+    }
+
+    /* Galería de imágenes - tamaño optimizado */
+    .center-component img {
+      height: 180px !important;
+      object-fit: cover;
+    }
+
+    /* Grid de estadísticas - una columna en móvil pequeño */
+    .center-component .grid.sm\\:grid-cols-3 {
+      grid-template-columns: 1fr !important;
+      gap: 1.5rem !important;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 768px) {
+
+    /* Tablet - iconos medianos */
+    .center-component .w-16.h-16 {
+      width: 3.5rem !important;
+      height: 3.5rem !important;
+    }
+
+    .center-component img {
+      height: 200px !important;
+    }
+  }
+
+  /* Info - Características con iconos */
+  @media (max-width: 640px) {
+
+    /* Iconos de características más visibles */
+    .center-component .rounded-full svg {
+      min-width: 32px !important;
+      min-height: 32px !important;
+    }
+
+    /* Cards de características - padding reducido */
+    .center-component .bg-white.rounded-lg {
+      padding: 1rem !important;
+    }
+  }
+
+  /* Services - Carrusel de tours */
+  @media (max-width: 640px) {
+
+    /* Cards de tours - altura optimizada */
+    .tour-card {
+      height: auto !important;
+      min-height: 520px !important;
+    }
+
+    .tour-image-container {
+      height: 220px !important;
+      flex-shrink: 0 !important;
+    }
+
+    .tour-card h3 {
+      font-size: 1.125rem !important;
+    }
+
+    .tour-card p {
+      font-size: 0.875rem !important;
+    }
+
+    /* Botones del carrusel - más grandes y accesibles */
+    .carousel-btn {
+      padding: 0.625rem !important;
+      width: 44px !important;
+      height: 44px !important;
+    }
+
+    .carousel-btn svg {
+      width: 24px !important;
+      height: 24px !important;
+    }
+
+    /* Indicadores del carrusel - ocultos en móvil */
+    .carousel-indicators {
+      display: none !important;
+    }
+
+    /* Iconos de ubicación y duración */
+    .tour-card svg {
+      min-width: 18px !important;
+      min-height: 18px !important;
+      flex-shrink: 0 !important;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 768px) {
+    .tour-card {
+      min-height: 560px !important;
+    }
+
+    .tour-image-container {
+      height: 240px !important;
+    }
+
+    /* Indicadores un poco más grandes en tablet pero no tanto */
+    .indicator {
+      width: 8px !important;
+      height: 8px !important;
+    }
+  }
+
+  /* Testimonials - Carrusel de testimonios */
+  @media (max-width: 640px) {
+
+    /* Cards de testimonios */
+    .testimonial-card {
+      padding: 1.5rem !important;
+      min-height: 400px !important;
+    }
+
+    .testimonial-card p {
+      font-size: 0.875rem !important;
+    }
+
+    /* Estrellas de rating - tamaño legible */
+    .testimonial-card .flex svg {
+      width: 18px !important;
+      height: 18px !important;
+      flex-shrink: 0 !important;
+    }
+
+    .testimonial-card h4 {
+      font-size: 1rem !important;
+    }
+  }
+
+  /* Contact - Formulario */
+  @media (max-width: 640px) {
+
+    /* Inputs y textareas */
+    .center-component input,
+    .center-component textarea,
+    .center-component select {
+      font-size: 16px !important;
+      padding: 0.75rem !important;
+      min-height: 44px !important;
+    }
+
+    /* Botón de envío */
+    .center-component button[type="submit"] {
+      width: 100% !important;
+      padding: 1rem !important;
+      font-size: 1rem !important;
+    }
+
+    /* Iconos del formulario */
+    .center-component form svg {
+      min-width: 20px !important;
+      min-height: 20px !important;
+    }
+  }
+
+  /* Footer - Optimización para móviles */
+  @media (max-width: 640px) {
+    footer {
+      padding: 2rem 1rem !important;
+    }
+
+    footer h3 {
+      font-size: 1.125rem !important;
+    }
+
+    footer p,
+    footer a {
+      font-size: 0.875rem !important;
+    }
+
+    footer svg {
+      min-width: 20px !important;
+      min-height: 20px !important;
+    }
+
+    /* Redes sociales */
+    footer .flex.space-x-4 a {
+      padding: 0.5rem !important;
+      min-width: 40px !important;
+      min-height: 40px !important;
+    }
+  }
+
+  /* Background pattern - Ocultar en móviles para mejor rendimiento */
+  @media (max-width: 768px) {
+    body {
+      background-image: none !important;
+      background-color: #ebe7e1 !important;
+    }
+  }
 }
 
 /* Fallback styles in case Tailwind doesn't load */
@@ -236,6 +582,125 @@ nav[class*="sticky"] {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+/* Navbar - Optimizaciones responsive */
+@media (max-width: 640px) {
+
+  /* Layout de 2 filas: Fila 1 (logo+nombre centrado), Fila 2 (menú izq + idioma der) */
+  nav .max-w-7xl {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+
+  /* Logo y título en la primera fila - centrado */
+  nav .max-w-7xl>a {
+    order: 1 !important;
+    justify-self: center !important;
+    text-align: center !important;
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Mostrar el nombre de la página */
+  nav .max-w-7xl>a span {
+    display: inline-block !important;
+  }
+
+  /* Contenedor de botones en la segunda fila */
+  nav .flex.items-center.space-x-1 {
+    order: 2 !important;
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    flex-direction: row-reverse !important;
+  }
+
+  /* Logo más pequeño en móvil */
+  #navbar-container img {
+    height: 32px !important;
+  }
+
+  /* Brand text más pequeño */
+  #navbar-container .text-2xl {
+    font-size: 1.25rem !important;
+  }
+
+  /* Botón hamburguesa más grande y accesible */
+  #navbar-container button[data-collapse-toggle] {
+    padding: 0.5rem !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  #navbar-container button[data-collapse-toggle] svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  /* Menú mobile - fondo sólido y visible */
+  #navbar-container .md\\:hidden.w-full {
+    padding: 1rem 0 !important;
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  /* Container del menú con fondo sólido */
+  #navbar-container #navbar-language {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    margin-top: 0.5rem !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Links del menú mobile - texto oscuro visible */
+  #navbar-container .nav-link {
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
+    color: #1f2937 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Link activo más visible */
+  #navbar-container .nav-link.active {
+    background-color: rgba(16, 185, 129, 0.1) !important;
+    color: #059669 !important;
+  }
+
+  /* Hover state visible */
+  #navbar-container .nav-link:hover {
+    background-color: rgba(16, 185, 129, 0.05) !important;
+  }
+
+  /* Dropdown de idiomas en móvil */
+  #navbar-container button {
+    padding: 0.5rem 1rem !important;
+    min-height: 44px !important;
+  }
+
+  /* Flags más visibles */
+  #navbar-container svg {
+    min-width: 20px !important;
+    min-height: 20px !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+
+  /* Logo mediano en tablet portrait */
+  #navbar-container img {
+    height: 36px !important;
+  }
+
+  #navbar-container .text-2xl {
+    font-size: 1.5rem !important;
+  }
 }
 
 /* Smooth scroll offset for sticky navbar */

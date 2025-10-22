@@ -75,7 +75,8 @@ function handleRouting() {
 		const currentPage = document.querySelector(".tour-page");
 		const isInTourPage = currentPage !== null;
 		const mainContent = document.getElementById("main-content");
-		const hasHomeContent = mainContent && mainContent.querySelector(".home-container");
+		const hasHomeContent =
+			mainContent && mainContent.querySelector(".home-container");
 
 		if (isInTourPage || !hasHomeContent) {
 			// Si estamos en tour O si no hay contenido de home, cargar home

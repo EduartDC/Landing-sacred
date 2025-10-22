@@ -88,32 +88,32 @@ export const fr = {
 					"Embarquez pour un voyage extraordinaire à travers le temps à Chichén Itzá, l'une des Nouvelles Sept Merveilles du Monde. Cette visite complète vous permet d'explorer la grandeur de la civilisation maya en parcourant l'imposante pyramide de Kukulkán, l'observatoire astronomique El Caracol et le cenote sacré. Nos guides experts vous révéleront les mystères astronomiques et les légendes ancestrales qui font de ce site un lieu unique au monde.",
 				includes: [
 					{
-						icon: "🚐",
+						icon: "truck",
 						title: "Transport Privé",
 						description: "Véhicule climatisé exclusif pour votre groupe",
 					},
 					{
-						icon: "👨‍🏫",
+						icon: "user",
 						title: "Guide Certifié",
 						description: "Expert en culture maya et histoire ancienne",
 					},
 					{
-						icon: "🎫",
+						icon: "ticket",
 						title: "Entrées Incluses",
 						description: "Accès complet à la zone archéologique",
 					},
 					{
-						icon: "🌮",
+						icon: "utensils-crossed",
 						title: "Repas Régional",
 						description: "Déjeuner buffet avec plats yucatèques authentiques",
 					},
 					{
-						icon: "💧",
+						icon: "droplets",
 						title: "Eau et Collations",
 						description: "Hydratation constante tout au long de la visite",
 					},
 					{
-						icon: "📸",
+						icon: "camera",
 						title: "Séance Photo",
 						description: "Temps dédié pour capturer les meilleurs moments",
 					},
@@ -173,24 +173,284 @@ export const fr = {
 				image: "cenote.jpg",
 				location: "Cénotes de Tulum",
 				duration: "6 heures",
+				fullDescription:
+					"Découvrez la magie cachée sous la jungle maya lors de cette excursion exclusive vers trois cénotes uniques. Plongez dans des eaux cristallines sacrées pour la culture maya depuis des millénaires. Des cénotes ouverts aux cavernes mystiques illuminées par la lumière naturelle, chaque arrêt offre une expérience différente. Nos guides vous expliqueront l'importance spirituelle de ces lieux tout en profitant d'une journée rafraîchissante en pleine nature.",
+				includes: [
+					{
+						icon: "truck",
+						title: "Transport Privé",
+						description: "Véhicule climatisé exclusif pour votre groupe",
+					},
+					{
+						icon: "user",
+						title: "Guide Spécialisé",
+						description: "Expert en géologie et culture maya",
+					},
+					{
+						icon: "ticket",
+						title: "Accès à 3 Cénotes",
+						description: "Entrées incluses aux cénotes exclusifs",
+					},
+					{
+						icon: "utensils-crossed",
+						title: "Nourriture Typique",
+						description: "Déjeuner avec ingrédients locaux frais",
+					},
+					{
+						icon: "droplets",
+						title: "Équipement de Snorkeling",
+						description: "Équipement professionnel désinfecté inclus",
+					},
+					{
+						icon: "camera",
+						title: "Photos Professionnelles",
+						description: "Session photo à chaque cénote",
+					},
+				],
+				itinerary: [
+					{
+						time: "8:00",
+						title: "Prise en Charge à l'Hôtel",
+						description: "Début de l'excursion en transport privé",
+					},
+					{
+						time: "9:00",
+						title: "Cénote Dos Ojos",
+						description: "Snorkeling dans le système de cavernes le plus vaste",
+					},
+					{
+						time: "11:00",
+						title: "Gran Cenote",
+						description: "Baignade dans des eaux ouvertes entourées de jungle",
+					},
+					{
+						time: "13:00",
+						title: "Déjeuner Régional",
+						description: "Nourriture typique de Quintana Roo",
+					},
+					{
+						time: "14:30",
+						title: "Cénote Caché",
+						description: "Découvrez ce cénote privé peu connu",
+					},
+					{
+						time: "16:00",
+						title: "Retour",
+						description: "Retour à votre hôtel avec tous les souvenirs",
+					},
+				],
+				recommendations: [
+					"Maillot de bain et serviette",
+					"Vêtements de rechange",
+					"Crème solaire biodégradable (obligatoire)",
+					"Répulsif anti-moustiques naturel",
+					"Sandales ou chaussures aquatiques",
+					"Caméra submersible ou étui étanche",
+					"Argent liquide pour les pourboires",
+				],
+				gallery: [
+					"/cenote.jpg",
+					"/about-dos.jpg",
+					"/about-tres.jpg",
+					"/about-cuatro.jpg",
+				],
+				activityLevel: "Facile à Modéré",
+				ageRestriction: "Enfants de plus de 6 ans",
+				groupSize: "Petits groupes (maximum 10 personnes)",
+				pickupArea: "Tulum, Playa del Carmen, Cancún",
 			},
 			{
 				id: "bohemian-ritual",
 				title: "Bohemian Ritual",
 				description:
-					"Connectez-vous avec la spiritualité maya à travers des cérémonies ancestrales et des rituels de purification dans des espaces sacrés.",
+					"Connectez-vous à la spiritualité maya à travers des cérémonies ancestrales et des rituels de purification dans des espaces sacrés.",
 				image: "ritual.jpg",
 				location: "Cobá et Communautés Mayas",
 				duration: "8 heures",
+				fullDescription:
+					"Vivez une expérience spirituelle profonde en vous connectant aux traditions mayas ancestrales. Cette excursion vous emmène au-delà du tourisme conventionnel pour participer à des cérémonies authentiques guidées par des chamans locaux. Grimpez la pyramide la plus haute de la péninsule à Cobá, participez à un temazcal purificateur et apprenez sur les plantes médicinales sacrées. Une expérience transformatrice qui honore les racines culturelles de cette terre.",
+				includes: [
+					{
+						icon: "truck",
+						title: "Transport Privé",
+						description: "Véhicule climatisé avec eau purifiée",
+					},
+					{
+						icon: "user",
+						title: "Guide Spirituel",
+						description: "Chaman maya certifié et traducteur",
+					},
+					{
+						icon: "ticket",
+						title: "Accès à Cobá",
+						description: "Entrée à la zone archéologique incluse",
+					},
+					{
+						icon: "utensils-crossed",
+						title: "Repas Cérémoniel",
+						description: "Déjeuner traditionnel préparé par la communauté",
+					},
+					{
+						icon: "droplets",
+						title: "Cérémonie Temazcal",
+						description: "Bain de vapeur purificateur ancestral",
+					},
+					{
+						icon: "camera",
+						title: "Atelier de Médecine",
+						description: "Introduction aux plantes médicinales mayas",
+					},
+				],
+				itinerary: [
+					{
+						time: "7:00",
+						title: "Prise en Charge",
+						description: "Départ matinal vers la jungle de Quintana Roo",
+					},
+					{
+						time: "9:00",
+						title: "Zone Archéologique Cobá",
+						description: "Ascension de la pyramide Nohoch Mul (42 mètres)",
+					},
+					{
+						time: "11:00",
+						title: "Cérémonie Maya",
+						description: "Rituel de bienvenue avec chaman local",
+					},
+					{
+						time: "12:30",
+						title: "Déjeuner Communautaire",
+						description: "Repas traditionnel avec familles mayas",
+					},
+					{
+						time: "14:00",
+						title: "Temazcal Sacré",
+						description: "Cérémonie de purification avec herbes",
+					},
+					{
+						time: "15:30",
+						title: "Atelier de Médecine",
+						description: "Apprenez sur les plantes et remèdes ancestraux",
+					},
+					{
+						time: "17:00",
+						title: "Retour",
+						description: "Retour avec l'âme renouvelée",
+					},
+				],
+				recommendations: [
+					"Vêtements en coton légers et respectueux",
+					"Maillot de bain pour le temazcal",
+					"Serviette et vêtements de rechange",
+					"Chaussures confortables pour marcher et grimper",
+					"Esprit ouvert et attitude respectueuse",
+					"Bouteille d'eau réutilisable",
+					"Don volontaire pour la communauté",
+				],
+				gallery: [
+					"/ritual.jpg",
+					"/about-uno.jpg",
+					"/about-tres.jpg",
+					"/about-cuatro.jpg",
+				],
+				activityLevel: "Modéré à Intense",
+				ageRestriction: "Plus de 12 ans (consulter pour temazcal)",
+				groupSize: "Groupes intimes (maximum 8 personnes)",
+				pickupArea: "Tulum, Playa del Carmen",
 			},
 			{
 				id: "visual-routes",
 				title: "Visual Routes",
 				description:
-					"Capturez la beauté de la Riviera Maya lors d'un tour photographique à travers les paysages les plus spectaculaires et les coins secrets.",
+					"Capturez la beauté de la Riviera Maya lors d'une excursion photographique à travers les paysages les plus spectaculaires et les coins secrets.",
 				image: "photography.jpg",
 				location: "Riviera Maya",
 				duration: "5 heures",
+				fullDescription:
+					"Un paradis pour les amateurs de photographie. Cette excursion est spécialement conçue pour capturer les moments les plus dignes d'Instagram de la Riviera Maya. Visitez des lieux secrets connus uniquement des locaux, avec la meilleure lumière du jour. Inclut des conseils professionnels de photographie, du temps sans hâte à chaque arrêt et accès à des points de vue exclusifs. Parfait pour les influenceurs, photographes amateurs et tous ceux qui veulent immortaliser la beauté de la Caraïbe mexicaine.",
+				includes: [
+					{
+						icon: "truck",
+						title: "Transport Privé",
+						description: "Mobilité confortable entre lieux secrets",
+					},
+					{
+						icon: "user",
+						title: "Guide Photographe",
+						description: "Guide local avec expérience en photographie",
+					},
+					{
+						icon: "ticket",
+						title: "Accès Exclusifs",
+						description: "Entrées à des spots photographiques privés",
+					},
+					{
+						icon: "utensils-crossed",
+						title: "Collations Gourmet",
+						description: "Rafraîchissements et boissons pendant l'excursion",
+					},
+					{
+						icon: "droplets",
+						title: "Accessoires & Props",
+						description: "Éléments décoratifs pour vos photos",
+					},
+					{
+						icon: "camera",
+						title: "Session avec Drone",
+						description: "Photos aériennes professionnelles incluses",
+					},
+				],
+				itinerary: [
+					{
+						time: "14:00",
+						title: "Début de l'Excursion",
+						description: "Prise en charge et briefing photographique",
+					},
+					{
+						time: "14:30",
+						title: "Plage Secrète",
+						description: "Premier arrêt sur plage vierge sans touristes",
+					},
+					{
+						time: "15:30",
+						title: "Lagune de Couleurs",
+						description: "Tons turquoise parfaits pour photos",
+					},
+					{
+						time: "16:30",
+						title: "Point de Vue Panoramique",
+						description: "Vue 360° de la Riviera Maya",
+					},
+					{
+						time: "17:30",
+						title: "Heure Dorée",
+						description: "Dernier arrêt pour photos du coucher de soleil",
+					},
+					{
+						time: "19:00",
+						title: "Fin de l'Excursion",
+						description: "Retour avec votre galerie remplie",
+					},
+				],
+				recommendations: [
+					"Appareil photo professionnel ou smartphone haut de gamme",
+					"Batteries et cartes mémoire supplémentaires",
+					"Tenue colorée et accrocheuse",
+					"Changements de tenue pour variété",
+					"Accessoires (chapeaux, lunettes, bijoux)",
+					"Attitude amusante et spontanée",
+					"Identifiez @SacredRoutes dans vos publications",
+				],
+				gallery: [
+					"/photography.jpg",
+					"/about-dos.jpg",
+					"/about-uno.jpg",
+					"/about-tres.jpg",
+				],
+				activityLevel: "Facile",
+				ageRestriction: "Tous âges (idéal pour adultes)",
+				groupSize: "Petits groupes (maximum 6 personnes)",
+				pickupArea: "Playa del Carmen, Tulum",
 			},
 			{
 				id: "tulum-origins",
@@ -200,6 +460,96 @@ export const fr = {
 				image: "tulum.jpg",
 				location: "Tulum, Quintana Roo",
 				duration: "7 heures",
+				fullDescription:
+					"Explorez les seules ruines mayas construites face à la mer des Caraïbes. Tulum était un port commercial stratégique et une cité fortifiée qui protégeait l'élite maya. Cette excursion combine histoire, archéologie et plage paradisiaque. Marchez à travers les temples anciens en écoutant les légendes du Dieu Descendant, explorez les murailles défensives et terminez la journée en vous relaxant sur l'une des plus belles plages du monde, juste au pied des ruines.",
+				includes: [
+					{
+						icon: "truck",
+						title: "Transport Privé",
+						description: "Véhicule climatisé aller-retour",
+					},
+					{
+						icon: "user",
+						title: "Guide Archéologue",
+						description: "Expert en histoire maya et architecture",
+					},
+					{
+						icon: "ticket",
+						title: "Entrée à Tulum",
+						description: "Accès prioritaire à la zone archéologique",
+					},
+					{
+						icon: "utensils-crossed",
+						title: "Repas Face à la Mer",
+						description: "Déjeuner au restaurant avec vue sur la Caraïbe",
+					},
+					{
+						icon: "droplets",
+						title: "Temps de Plage",
+						description: "Accès à plage exclusive près des ruines",
+					},
+					{
+						icon: "camera",
+						title: "Tour Photographique",
+						description: "Meilleures vues pour vos souvenirs",
+					},
+				],
+				itinerary: [
+					{
+						time: "8:00",
+						title: "Prise en Charge",
+						description: "Début du voyage par la route côtière",
+					},
+					{
+						time: "9:30",
+						title: "Arrivée à Tulum",
+						description: "Entrée prioritaire avant les foules",
+					},
+					{
+						time: "10:00",
+						title: "Visite Archéologique",
+						description: "Visite guidée à travers temples et murailles",
+					},
+					{
+						time: "12:00",
+						title: "Plage de Tulum",
+						description: "Temps libre pour nager dans eaux cristallines",
+					},
+					{
+						time: "13:30",
+						title: "Déjeuner",
+						description: "Repas avec vue sur la mer des Caraïbes",
+					},
+					{
+						time: "15:00",
+						title: "Village de Tulum",
+						description: "Visite optionnelle du centre bohème",
+					},
+					{
+						time: "17:00",
+						title: "Retour",
+						description: "Retour avec le coucher de soleil caraïbe",
+					},
+				],
+				recommendations: [
+					"Maillot de bain sous les vêtements",
+					"Crème solaire biodégradable",
+					"Chapeau et lunettes de soleil",
+					"Chaussures confortables (terrain irrégulier)",
+					"Serviette de plage",
+					"Argent liquide pour achats au village",
+					"Appareil photo avec batterie complète",
+				],
+				gallery: [
+					"/tulum.jpg",
+					"/about-cuatro.jpg",
+					"/about-dos.jpg",
+					"/about-uno.jpg",
+				],
+				activityLevel: "Facile à Modéré",
+				ageRestriction: "Tous âges bienvenus",
+				groupSize: "Petits groupes (maximum 12 personnes)",
+				pickupArea: "Cancún, Playa del Carmen, Tulum",
 			},
 		],
 	},

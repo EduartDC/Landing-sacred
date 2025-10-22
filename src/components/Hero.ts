@@ -34,18 +34,18 @@ export function Hero(): HTMLElement {
 		
 		
 		<!-- Contenido principal -->
-		<div class="relative z-20 max-w-screen-xl mx-auto px-4 w-full">
-			<h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 drop-shadow-2xl leading-tight">${t(
+		<div class="relative z-20 max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 w-full">
+			<h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 sm:mb-8 drop-shadow-2xl leading-tight px-2">${t(
 				"hero.title"
 			)}</h1>
-			<p class="text-lg md:text-xl lg:text-2xl text-white/95 max-w-4xl mx-auto mb-12 leading-relaxed drop-shadow-lg">${t(
+			<p class="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 max-w-4xl mx-auto mb-8 sm:mb-12 leading-relaxed drop-shadow-lg px-4">${t(
 				"hero.subtitle"
 			)}</p>
-			<div class="flex flex-col sm:flex-row gap-6 justify-center">
-				<button id="hero-services-btn" class="bg-adventure-600 hover:bg-adventure-700 text-white px-12 md:px-16 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+			<div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4">
+				<button id="hero-services-btn" class="bg-adventure-600 hover:bg-adventure-700 text-white px-8 sm:px-12 md:px-16 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 w-full sm:w-auto">
 					${t("hero.primaryButton")}
 				</button>
-				<button id="hero-contact-btn" class="border-2 border-white/60 hover:bg-white/15 text-white px-12 md:px-16 py-4 rounded-full font-semibold text-lg transition-all duration-300 backdrop-blur-sm hover:border-white/80 hover:scale-105">
+				<button id="hero-contact-btn" class="border-2 border-white/60 hover:bg-white/15 text-white px-8 sm:px-12 md:px-16 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 backdrop-blur-sm hover:border-white/80 hover:scale-105 w-full sm:w-auto">
 					${t("hero.secondaryButton")}
 				</button>
 			</div>

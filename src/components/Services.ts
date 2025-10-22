@@ -1,4 +1,5 @@
 import { languageManager, t } from "../utils/language.ts";
+import { executePageTransition } from "../utils/transitions";
 
 // Componente Services
 export function Services(): HTMLElement {
@@ -61,7 +62,7 @@ export function Services(): HTMLElement {
 						<p class="text-gray-600 leading-relaxed mb-6">${tour.description}</p>
 						
 						<!-- Información de ubicación y duración -->
-						<div class="mb-6 space-y-3">
+						<div class="mt-auto space-y-3">
 							<div class="flex items-center text-sm text-gray-500">
 								<svg class="w-4 h-4 mr-2 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -76,12 +77,6 @@ export function Services(): HTMLElement {
 								<span>${tour.duration}</span>
 							</div>
 						</div>
-						
-						<div class="flex items-center justify-center mt-auto pt-4 pb-4">
-							<button class="bg-emerald-500 text-white px-8 py-3 rounded-full text-sm font-semibold hover:bg-emerald-600 transition-colors duration-200">
-								Ver Detalles
-							</button>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -91,10 +86,10 @@ export function Services(): HTMLElement {
 
 		services.innerHTML = `
 		<div>
-			<h2 class="text-3xl font-bold text-sand-50 mb-4 text-center">${t(
+			<h2 class="text-3xl font-bold text-emerald-700 mb-4 text-center">${t(
 				"services.title"
 			)}</h2>
-			<p class="text-black text-base leading-relaxed mb-12 text-center max-w-4xl mx-auto">
+			<p class="text-gray-700 text-base leading-relaxed mb-12 text-center max-w-4xl mx-auto">
 				${t("services.description")}
 			</p>
 			
@@ -176,6 +171,12 @@ export function Services(): HTMLElement {
 					padding: 0 10px;
 				}
 				
+				@media (min-width: 640px) {
+					.tour-slide {
+						flex: 0 0 50%;
+					}
+				}
+				
 				@media (min-width: 768px) {
 					.tour-slide {
 						flex: 0 0 33.333%;
@@ -204,8 +205,16 @@ export function Services(): HTMLElement {
 		setupStyles();
 
 		const updateCarousel = () => {
-			// Para mostrar 3 cards, cada una debe ocupar 33.333% del contenedor
-			const slidesPerView = window.innerWidth >= 768 ? 3 : 1;
+			// Calcular cuántas cards mostrar según el ancho de la pantalla
+			let slidesPerView = 1;
+			if (window.innerWidth >= 768) {
+				slidesPerView = 3; // 3 cards en desktop
+			} else if (window.innerWidth >= 640) {
+				slidesPerView = 2; // 2 cards en móviles grandes
+			} else {
+				slidesPerView = 1; // 1 card en móviles pequeños
+			}
+
 			const slideWidth = 100 / slidesPerView;
 			track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
 
@@ -262,6 +271,9 @@ export function Services(): HTMLElement {
 			indicator.addEventListener("click", () => goToSlide(index));
 		});
 
+		// Actualizar carrusel al cambiar tamaño de ventana
+		window.addEventListener("resize", updateCarousel);
+
 		// Auto-slide
 		const startAutoSlide = () => {
 			autoSlideInterval = window.setInterval(nextSlide, 5000);
@@ -288,13 +300,17 @@ export function Services(): HTMLElement {
 		});
 	};
 
-	const handleTourClick = (tourId: string | null) => {
+	const handleTourClick = async (tourId: string | null) => {
 		if (tourId) {
 			console.log(`Navegando a tour: ${tourId}`);
-			// Navegar a la página del tour con el ID
-			window.location.hash = `tour/${tourId}`;
-			// Scroll suave al top
-			window.scrollTo({ top: 0, behavior: "smooth" });
+
+			// Ejecutar transición antes de navegar
+			await executePageTransition(() => {
+				// Navegar a la página del tour con el ID
+				window.location.hash = `tour/${tourId}`;
+				// Scroll al top
+				window.scrollTo({ top: 0, behavior: "auto" });
+			});
 		}
 	};
 

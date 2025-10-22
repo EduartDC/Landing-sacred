@@ -598,3 +598,10 @@ export class PageTransitions {
 
 // Instancia singleton
 export const pageTransitions = PageTransitions.getInstance();
+
+// Helper function para ejecutar transición desde cualquier componente
+export async function executePageTransition(
+	callback: () => void
+): Promise<void> {
+	await pageTransitions.setLanguageWithTransition("", callback);
+}

@@ -71,7 +71,34 @@ function handleRouting() {
 		const tourId = hash.replace("#tour/", "");
 		loadTourPage(tourId);
 	} else {
-		loadHomePage();
+		// Si no es una ruta de tour, cargar home
+		const currentPage = document.querySelector(".tour-page");
+		const isInTourPage = currentPage !== null;
+		const mainContent = document.getElementById("main-content");
+		const hasHomeContent = mainContent && mainContent.querySelector(".home-container");
+
+		if (isInTourPage || !hasHomeContent) {
+			// Si estamos en tour O si no hay contenido de home, cargar home
+			loadHomePage();
+
+			// Después de cargar home, hacer scroll a la sección si hay hash
+			setTimeout(() => {
+				if (hash && hash !== "#home") {
+					const targetSection = document.querySelector(hash);
+					if (targetSection) {
+						targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+					}
+				} else {
+					window.scrollTo({ top: 0, behavior: "smooth" });
+				}
+			}, 500);
+		} else if (hash && hash !== "#" && hash !== "#home") {
+			// Si ya estamos en home, solo hacer scroll a la sección
+			const targetSection = document.querySelector(hash);
+			if (targetSection) {
+				targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+			}
+		}
 	}
 }
 

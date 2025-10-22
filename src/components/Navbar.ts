@@ -1,5 +1,6 @@
 // Componente Navbar con estilo Flowbite
 import { languageManager, t } from "../utils/language";
+import { executePageTransition } from "../utils/transitions";
 
 export function Navbar(): HTMLElement {
 	const navbar = document.createElement("nav");
@@ -332,21 +333,31 @@ export function Navbar(): HTMLElement {
 		// Navigation links functionality
 		const navLinks = navbar.querySelectorAll(".nav-link");
 		navLinks.forEach((link) => {
-			link.addEventListener("click", (e) => {
-				e.preventDefault();
+			link.addEventListener("click", async (e) => {
 				const target = link.getAttribute("href");
 				const targetSection = link.getAttribute("data-nav-link");
 
 				if (target && targetSection) {
-					// Scroll suave al elemento
+					// Verificar si el elemento existe en la página actual
 					const element = document.querySelector(target);
+
 					if (element) {
+						// Si existe, hacer scroll suave (estamos en home)
+						e.preventDefault();
 						element.scrollIntoView({ behavior: "smooth" });
 
 						// Actualizar inmediatamente el estado activo
 						setTimeout(() => {
 							updateActiveNavLink();
 						}, 100);
+					} else {
+						// Si no existe, estamos en tour - usar transición
+						e.preventDefault();
+
+						await executePageTransition(() => {
+							// Cambiar el hash para navegar
+							window.location.hash = target;
+						});
 					}
 				}
 			});

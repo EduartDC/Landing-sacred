@@ -1,5 +1,7 @@
-// Página de detalles del Tour
+﻿// Página de detalles del Tour
 import { languageManager } from "../utils/language";
+import { Truck, User, Ticket, UtensilsCrossed, Droplets, Camera } from "lucide";
+import { executePageTransition } from "../utils/transitions";
 
 export function Tour(tourId: string): HTMLElement {
 	const tourPage = document.createElement("div");
@@ -34,31 +36,35 @@ export function Tour(tourId: string): HTMLElement {
 			document.body.style.overflow = "";
 		}, 1500); // Esperar a que termine la transición completa
 
-		// Función para convertir emojis a iconos SVG
-		const getIconSVG = (emoji: string) => {
-			const icons: { [key: string]: string } = {
-				"🚐": `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
-				</svg>`,
-				"👨‍🏫": `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-				</svg>`,
-				"🎫": `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/>
-				</svg>`,
-				"🌮": `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-				</svg>`,
-				"💧": `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-				</svg>`,
-				"📸": `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
-				</svg>`,
+		// Función para obtener el HTML del icono de Lucide según el nombre
+		const getIconHTML = (iconName: string): string => {
+			const iconMap: { [key: string]: any } = {
+				truck: Truck,
+				user: User,
+				ticket: Ticket,
+				"utensils-crossed": UtensilsCrossed,
+				droplets: Droplets,
+				camera: Camera,
 			};
-			return icons[emoji] || emoji;
-		};
 
+			const icon = iconMap[iconName];
+			if (!icon) return "";
+
+			// Los iconos de Lucide son arrays de paths
+			// Cada elemento es [tag, attributes, children...]
+			const paths = icon
+				.map((item: any) => {
+					if (typeof item === "string") return item;
+					const [tag, attrs] = item;
+					const attrsStr = Object.entries(attrs || {})
+						.map(([k, v]) => `${k}="${v}"`)
+						.join(" ");
+					return `<${tag} ${attrsStr}/>`;
+				})
+				.join("");
+
+			return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">${paths}</svg>`;
+		};
 		if (!tour) {
 			tourPage.innerHTML = `
 				<div class="container mx-auto px-4 py-20 text-center">
@@ -163,8 +169,8 @@ export function Tour(tourId: string): HTMLElement {
 							.map(
 								(item: any) => `
 							<div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-								<div class="w-16 h-16 mx-auto mb-4 text-emerald-600">
-									${getIconSVG(item.icon)}
+								<div class="w-16 h-16 mx-auto mb-4 text-emerald-600" data-icon="${item.icon}">
+									<!-- Icono será insertado aquí -->
 								</div>
 								<h3 class="font-bold text-xl text-gray-800 mb-2">${item.title}</h3>
 								<p class="text-gray-600">${item.description}</p>
@@ -283,7 +289,7 @@ export function Tour(tourId: string): HTMLElement {
 								${tourPageT.cta.description}
 							</p>
 							<div class="flex flex-col sm:flex-row gap-4 justify-center">
-								<a href="#contact" class="bg-white text-emerald-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-emerald-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+								<a href="#contact" id="book-tour-btn" class="bg-white text-emerald-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-emerald-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
 									${tourPageT.cta.bookButton}
 								</a>
 								<a href="https://wa.me/529841234567" target="_blank" class="bg-emerald-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-emerald-900 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
@@ -353,7 +359,7 @@ export function Tour(tourId: string): HTMLElement {
 			<!-- Botón volver -->
 			<section class="container mx-auto px-4 py-8 pb-16">
 				<div class="text-center">
-					<a href="#home" class="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold text-lg transition-colors">
+					<a href="#home" id="back-to-home-btn" class="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold text-lg transition-colors">
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
 						</svg>
@@ -366,6 +372,41 @@ export function Tour(tourId: string): HTMLElement {
 		`;
 
 		setupStyles();
+
+		// Insertar iconos de Lucide después de renderizar
+		setTimeout(() => {
+			tour.includes.forEach((item: any) => {
+				const iconContainer = tourPage.querySelector(`[data-icon="${item.icon}"]`);
+				if (iconContainer) {
+					const iconHTML = getIconHTML(item.icon);
+					iconContainer.innerHTML = iconHTML;
+				}
+			});
+
+			// Agregar event listener al botón de reserva con transición
+			const bookBtn = tourPage.querySelector("#book-tour-btn");
+			if (bookBtn) {
+				bookBtn.addEventListener("click", async (e) => {
+					e.preventDefault();
+
+					await executePageTransition(() => {
+						window.location.hash = "#contact";
+					});
+				});
+			}
+
+			// Agregar event listener al botón de volver con transición
+			const backBtn = tourPage.querySelector("#back-to-home-btn");
+			if (backBtn) {
+				backBtn.addEventListener("click", async (e) => {
+					e.preventDefault();
+
+					await executePageTransition(() => {
+						window.location.hash = "#services";
+					});
+				});
+			}
+		}, 0);
 	};
 
 	const setupStyles = () => {

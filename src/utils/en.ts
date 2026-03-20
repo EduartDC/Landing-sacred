@@ -77,6 +77,7 @@ export const en = {
 		tours: [
 			{
 				id: "legacy-chichen",
+				price: 120,
 				title: "Legacy of Chichen",
 				description:
 					"Explore the majestic Mayan city of Chichén Itzá and discover the secrets of one of the new wonders of the modern world.",
@@ -166,6 +167,7 @@ export const en = {
 			},
 			{
 				id: "mystic-waters",
+				price: 90,
 				title: "Mystic Waters",
 				description:
 					"Immerse yourself in the crystal-clear waters of sacred cenotes and live a unique mystical experience in underground caverns.",
@@ -260,6 +262,7 @@ export const en = {
 			},
 			{
 				id: "bohemian-ritual",
+				price: 150,
 				title: "Bohemian Ritual",
 				description:
 					"Connect with Mayan spirituality through ancestral ceremonies and purification rituals in sacred spaces.",
@@ -359,6 +362,7 @@ export const en = {
 			},
 			{
 				id: "visual-routes",
+				price: 200,
 				title: "Visual Routes",
 				description:
 					"Capture the beauty of the Riviera Maya on a photographic tour through the most spectacular landscapes and secret corners.",
@@ -453,6 +457,7 @@ export const en = {
 			},
 			{
 				id: "tulum-origins",
+				price: 110,
 				title: "Tulum Origins",
 				description:
 					"Discover the walled city facing the Caribbean Sea and learn about the origins of this ancient Mayan fortress.",
@@ -548,6 +553,69 @@ export const en = {
 				activityLevel: "Easy to Moderate",
 				ageRestriction: "All ages welcome",
 				groupSize: "Small groups (maximum 12 people)",
+				pickupArea: "Cancún, Playa del Carmen, Tulum",
+			},
+			{
+				id: "routes-of-the-rainforest",
+				price: 130,
+				title: "Routes of the Rainforest",
+				description:
+					"Explore the depths of the Mayan jungle, discover exotic wildlife, and connect with untouched nature on an ecological adventure.",
+				image: "about-tres.jpg",
+				location: "Mayan Jungle, Quintana Roo",
+				duration: "8 hours",
+				fullDescription:
+					"Venture into the green heart of the Yucatan Peninsula. This eco-tour takes you beyond traditional routes to explore the stunning biodiversity of the Mayan jungle.",
+				includes: [
+					{
+						icon: "truck",
+						title: "Private Transport",
+						description: "All-terrain vehicle",
+					},
+					{
+						icon: "user",
+						title: "Naturalist Guide",
+						description: "Expert in local flora",
+					},
+					{
+						icon: "ticket",
+						title: "Nature Reserve",
+						description: "Access to protected areas",
+					},
+					{
+						icon: "utensils-crossed",
+						title: "Food",
+						description: "Lunch in the jungle",
+					},
+					{
+						icon: "droplets",
+						title: "Private Cenote",
+						description: "Exclusive swimming",
+					},
+					{
+						icon: "camera",
+						title: "Observation",
+						description: "Time for nature photos",
+					},
+				],
+				itinerary: [
+					{
+						time: "6:00 AM",
+						title: "Pick up",
+						description: "Departure at jungle sunrise",
+					},
+				],
+				recommendations: [
+					"Light long-sleeved clothing",
+					"Closed hiking shoes",
+					"Eco-friendly repellent",
+				],
+				gallery: [
+					"/about-tres.jpg"
+				],
+				activityLevel: "Moderate",
+				ageRestriction: "Over 8 years old",
+				groupSize: "Maximum 10 people",
 				pickupArea: "Cancún, Playa del Carmen, Tulum",
 			},
 		],
@@ -679,7 +747,11 @@ export const en = {
 				phone: "9841234567 (optional)",
 				message:
 					"Tell us about your dream adventure... Mystical cenotes? Ancient temples? Spiritual connection experiences? Share your desires and we'll create something magical together.",
+				date: "Preferred Date",
+				passengers: "Number of Passengers",
+				tourName: "Selected Tour",
 			},
+			reservationTitle: "Book your Adventure: {tourName}",
 		},
 		info: {
 			phone: "Phone",
@@ -751,7 +823,7 @@ export const en = {
 			bookButton: "Book Now",
 			whatsappButton: "WhatsApp",
 			guarantee:
-				"💰 Best price guaranteed | 🔒 Secure booking | ⚡ Instant confirmation",
+				"Best price guaranteed | Secure booking | Instant confirmation",
 		},
 		recommendations: {
 			title: "Recommendations",

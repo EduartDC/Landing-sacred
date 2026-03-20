@@ -1,19 +1,15 @@
 // Sistema de gestión de idiomas
 import { en } from "./en";
 import { es } from "./es";
-import { fr } from "./fr";
-import { de } from "./de";
 
 // Tipos para las traducciones
-export type Language = "en" | "es" | "fr" | "de";
+export type Language = "en" | "es";
 export type Translations = typeof en;
 
 // Objeto con todas las traducciones
 export const translations: Record<Language, Translations> = {
 	en,
 	es,
-	fr,
-	de,
 };
 
 // Idioma por defecto
@@ -74,21 +70,20 @@ export class LanguageManager {
 		return translations[this.currentLanguage];
 	}
 
-	// Obtener texto traducido por ruta (ej: 'navbar.home')
-	public getText(path: string): string {
-		const keys = path.split(".");
+	// Método para obtener traducciones con tipado seguro
+	public t(key: string): string {
+		const keys = key.split(".");
 		let value: any = this.getTranslations();
 
-		for (const key of keys) {
-			if (value && typeof value === "object" && key in value) {
-				value = value[key];
+		for (const k of keys) {
+			if (value && typeof value === "object" && k in value) {
+				value = value[k];
 			} else {
-				console.warn(`Translation key not found: ${path}`);
-				return path; // Devolver la clave si no se encuentra
+				return key;
 			}
 		}
 
-		return typeof value === "string" ? value : path;
+		return typeof value === "string" ? value : key;
 	}
 
 	// Suscribirse a cambios de idioma
@@ -145,8 +140,6 @@ export class LanguageManager {
 		return [
 			{ code: "en", name: "English", nativeName: "English (US)" },
 			{ code: "es", name: "Spanish", nativeName: "Español (ES)" },
-			{ code: "fr", name: "French", nativeName: "Français (FR)" },
-			{ code: "de", name: "German", nativeName: "Deutsch (DE)" },
 		];
 	}
 }
@@ -155,4 +148,4 @@ export class LanguageManager {
 export const languageManager = LanguageManager.getInstance();
 
 // Función helper para obtener texto traducido
-export const t = (path: string): string => languageManager.getText(path);
+export const t = (path: string): string => languageManager.t(path);

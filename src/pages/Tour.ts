@@ -82,15 +82,13 @@ export function Tour(tourId: string): HTMLElement {
 			<!-- Hero Section con imagen del tour - Ancho completo -->
 			<section class="tour-hero relative h-[60vh] min-h-[500px] overflow-hidden">
 				<div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60"></div>
-				<img src="/${tour.image}" alt="${
-			tour.title
-		}" class="w-full h-full object-cover" style="object-position: left bottom;">
+				<img src="/${tour.image}" alt="${tour.title
+			}" class="w-full h-full object-cover" style="object-position: left bottom;">
 				
 				<div class="absolute inset-0 flex items-center justify-center">
 					<div class="text-center text-white px-4">
-						<h1 class="text-5xl md:text-6xl font-bold mb-4 animate-fade-in">${
-							tour.title
-						}</h1>
+						<h1 class="text-5xl md:text-6xl font-bold mb-4 animate-fade-in">${tour.title
+			}</h1>
 						<p class="text-xl md:text-2xl text-gray-200 mb-6">${tour.location}</p>
 						<div class="flex items-center justify-center gap-6 text-lg">
 							<span class="flex items-center gap-2">
@@ -157,17 +155,16 @@ export function Tour(tourId: string): HTMLElement {
 			<!-- Lo que incluye el tour -->
 			<section class="container mx-auto px-4 py-16 bg-gradient-to-b from-emerald-50 to-white">
 				<div class="max-w-6xl mx-auto">
-					<h2 class="text-4xl font-bold text-center text-gray-800 mb-4">${
-						tourPageT.included.title
-					}</h2>
+					<h2 class="text-4xl font-bold text-center text-gray-800 mb-4">${tourPageT.included.title
+			}</h2>
 					<p class="text-center text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
 						${tourPageT.included.description}
 					</p>
 					
 					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 						${tour.includes
-							.map(
-								(item: any) => `
+				.map(
+					(item: any) => `
 							<div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
 								<div class="w-16 h-16 mx-auto mb-4 text-emerald-600" data-icon="${item.icon}">
 									<!-- Icono será insertado aquí -->
@@ -176,37 +173,34 @@ export function Tour(tourId: string): HTMLElement {
 								<p class="text-gray-600">${item.description}</p>
 							</div>
 						`
-							)
-							.join("")}
+				)
+				.join("")}
 					</div>
 				</div>
 			</section>
 
 			<!-- Carrusel de Imágenes -->
-			${
-				tour.gallery
-					? `
+			${tour.gallery
+				? `
 			<section class="container mx-auto px-4 py-16">
 				<div class="max-w-6xl mx-auto">
-					<h2 class="text-4xl font-bold text-center text-gray-800 mb-12">${
-						tourPageT.gallery.title
-					}</h2>
+					<h2 class="text-4xl font-bold text-center text-gray-800 mb-12">${tourPageT.gallery.title
+				}</h2>
 					
 					<div class="relative">
 						<!-- Contenedor del carrusel -->
 						<div class="overflow-hidden rounded-2xl shadow-2xl">
 							<div class="carousel-container flex transition-transform duration-500 ease-in-out" id="carousel-${tourId}">
 								${tour.gallery
-									.map(
-										(image: string, index: number) => `
+					.map(
+						(image: string, index: number) => `
 									<div class="carousel-slide min-w-full">
-										<img src="${image}" alt="Tour imagen ${
-											index + 1
-										}" class="w-full h-[500px] object-cover" style="object-position: left bottom;">
+										<img src="${image}" alt="Tour imagen ${index + 1
+							}" class="w-full h-[500px] object-cover" style="object-position: left bottom;">
 									</div>
 								`
-									)
-									.join("")}
+					)
+					.join("")}
 							</div>
 						</div>
 						
@@ -225,36 +219,34 @@ export function Tour(tourId: string): HTMLElement {
 						<!-- Indicadores -->
 						<div class="flex justify-center gap-2 mt-6">
 							${tour.gallery
-								.map(
-									(_: any, index: number) => `
-								<button onclick="window.goToSlide('${tourId}', ${index})" class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-emerald-600 transition-colors ${
-										index === 0 ? "bg-emerald-600" : ""
-									}" data-carousel="${tourId}" data-index="${index}"></button>
+					.map(
+						(_: any, index: number) => `
+								<button onclick="window.goToSlide('${tourId}', ${index})" class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-emerald-600 transition-colors ${index === 0 ? "bg-emerald-600" : ""
+							}" data-carousel="${tourId}" data-index="${index}"></button>
 							`
-								)
-								.join("")}
+					)
+					.join("")}
 						</div>
 					</div>
 				</div>
 			</section>
 			`
-					: ""
+				: ""
 			}
 
 			<!-- Itinerario -->
 			<section class="container mx-auto px-4 py-16">
 				<div class="max-w-4xl mx-auto">
-					<h2 class="text-4xl font-bold text-center text-gray-800 mb-4">${
-						tourPageT.itinerary.title
-					}</h2>
+					<h2 class="text-4xl font-bold text-center text-gray-800 mb-4">${tourPageT.itinerary.title
+			}</h2>
 					<p class="text-center text-gray-600 text-lg mb-12">
 						${tourPageT.itinerary.description}
 					</p>
 					
 					<div class="space-y-6">
 						${tour.itinerary
-							.map(
-								(item: any, index: number) => `
+				.map(
+					(item: any, index: number) => `
 							<div class="flex gap-6 group">
 								<div class="flex-shrink-0">
 									<div class="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold shadow-lg group-hover:scale-110 transition-transform">
@@ -270,8 +262,8 @@ export function Tour(tourId: string): HTMLElement {
 								</div>
 							</div>
 						`
-							)
-							.join("")}
+				)
+				.join("")}
 					</div>
 				</div>
 			</section>
@@ -282,9 +274,8 @@ export function Tour(tourId: string): HTMLElement {
 					<div class="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-12 text-center text-white shadow-2xl relative overflow-hidden">
 						<div class="absolute inset-0 bg-black/10"></div>
 						<div class="relative z-10">
-							<h2 class="text-4xl font-bold mb-4" style="color: white !important;">${
-								tourPageT.cta.title
-							}</h2>
+							<h2 class="text-4xl font-bold mb-4" style="color: white !important;">${tourPageT.cta.title
+			}</h2>
 							<p class="text-xl mb-8 text-emerald-50">
 								${tourPageT.cta.description}
 							</p>
@@ -311,9 +302,8 @@ export function Tour(tourId: string): HTMLElement {
 			<section class="container mx-auto px-4 py-16 bg-gradient-to-b from-amber-50 to-white">
 				<div class="max-w-4xl mx-auto">
 					<div class="text-center mb-12">
-						<h2 class="text-4xl font-bold text-gray-800 mb-4">${
-							tourPageT.recommendations.title
-						}</h2>
+						<h2 class="text-4xl font-bold text-gray-800 mb-4">${tourPageT.recommendations.title
+			}</h2>
 						<p class="text-gray-600 text-lg">
 							${tourPageT.recommendations.description}
 						</p>
@@ -322,8 +312,8 @@ export function Tour(tourId: string): HTMLElement {
 					<div class="bg-white rounded-2xl shadow-xl p-8 border border-amber-200">
 						<div class="grid md:grid-cols-2 gap-4">
 							${tour.recommendations
-								.map(
-									(item: string) => `
+				.map(
+					(item: string) => `
 								<div class="flex items-start gap-3 p-4 rounded-lg hover:bg-amber-50 transition-colors">
 									<svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
 										<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
@@ -331,8 +321,8 @@ export function Tour(tourId: string): HTMLElement {
 									<span class="text-gray-700">${item}</span>
 								</div>
 							`
-								)
-								.join("")}
+				)
+				.join("")}
 						</div>
 						
 						<div class="mt-8 pt-8 border-t border-gray-200">
@@ -342,9 +332,8 @@ export function Tour(tourId: string): HTMLElement {
 										<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
 									</svg>
 									<div>
-										<h4 class="font-bold text-blue-900 mb-2">${
-											tourPageT.recommendations.importantTitle
-										}</h4>
+										<h4 class="font-bold text-blue-900 mb-2">${tourPageT.recommendations.importantTitle
+			}</h4>
 										<p class="text-blue-800 text-sm">
 											${tourPageT.recommendations.importantText.replace("{area}", tour.pickupArea)}
 										</p>
@@ -390,7 +379,13 @@ export function Tour(tourId: string): HTMLElement {
 					e.preventDefault();
 
 					await executePageTransition(() => {
-						window.location.hash = "#contact";
+						// Incluir parámetros del tour en la URL
+						const params = new URLSearchParams();
+						params.set("tourId", tour.id);
+						params.set("tourName", tour.title);
+						// Agregar timestamp para forzar recarga si es necesario
+						params.set("t", Date.now().toString());
+						window.location.hash = `#contact?${params.toString()}`;
 					});
 				});
 			}

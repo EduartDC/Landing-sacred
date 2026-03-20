@@ -289,12 +289,14 @@
     display: none !important;
   }
 
-  /* Estilos para títulos verdes en el body */
+  /* Estilos para títulos y tipografía premium */
+  h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
+    font-family: 'Playfair Display', serif;
     color: #076e4e;
     /* text-emerald-600 - verde elegante */
   }
@@ -636,6 +638,7 @@ nav[class*="sticky"] {
     padding: 0.5rem !important;
     min-width: 44px !important;
     min-height: 44px !important;
+    margin-top: 8px !important;
   }
 
   #navbar-container button[data-collapse-toggle] svg {

@@ -1,7 +1,7 @@
 import "./style.css";
 import { Home, addComponentToHome } from "./pages/Home";
 import { Tour } from "./pages/Tour";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/navbar/Navbar";
 import { Hero } from "./components/Hero";
 import { AboutUs } from "./components/AboutUs";
 import { Info } from "./components/Info";

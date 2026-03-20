@@ -77,6 +77,7 @@ export const es = {
 		tours: [
 			{
 				id: "legacy-chichen",
+				price: 120,
 				title: "Legacy of Chichen",
 				description:
 					"Explora la majestuosa ciudad maya de Chichén Itzá y descubre los secretos de una de las nuevas maravillas del mundo moderno.",
@@ -166,6 +167,7 @@ export const es = {
 			},
 			{
 				id: "mystic-waters",
+				price: 90,
 				title: "Mystic Waters",
 				description:
 					"Sumérgete en las aguas cristalinas de cenotes sagrados y vive una experiencia mística única en cavernas subterráneas.",
@@ -260,6 +262,7 @@ export const es = {
 			},
 			{
 				id: "bohemian-ritual",
+				price: 150,
 				title: "Bohemian Ritual",
 				description:
 					"Conecta con la espiritualidad maya a través de ceremonias ancestrales y rituales de purificación en espacios sagrados.",
@@ -359,6 +362,7 @@ export const es = {
 			},
 			{
 				id: "visual-routes",
+				price: 200,
 				title: "Visual Routes",
 				description:
 					"Captura la belleza de la Riviera Maya en un tour fotográfico por los paisajes más espectaculares y rincones secretos.",
@@ -453,6 +457,7 @@ export const es = {
 			},
 			{
 				id: "tulum-origins",
+				price: 110,
 				title: "Tulum Origins",
 				description:
 					"Descubre la ciudad amurallada frente al mar Caribe y conoce los orígenes de esta antigua fortaleza maya.",
@@ -548,6 +553,69 @@ export const es = {
 				activityLevel: "Fácil a Moderado",
 				ageRestriction: "Todas las edades bienvenidas",
 				groupSize: "Grupos pequeños (máximo 12 personas)",
+				pickupArea: "Cancún, Playa del Carmen, Tulum",
+			},
+			{
+				id: "routes-of-the-rainforest",
+				price: 130,
+				title: "Routes of the Rainforest",
+				description:
+					"Explora las profundidades de la selva maya, descubre fauna exótica y conecta con la naturaleza virgen en una aventura ecológica.",
+				image: "about-tres.jpg",
+				location: "Selva Maya, Quintana Roo",
+				duration: "8 horas",
+				fullDescription:
+					"Adéntrate en el corazón verde de la península de Yucatán. Este tour ecológico te lleva más allá de las rutas tradicionales para explorar la impresionante biodiversidad de la selva maya.",
+				includes: [
+					{
+						icon: "truck",
+						title: "Transporte Privado",
+						description: "Vehículo todo terreno",
+					},
+					{
+						icon: "user",
+						title: "Guía Naturalista",
+						description: "Experto en flora local",
+					},
+					{
+						icon: "ticket",
+						title: "Reserva Natural",
+						description: "Accesos a áreas protegidas",
+					},
+					{
+						icon: "utensils-crossed",
+						title: "Comida",
+						description: "Almuerzo en la selva",
+					},
+					{
+						icon: "droplets",
+						title: "Cenote Privado",
+						description: "Nado exclusivo",
+					},
+					{
+						icon: "camera",
+						title: "Observación",
+						description: "Tiempo para fotos de naturaleza",
+					},
+				],
+				itinerary: [
+					{
+						time: "6:00 AM",
+						title: "Recogida",
+						description: "Salida al amanecer selvático",
+					},
+				],
+				recommendations: [
+					"Ropa ligera de manga larga",
+					"Zapatos cerrados de senderismo",
+					"Repelente ecológico",
+				],
+				gallery: [
+					"/about-tres.jpg"
+				],
+				activityLevel: "Moderado",
+				ageRestriction: "Mayores de 8 años",
+				groupSize: "Máximo 10 personas",
 				pickupArea: "Cancún, Playa del Carmen, Tulum",
 			},
 		],
@@ -679,7 +747,11 @@ export const es = {
 				phone: "9841234567 (opcional)",
 				message:
 					"Cuéntanos sobre tu aventura soñada... ¿Cenotes místicos? ¿Templos ancestrales? ¿Experiencias de conexión espiritual? Comparte tus deseos y crearemos algo mágico juntos.",
+				date: "Fecha Preferida",
+				passengers: "Número de Pasajeros",
+				tourName: "Tour Seleccionado",
 			},
+			reservationTitle: "Reserva tu Aventura: {tourName}",
 		},
 		info: {
 			phone: "Teléfono",
@@ -753,7 +825,7 @@ export const es = {
 			bookButton: "Reservar Ahora",
 			whatsappButton: "WhatsApp",
 			guarantee:
-				"💰 Mejor precio garantizado | 🔒 Reserva segura | ⚡ Confirmación inmediata",
+				"Mejor precio garantizado | Reserva segura | Confirmación inmediata",
 		},
 		recommendations: {
 			title: "Recomendaciones",

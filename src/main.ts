@@ -65,10 +65,11 @@ function loadTourPage(tourId: string) {
 
 // Router simple basado en hash
 function handleRouting() {
-	const hash = window.location.hash;
+	const fullHash = window.location.hash;
+	const baseHash = fullHash.split('?')[0]; // Ignorar parámetros de búsqueda para el selector
 
-	if (hash.startsWith("#tour/")) {
-		const tourId = hash.replace("#tour/", "");
+	if (baseHash.startsWith("#tour/")) {
+		const tourId = baseHash.replace("#tour/", "");
 		loadTourPage(tourId);
 	} else {
 		// Si no es una ruta de tour, cargar home
@@ -84,21 +85,25 @@ function handleRouting() {
 
 			// Después de cargar home, hacer scroll a la sección si hay hash
 			setTimeout(() => {
-				if (hash && hash !== "#home") {
-					const targetSection = document.querySelector(hash);
-					if (targetSection) {
-						targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
-					}
+				if (baseHash && baseHash !== "#home") {
+					try {
+						const targetSection = document.querySelector(baseHash);
+						if (targetSection) {
+							targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+						}
+					} catch(e) {}
 				} else {
 					window.scrollTo({ top: 0, behavior: "smooth" });
 				}
 			}, 500);
-		} else if (hash && hash !== "#" && hash !== "#home") {
+		} else if (baseHash && baseHash !== "#" && baseHash !== "#home") {
 			// Si ya estamos en home, solo hacer scroll a la sección
-			const targetSection = document.querySelector(hash);
-			if (targetSection) {
-				targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
-			}
+			try {
+				const targetSection = document.querySelector(baseHash);
+				if (targetSection) {
+					targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+				}
+			} catch(e) {}
 		}
 	}
 }

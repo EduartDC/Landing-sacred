@@ -1,7 +1,8 @@
-﻿// Página de detalles del Tour
+// Página de detalles del Tour
 import { languageManager } from "../utils/language";
 import { Truck, User, Ticket, UtensilsCrossed, Droplets, Camera } from "lucide";
 import { executePageTransition } from "../utils/transitions";
+import { Contact } from "../components/Contact";
 
 export function Tour(tourId: string): HTMLElement {
 	const tourPage = document.createElement("div");
@@ -234,36 +235,110 @@ export function Tour(tourId: string): HTMLElement {
 				: ""
 			}
 
-			<!-- Itinerario -->
-			<section class="container mx-auto px-4 py-16">
-				<div class="max-w-4xl mx-auto">
-					<h2 class="text-4xl font-bold text-center text-gray-800 mb-4">${tourPageT.itinerary.title
-			}</h2>
-					<p class="text-center text-gray-600 text-lg mb-12">
+			<!-- Itinerario (Mapa Pirata) -->
+			<section class="container mx-auto px-4 py-20 pb-24">
+				<div class="max-w-5xl mx-auto">
+					<h2 class="text-4xl lg:text-5xl font-bold text-center text-[#5c4033] mb-6 font-serif tracking-wide drop-shadow-sm">${tourPageT.itinerary.title}</h2>
+					<p class="text-center text-[#8b7355] text-lg mb-16 max-w-2xl mx-auto font-medium">
 						${tourPageT.itinerary.description}
 					</p>
 					
-					<div class="space-y-6">
-						${tour.itinerary
-				.map(
-					(item: any, index: number) => `
-							<div class="flex gap-6 group">
-								<div class="flex-shrink-0">
-									<div class="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold shadow-lg group-hover:scale-110 transition-transform">
-										${index + 1}
+					<div class="pirate-map-bg relative max-w-6xl mx-auto p-6 md:p-12 rounded-[2rem] shadow-2xl">
+						
+						<!-- SVG for winding dashed path -->
+						<svg class="absolute inset-0 w-full h-full pointer-events-none z-[1]" id="pirate-path-svg">
+							<path id="treasure-path" fill="none" stroke="#6b3518" stroke-width="5" stroke-linecap="round" />
+						</svg>
+						<div class="relative z-10 space-y-12 md:space-y-20">
+							${tour.itinerary
+				.map((item: any, index: number) => {
+					const isEven = index % 2 === 0;
+					const isLast = index === tour.itinerary.length - 1;
+					return `
+								<div class="itinerary-step flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-0 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} group">
+									
+									<!-- Marker (Mobile) -->
+									<div class="md:hidden itinerary-dot-mobile w-12 h-12 flex-shrink-0 rounded-full bg-[#faecd4] border-[5px] border-[#6b3518] flex items-center justify-center shadow-lg relative z-20 mt-1">
+										${isLast
+							? `<svg class="w-6 h-6 text-red-700 font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>`
+							: `<span class="font-bold text-[#6b3518] font-serif text-lg">${index + 1}</span>`
+						}
 									</div>
-								</div>
-								<div class="flex-1 bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
-									<div class="flex items-center justify-between mb-2">
-										<h3 class="font-bold text-xl text-gray-800">${item.title}</h3>
-										<span class="text-emerald-600 font-semibold">${item.time}</span>
+
+									<!-- Content Half -->
+									<div class="w-full md:w-1/2 ${isEven ? 'md:pr-12 md:text-right' : 'md:pl-12'}">
+										<div class="bg-[#fcf7ea] rounded-2xl p-6 shadow-xl border-2 border-[#d6b986] hover:-translate-y-2 transition-transform duration-300 relative z-10 hover:shadow-2xl">
+											<div class="flex items-center ${isEven ? 'md:justify-end' : 'md:justify-start'} justify-between mb-3 gap-4">
+												<h3 class="font-bold text-2xl text-[#6b4c38] font-serif group-hover:text-emerald-700 transition-colors">${item.title}</h3>
+												<span class="text-xs font-bold text-red-900 bg-red-100/80 px-3 md:px-4 py-1.5 rounded-full uppercase tracking-widest border border-red-200 shadow-inner whitespace-nowrap flex-shrink-0 text-center">${item.time}</span>
+											</div>
+											<p class="text-[#8b6b52] leading-relaxed text-lg">${item.description}</p>
+										</div>
 									</div>
-									<p class="text-gray-600">${item.description}</p>
+									
+									<!-- Marker (Desktop) -->
+									<div class="hidden md:flex justify-center w-0 itinerary-dot-desktop flex-shrink-0 relative z-20">
+										<div class="w-14 h-14 rounded-full bg-[#faecd4] border-[5px] border-[#6b3518] flex items-center justify-center shadow-xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-125 group-hover:border-emerald-600 transition-all duration-300">
+											${isLast
+							? `<svg class="w-8 h-8 text-red-700 font-bold group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>`
+							: `<span class="font-bold text-[#6b3518] font-serif text-xl group-hover:text-emerald-600 transition-colors">${index + 1}</span>`
+						}
+										</div>
+									</div>
+									
+									<!-- Empty Half -->
+									<div class="hidden md:block w-1/2"></div>
 								</div>
-							</div>
-						`
-				)
+							`;
+				})
 				.join("")}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Galería de Transporte -->
+			<section class="container mx-auto px-4 pt-8 pb-16">
+				<div class="max-w-6xl mx-auto">
+					<div class="text-center mb-12">
+						<h2 class="text-4xl font-bold text-[#5c4033] mb-4 font-serif tracking-wide drop-shadow-sm">${tourPageT.transportGallery.title}</h2>
+						<p class="text-gray-600 text-lg max-w-2xl mx-auto">
+							${tourPageT.transportGallery.description}
+						</p>
+					</div>
+					<div class="mb-10 relative rounded-[2rem] overflow-hidden shadow-2xl border-2 border-[#d6b986]">
+						<img src="/transporte.png" alt="Transporte Privado" class="w-full h-[300px] md:h-[450px] object-cover">
+						<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 md:p-12">
+							<h3 class="text-3xl md:text-5xl font-bold text-white mb-3 font-serif tracking-wide drop-shadow-lg">${tourPageT.transportGallery.bannerTitle}</h3>
+							<p class="text-emerald-300 text-lg md:text-2xl font-medium drop-shadow-md">${tourPageT.transportGallery.bannerDesc}</p>
+						</div>
+					</div>
+					
+					<div class="grid sm:grid-cols-2 gap-6 md:gap-8">
+						<div class="relative group overflow-hidden rounded-[2rem] shadow-xl hover:shadow-2xl transition-shadow aspect-video bg-gray-100 border-2 border-[#d6b986]">
+							<img src="/honda_exterior.png" alt="Honda HR-V Exterior" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+							<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+								<p class="text-white p-6 md:p-8 font-semibold shadow-sm text-lg tracking-wide leading-tight">Honda HR-V<br><span class="text-sm font-normal text-emerald-300">${tourPageT.transportGallery.hondaExt}</span></p>
+							</div>
+						</div>
+						<div class="relative group overflow-hidden rounded-[2rem] shadow-xl hover:shadow-2xl transition-shadow aspect-video bg-gray-100 border-2 border-[#d6b986]">
+							<img src="/honda_interior.png" alt="Honda HR-V Interior" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+							<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+								<p class="text-white p-6 md:p-8 font-semibold shadow-sm text-lg tracking-wide leading-tight">Honda HR-V<br><span class="text-sm font-normal text-emerald-300">${tourPageT.transportGallery.hondaInt}</span></p>
+							</div>
+						</div>
+						<div class="relative group overflow-hidden rounded-[2rem] shadow-xl hover:shadow-2xl transition-shadow aspect-video bg-gray-100 border-2 border-[#d6b986]">
+							<img src="/hiace_exterior.png" alt="Toyota Hiace Exterior" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+							<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+								<p class="text-white p-6 md:p-8 font-semibold shadow-sm text-lg tracking-wide leading-tight">Toyota Hiace<br><span class="text-sm font-normal text-emerald-300">${tourPageT.transportGallery.hiaceExt}</span></p>
+							</div>
+						</div>
+						<div class="relative group overflow-hidden rounded-[2rem] shadow-xl hover:shadow-2xl transition-shadow aspect-video bg-gray-100 border-2 border-[#d6b986]">
+							<img src="/hice_interior.png" alt="Toyota Hiace Interior" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+							<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+								<p class="text-white p-6 md:p-8 font-semibold shadow-sm text-lg tracking-wide leading-tight">Toyota Hiace<br><span class="text-sm font-normal text-emerald-300">${tourPageT.transportGallery.hiaceInt}</span></p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -360,6 +435,13 @@ export function Tour(tourId: string): HTMLElement {
 			<!-- Fin contenedor con fondo blanco -->
 		`;
 
+		// Añadir el formulario de contacto al final
+		const container = tourPage.querySelector('.max-w-screen-2xl');
+		if (container) {
+			const contactForm = Contact(tour.id);
+			container.appendChild(contactForm);
+		}
+
 		setupStyles();
 
 		// Insertar iconos de Lucide después de renderizar
@@ -372,21 +454,15 @@ export function Tour(tourId: string): HTMLElement {
 				}
 			});
 
-			// Agregar event listener al botón de reserva con transición
+			// Agregar event listener al botón de reserva para scroll local
 			const bookBtn = tourPage.querySelector("#book-tour-btn");
 			if (bookBtn) {
-				bookBtn.addEventListener("click", async (e) => {
+				bookBtn.addEventListener("click", (e) => {
 					e.preventDefault();
-
-					await executePageTransition(() => {
-						// Incluir parámetros del tour en la URL
-						const params = new URLSearchParams();
-						params.set("tourId", tour.id);
-						params.set("tourName", tour.title);
-						// Agregar timestamp para forzar recarga si es necesario
-						params.set("t", Date.now().toString());
-						window.location.hash = `#contact?${params.toString()}`;
-					});
+					const contactSection = tourPage.querySelector("#contact");
+					if (contactSection) {
+						contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+					}
 				});
 			}
 
@@ -400,6 +476,61 @@ export function Tour(tourId: string): HTMLElement {
 						window.location.hash = "#services";
 					});
 				});
+			}
+
+			// Dibujar la línea animada (camino pirata)
+			const pirateContainer = tourPage.querySelector('.pirate-map-bg') as HTMLElement;
+			if (pirateContainer) {
+				const drawPiratePath = () => {
+					const path = tourPage.querySelector('#treasure-path') as SVGPathElement;
+					if (!pirateContainer || !path) return;
+
+					const isMobile = window.innerWidth < 768;
+					const markers = Array.from(tourPage.querySelectorAll(
+						isMobile ? '.itinerary-dot-mobile' : '.itinerary-dot-desktop'
+					)) as HTMLElement[];
+
+					if (markers.length < 2) return;
+
+					const containerRect = pirateContainer.getBoundingClientRect();
+					let d = '';
+
+					markers.forEach((marker, i) => {
+						const rect = marker.getBoundingClientRect();
+						const x = rect.left + rect.width / 2 - containerRect.left;
+						const y = rect.top + rect.height / 2 - containerRect.top;
+
+						if (i === 0) {
+							d += `M ${x} ${y} `;
+						} else {
+							const prevMarker = markers[i - 1];
+							const prevRect = prevMarker.getBoundingClientRect();
+							const prevX = prevRect.left + prevRect.width / 2 - containerRect.left;
+							const prevY = prevRect.top + prevRect.height / 2 - containerRect.top;
+
+							const curviness = isMobile ? 30 : 60;
+							const dir = i % 2 === 0 ? 1 : -1;
+
+							const cp1X = prevX + (curviness * dir);
+							const cp1Y = prevY + (y - prevY) / 3;
+							const cp2X = x + (curviness * dir);
+							const cp2Y = prevY + (y - prevY) * 2 / 3;
+
+							d += `C ${cp1X} ${cp1Y}, ${cp2X} ${cp2Y}, ${x} ${y} `;
+						}
+					});
+
+					path.setAttribute('d', d);
+				};
+
+				// Observar cambios para repintar la curva (responsive o transiciones)
+				const resizeObserver = new ResizeObserver(() => {
+					drawPiratePath();
+				});
+				resizeObserver.observe(pirateContainer);
+
+				// Disparar en primer plano una vez que la UI haya montado
+				setTimeout(drawPiratePath, 150);
 			}
 		}, 0);
 	};
@@ -440,6 +571,36 @@ export function Tour(tourId: string): HTMLElement {
 				/* Mejora de hover en tarjetas */
 				.group:hover .flex-shrink-0 > div {
 					transform: scale(1.1) rotate(5deg);
+				}
+
+				/* CSS para mapa pirata animado */
+				.pirate-map-bg {
+					background-color: #e3cba8;
+					border: 2px solid #a67b5b;
+					box-shadow: inset 0 0 60px rgba(107, 53, 24, 0.3), 0 20px 40px rgba(0,0,0,0.15);
+					position: relative;
+				}
+				.pirate-map-bg::before {
+					content: "";
+					position: absolute;
+					inset: 0;
+					background-image: url("/pirate_map_bg.png");
+					background-size: 100% 100%;
+					background-position: center;
+					background-repeat: no-repeat;
+					opacity: 0.70;
+					z-index: 0;
+					border-radius: inherit;
+					pointer-events: none;
+				}
+				
+				#treasure-path {
+					stroke-dasharray: 8 12;
+					animation: map-march 1s linear infinite reverse;
+				}
+				
+				@keyframes map-march {
+					to { stroke-dashoffset: 20; }
 				}
 			`;
 			document.head.appendChild(style);

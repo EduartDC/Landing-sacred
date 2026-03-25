@@ -814,8 +814,18 @@ export const en = {
 			title: "Gallery",
 		},
 		itinerary: {
-			title: "Day Itinerary",
+			title: "Route of the Day",
 			description: "A perfectly organized experience from start to finish",
+		},
+		transportGallery: {
+			title: "Our VIP Private Transport",
+			description: "Your adventure starts and ends with maximum comfort. Modern air-conditioned vehicles exclusive to your group.",
+			bannerTitle: "Private Transport",
+			bannerDesc: "First-class private transport for your adventure",
+			hondaExt: "Exterior",
+			hondaInt: "Comfortable Interior",
+			hiaceExt: "Exterior",
+			hiaceInt: "Spacious VIP Interior",
 		},
 		cta: {
 			title: "Ready for the Adventure?",

@@ -2,7 +2,7 @@
 import { languageManager, t } from "../utils/language.ts";
 import emailjs from '@emailjs/browser';
 
-export function Contact(): HTMLElement {
+export function Contact(initialTourId?: string): HTMLElement {
 	const contact = document.createElement("section");
 	contact.className = "center-component center-component-last";
 	contact.id = "contact";
@@ -11,9 +11,9 @@ export function Contact(): HTMLElement {
 		// Detectar parámetros de reserva en el hash
 		// Formato esperado: #contact?tourId=xxx
 		const hash = window.location.hash;
-		let tourId = "";
+		let tourId = initialTourId || "";
 
-		if (hash.includes("?")) {
+		if (!tourId && hash.includes("?")) {
 			const queryString = hash.split("?")[1];
 			const params = new URLSearchParams(queryString);
 			tourId = params.get("tourId") || "";

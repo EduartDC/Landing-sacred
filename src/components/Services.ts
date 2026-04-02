@@ -1,58 +1,58 @@
-import { languageManager, t } from "../utils/language.ts";
-import { executePageTransition } from "../utils/transitions";
+import { languageManager, t } from '../utils/language.ts';
+import { executePageTransition } from '../utils/transitions';
 
 // Componente Services
 export function Services(): HTMLElement {
-	const services = document.createElement("section");
-	services.className = "center-component";
-	services.id = "services";
+  const services = document.createElement('section');
+  services.className = 'center-component';
+  services.id = 'services';
 
-	let currentSlide = 0;
-	let autoSlideInterval: number;
+  let currentSlide = 0;
+  let autoSlideInterval: number;
 
-	const renderContent = () => {
-		const translations = languageManager.getTranslations();
-		const tours = (translations.services as any).tours as Array<{
-			id: string;
-			title: string;
-			description: string;
-			image: string;
-			location: string;
-			duration: string;
-		}>;
+  const renderContent = () => {
+    const translations = languageManager.getTranslations();
+    const tours = (translations.services as any).tours as Array<{
+      id: string;
+      title: string;
+      description: string;
+      image: string;
+      location: string;
+      duration: string;
+    }>;
 
-		// Crear array duplicado para carrusel continuo
-		const extendedTours = [...tours, ...tours];
+    // Crear array duplicado para carrusel continuo
+    const extendedTours = [...tours, ...tours];
 
-		const toursHTML = extendedTours
-			.map((tour, index) => {
-				// Asignar imágenes específicas según el tour
-				let imagePath = "";
-				switch (tour.id) {
-					case "legacy-chichen":
-						imagePath = "/about-uno.jpg";
-						break;
-					case "mystic-waters":
-						imagePath = "/about-dos.jpg";
-						break;
-					case "bohemian-ritual":
-						imagePath = "/about-tres.jpg";
-						break;
-					case "visual-routes":
-						imagePath = "/about-cuatro.jpg";
-						break;
-					case "tulum-origins":
-						imagePath = "/about-uno.jpg"; // Reutilizar imagen
-						break;
-					default:
-						imagePath = "/about-uno.jpg";
-				}
+    const toursHTML = extendedTours
+      .map((tour, index) => {
+        // Asignar imágenes específicas según el tour
+        let imagePath = '';
+        switch (tour.id) {
+          case 'legacy-chichen':
+            imagePath = '/about-uno.jpg';
+            break;
+          case 'mystic-waters':
+            imagePath = '/about-dos.jpg';
+            break;
+          case 'bohemian-ritual':
+            imagePath = '/about-tres.jpg';
+            break;
+          case 'visual-routes':
+            imagePath = '/about-cuatro.jpg';
+            break;
+          case 'tulum-origins':
+            imagePath = '/about-uno.jpg'; // Reutilizar imagen
+            break;
+          default:
+            imagePath = '/about-uno.jpg';
+        }
 
-				return `
-			<div class="tour-slide ${index === 0 ? "active" : ""}" data-index="${index}">
+        return `
+			<div class="tour-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
 				<div class="tour-card bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex flex-col h-[640px]" data-tour-id="${
-					tour.id
-				}">
+          tour.id
+        }">
 					<div class="tour-image-container relative h-72 overflow-hidden flex-shrink-0">
 						<img src="${imagePath}" alt="${tour.title}" class="w-full h-full object-cover">
 						<div class="absolute inset-0 bg-black bg-opacity-20"></div>
@@ -81,16 +81,14 @@ export function Services(): HTMLElement {
 				</div>
 			</div>
 		`;
-			})
-			.join("");
+      })
+      .join('');
 
-		services.innerHTML = `
+    services.innerHTML = `
 		<div>
-			<h2 class="text-3xl font-bold text-emerald-700 mb-4 text-center">${t(
-				"services.title"
-			)}</h2>
+			<h2 class="text-3xl font-bold text-emerald-700 mb-4 text-center">${t('services.title')}</h2>
 			<p class="text-gray-700 text-base leading-relaxed mb-12 text-center max-w-4xl mx-auto">
-				${t("services.description")}
+				${t('services.description')}
 			</p>
 			
 			<div class="tours-carousel-container relative">
@@ -116,38 +114,34 @@ export function Services(): HTMLElement {
 				<!-- Indicadores -->
 				<div class="carousel-indicators flex justify-center mt-6 space-x-2">
 					${Array.from(
-						{ length: tours.length },
-						(_, index) => `
+            { length: tours.length },
+            (_, index) => `
 						<button class="indicator w-3 h-3 rounded-full transition-all duration-200 ${
-							index === 0 ? "bg-emerald-500" : "bg-gray-300"
-						}" data-slide="${index}"></button>
+              index === 0 ? 'bg-emerald-500' : 'bg-gray-300'
+            }" data-slide="${index}"></button>
 					`
-					).join("")}
+          ).join('')}
 				</div>
 			</div>
 		</div>
 	`;
 
-		setupCarousel(tours.length);
-	};
+    setupCarousel(tours.length);
+  };
 
-	const setupCarousel = (originalToursLength: number) => {
-		const track = services.querySelector(".tours-track") as HTMLElement;
-		const prevBtn = services.querySelector(".carousel-prev") as HTMLElement;
-		const nextBtn = services.querySelector(".carousel-next") as HTMLElement;
-		const indicators = services.querySelectorAll(
-			".indicator"
-		) as NodeListOf<HTMLElement>;
-		const tourCards = services.querySelectorAll(
-			".tour-card"
-		) as NodeListOf<HTMLElement>;
+  const setupCarousel = (originalToursLength: number) => {
+    const track = services.querySelector('.tours-track') as HTMLElement;
+    const prevBtn = services.querySelector('.carousel-prev') as HTMLElement;
+    const nextBtn = services.querySelector('.carousel-next') as HTMLElement;
+    const indicators = services.querySelectorAll('.indicator') as NodeListOf<HTMLElement>;
+    const tourCards = services.querySelectorAll('.tour-card') as NodeListOf<HTMLElement>;
 
-		const totalSlides = originalToursLength * 2; // Array extendido
+    const totalSlides = originalToursLength * 2; // Array extendido
 
-		// Configurar estilos del carrusel
-		const setupStyles = () => {
-			const style = document.createElement("style");
-			style.textContent = `
+    // Configurar estilos del carrusel
+    const setupStyles = () => {
+      const style = document.createElement('style');
+      style.textContent = `
 				.tours-carousel-container {
 					max-width: 1200px;
 					margin: 0 auto;
@@ -199,126 +193,124 @@ export function Services(): HTMLElement {
 					flex-direction: column;
 				}
 			`;
-			document.head.appendChild(style);
-		};
+      document.head.appendChild(style);
+    };
 
-		setupStyles();
+    setupStyles();
 
-		const updateCarousel = () => {
-			// Calcular cuántas cards mostrar según el ancho de la pantalla
-			let slidesPerView = 1;
-			if (window.innerWidth >= 768) {
-				slidesPerView = 3; // 3 cards en desktop
-			} else if (window.innerWidth >= 640) {
-				slidesPerView = 2; // 2 cards en móviles grandes
-			} else {
-				slidesPerView = 1; // 1 card en móviles pequeños
-			}
+    const updateCarousel = () => {
+      // Calcular cuántas cards mostrar según el ancho de la pantalla
+      let slidesPerView = 1;
+      if (window.innerWidth >= 768) {
+        slidesPerView = 3; // 3 cards en desktop
+      } else if (window.innerWidth >= 640) {
+        slidesPerView = 2; // 2 cards en móviles grandes
+      } else {
+        slidesPerView = 1; // 1 card en móviles pequeños
+      }
 
-			const slideWidth = 100 / slidesPerView;
-			track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+      const slideWidth = 100 / slidesPerView;
+      track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
 
-			// Actualizar indicadores basado en la posición real en el array original
-			const actualPosition = currentSlide % originalToursLength;
+      // Actualizar indicadores basado en la posición real en el array original
+      const actualPosition = currentSlide % originalToursLength;
 
-			indicators.forEach((indicator, index) => {
-				indicator.classList.toggle("bg-emerald-500", index === actualPosition);
-				indicator.classList.toggle("bg-gray-300", index !== actualPosition);
-			});
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('bg-emerald-500', index === actualPosition);
+        indicator.classList.toggle('bg-gray-300', index !== actualPosition);
+      });
 
-			// Resetear posición cuando llegamos al final del primer set
-			if (currentSlide >= originalToursLength) {
-				setTimeout(() => {
-					track.style.transition = "none";
-					currentSlide = 0;
-					track.style.transform = `translateX(0%)`;
-					setTimeout(() => {
-						track.style.transition = "transform 0.5s ease-in-out";
-					}, 50);
-				}, 500);
-			}
-		};
+      // Resetear posición cuando llegamos al final del primer set
+      if (currentSlide >= originalToursLength) {
+        setTimeout(() => {
+          track.style.transition = 'none';
+          currentSlide = 0;
+          track.style.transform = `translateX(0%)`;
+          setTimeout(() => {
+            track.style.transition = 'transform 0.5s ease-in-out';
+          }, 50);
+        }, 500);
+      }
+    };
 
-		const nextSlide = () => {
-			if (currentSlide < totalSlides - 1) {
-				currentSlide++;
-			} else {
-				currentSlide = 0;
-			}
-			updateCarousel();
-		};
+    const nextSlide = () => {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+      } else {
+        currentSlide = 0;
+      }
+      updateCarousel();
+    };
 
-		const prevSlide = () => {
-			if (currentSlide > 0) {
-				currentSlide--;
-			} else {
-				// Ir al final del primer set (antes de que se duplique)
-				currentSlide = originalToursLength - 1;
-			}
-			updateCarousel();
-		};
+    const prevSlide = () => {
+      if (currentSlide > 0) {
+        currentSlide--;
+      } else {
+        // Ir al final del primer set (antes de que se duplique)
+        currentSlide = originalToursLength - 1;
+      }
+      updateCarousel();
+    };
 
-		const goToSlide = (slideIndex: number) => {
-			currentSlide = slideIndex;
-			updateCarousel();
-		};
+    const goToSlide = (slideIndex: number) => {
+      currentSlide = slideIndex;
+      updateCarousel();
+    };
 
-		// Event listeners
-		nextBtn.addEventListener("click", nextSlide);
-		prevBtn.addEventListener("click", prevSlide);
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
 
-		indicators.forEach((indicator, index) => {
-			indicator.addEventListener("click", () => goToSlide(index));
-		});
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => goToSlide(index));
+    });
 
-		// Actualizar carrusel al cambiar tamaño de ventana
-		window.addEventListener("resize", updateCarousel);
+    // Actualizar carrusel al cambiar tamaño de ventana
+    window.addEventListener('resize', updateCarousel);
 
-		// Auto-slide
-		const startAutoSlide = () => {
-			autoSlideInterval = window.setInterval(nextSlide, 5000);
-		};
+    // Auto-slide
+    const startAutoSlide = () => {
+      autoSlideInterval = window.setInterval(nextSlide, 5000);
+    };
 
-		const stopAutoSlide = () => {
-			clearInterval(autoSlideInterval);
-		};
+    const stopAutoSlide = () => {
+      clearInterval(autoSlideInterval);
+    };
 
-		// Pausar auto-slide cuando el usuario interactúa
-		services.addEventListener("mouseenter", stopAutoSlide);
-		services.addEventListener("mouseleave", startAutoSlide);
+    // Pausar auto-slide cuando el usuario interactúa
+    services.addEventListener('mouseenter', stopAutoSlide);
+    services.addEventListener('mouseleave', startAutoSlide);
 
-		// Iniciar auto-slide
-		startAutoSlide();
+    // Iniciar auto-slide
+    startAutoSlide();
 
-		// Event listeners para las cards
-		tourCards.forEach((card) => {
-			card.addEventListener("click", (e) => {
-				e.stopPropagation();
-				const tourId = card.getAttribute("data-tour-id");
-				handleTourClick(tourId);
-			});
-		});
-	};
+    // Event listeners para las cards
+    tourCards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const tourId = card.getAttribute('data-tour-id');
+        handleTourClick(tourId);
+      });
+    });
+  };
 
-	const handleTourClick = async (tourId: string | null) => {
-		if (tourId) {
-			console.log(`Navegando a tour: ${tourId}`);
+  const handleTourClick = async (tourId: string | null) => {
+    if (tourId) {
+      // Ejecutar transición antes de navegar
+      await executePageTransition(() => {
+        // Navegar a la página del tour con el ID
+        window.location.hash = `tour/${tourId}`;
+        // Scroll al top
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      });
+    }
+  };
 
-			// Ejecutar transición antes de navegar
-			await executePageTransition(() => {
-				// Navegar a la página del tour con el ID
-				window.location.hash = `tour/${tourId}`;
-				// Scroll al top
-				window.scrollTo({ top: 0, behavior: "auto" });
-			});
-		}
-	};
+  // Renderizar contenido inicial
+  renderContent();
 
-	// Renderizar contenido inicial
-	renderContent();
+  // Suscribirse a cambios de idioma
+  languageManager.subscribe(renderContent);
 
-	// Suscribirse a cambios de idioma
-	languageManager.subscribe(renderContent);
-
-	return services;
+  return services;
 }

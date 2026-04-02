@@ -1,84 +1,80 @@
 // Sistema de transiciones usando Barba.js y GSAP
-import barba from "@barba/core";
-import { gsap } from "gsap";
+import barba from '@barba/core';
+import { gsap } from 'gsap';
 
 export class PageTransitions {
-	private static instance: PageTransitions;
-	private isTransitioning = false;
+  private static instance: PageTransitions;
+  private isTransitioning = false;
 
-	private constructor() {
-		// No inicializar Barba automáticamente, solo cuando sea necesario
-		console.log("Sistema de transiciones creado");
-	}
+  private constructor() {
+    // No inicializar Barba automáticamente, solo cuando sea necesario
+  }
 
-	public static getInstance(): PageTransitions {
-		if (!PageTransitions.instance) {
-			PageTransitions.instance = new PageTransitions();
-		}
-		return PageTransitions.instance;
-	}
+  public static getInstance(): PageTransitions {
+    if (!PageTransitions.instance) {
+      PageTransitions.instance = new PageTransitions();
+    }
+    return PageTransitions.instance;
+  }
 
-	// Transición de salida (franja diagonal pasando)
-	// Inicializar Barba.js solo si es necesario para navegación
-	private initBarba(): void {
-		try {
-			// Solo inicializar si hay múltiples páginas o navegación
-			const wrapper = document.querySelector('[data-barba="wrapper"]');
-			if (wrapper) {
-				barba.init({
-					transitions: [
-						{
-							name: "slide-left-to-right",
-							leave: this.slideOutLeft,
-							enter: this.slideInRight,
-						},
-					],
-				});
-				console.log("Barba.js inicializado correctamente");
-			} else {
-				console.log("Barba wrapper no encontrado - usando transiciones GSAP puras");
-			}
-		} catch (error) {
-			console.warn("Barba.js no se pudo inicializar:", error);
-			console.log("Funcionando en modo de transiciones simples");
-		}
-	}
+  // Transición de salida (franja diagonal pasando)
+  // Inicializar Barba.js solo si es necesario para navegación
+  private initBarba(): void {
+    try {
+      // Solo inicializar si hay múltiples páginas o navegación
+      const wrapper = document.querySelector('[data-barba="wrapper"]');
+      if (wrapper) {
+        barba.init({
+          transitions: [
+            {
+              name: 'slide-left-to-right',
+              leave: this.slideOutLeft,
+              enter: this.slideInRight,
+            },
+          ],
+        });
+      } else {
+      }
+    } catch (error) {
+      console.warn('Barba.js no se pudo inicializar:', error);
+    }
+  }
 
-	// Transición de salida: deslizar hacia la izquierda (para navegación de páginas)
-	private slideOutLeft = (data: any): Promise<void> => {
-		return new Promise((resolve) => {
-			gsap.to(data.current.container, {
-				x: "-100%",
-				opacity: 0.7,
-				duration: 0.9,
-				ease: "power2.out",
-				onComplete: resolve,
-			});
-		});
-	};
+  // Transición de salida: deslizar hacia la izquierda (para navegación de páginas)
+  private slideOutLeft = (data: any): Promise<void> => {
+    return new Promise((resolve) => {
+      gsap.to(data.current.container, {
+        x: '-100%',
+        opacity: 0.7,
+        duration: 0.9,
+        ease: 'power2.out',
+        onComplete: resolve,
+      });
+    });
+  };
 
-	// Transición de entrada: deslizar desde la derecha (para navegación de páginas)
-	private slideInRight = (data: any): Promise<void> => {
-		return new Promise((resolve) => {
-			gsap.fromTo(
-				data.next.container,
-				{ x: "100%", opacity: 0.7 },
-				{
-					x: "0%",
-					opacity: 1,
-					duration: 0.9,
-					ease: "power2.out",
-					onComplete: resolve,
-				}
-			);
-		});
-	};
+  // Transición de entrada: deslizar desde la derecha (para navegación de páginas)
+  private slideInRight = (data: any): Promise<void> => {
+    return new Promise((resolve) => {
+      gsap.fromTo(
+        data.next.container,
+        { x: '100%', opacity: 0.7 },
+        {
+          x: '0%',
+          opacity: 1,
+          duration: 0.9,
+          ease: 'power2.out',
+          onComplete: resolve,
+        }
+      );
+    });
+  };
 
-	// Crear overlay para transición de pantalla completa estilo cinemático y profesional
-	private createSlideOverlay(): HTMLElement {
-		const overlay = document.createElement("div");
-		overlay.className = "slide-transition-overlay";
-		overlay.style.cssText = `
+  // Crear overlay para transición de pantalla completa estilo cinemático y profesional
+  private createSlideOverlay(): HTMLElement {
+    const overlay = document.createElement('div');
+    overlay.className = 'slide-transition-overlay';
+    overlay.style.cssText = `
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -92,7 +88,7 @@ export class PageTransitions {
 			overflow: hidden;
 		`;
 
-		overlay.innerHTML = `
+    overlay.innerHTML = `
 			<!-- Capa de Palmeras Fotorealistas (Mirando hacia el cielo) -->
 			<div style="
 				position: absolute; top: -5%; left: -5%; width: 110%; height: 110%;
@@ -140,14 +136,14 @@ export class PageTransitions {
 			</style>
 		`;
 
-		return overlay;
-	}
+    return overlay;
+  }
 
-	// Crear overlay para transición diagonal
-	private createTransitionOverlay(): HTMLElement {
-		const overlay = document.createElement("div");
-		overlay.className = "language-transition-overlay";
-		overlay.style.cssText = `
+  // Crear overlay para transición diagonal
+  private createTransitionOverlay(): HTMLElement {
+    const overlay = document.createElement('div');
+    overlay.className = 'language-transition-overlay';
+    overlay.style.cssText = `
 			position: fixed;
 			top: -50%;
 			left: -50%;
@@ -171,8 +167,8 @@ export class PageTransitions {
 			will-change: clip-path;
 		`;
 
-		// Añadir contenido al overlay con logo Sacred mejorado
-		overlay.innerHTML = `
+    // Añadir contenido al overlay con logo Sacred mejorado
+    overlay.innerHTML = `
 			<div style="
 				text-align: center; 
 				animation: gentleFloat 3s ease-in-out infinite;
@@ -211,219 +207,219 @@ export class PageTransitions {
 			</style>
 		`;
 
-		return overlay;
-	}
+    return overlay;
+  }
 
-	// Método de compatibilidad para el sistema existente
-	public async curtainTransition(callback: () => void): Promise<void> {
-		await this.setLanguageWithTransition("", callback);
-	}
+  // Método de compatibilidad para el sistema existente
+  public async curtainTransition(callback: () => void): Promise<void> {
+    await this.setLanguageWithTransition('', callback);
+  }
 
-	// Método público para cambio de idioma/página con transición de izquierda a derecha
-	public async setLanguageWithTransition(
-		_newLanguage: string,
-		callback: () => void
-	): Promise<void> {
-		if (this.isTransitioning) return;
+  // Método público para cambio de idioma/página con transición de izquierda a derecha
+  public async setLanguageWithTransition(
+    _newLanguage: string,
+    callback: () => void
+  ): Promise<void> {
+    if (this.isTransitioning) return;
 
-		this.isTransitioning = true;
+    this.isTransitioning = true;
 
-		try {
-			// Crear overlay que pase de izquierda a derecha
-			const overlay = this.createSlideOverlay();
-			document.body.appendChild(overlay);
+    try {
+      // Crear overlay que pase de izquierda a derecha
+      const overlay = this.createSlideOverlay();
+      document.body.appendChild(overlay);
 
-			// Animación de entrada del overlay (izquierda a derecha) - más suave
-			await new Promise<void>((resolve) => {
-				gsap.fromTo(
-					overlay,
-					{ x: "-100%", opacity: 0.8 },
-					{
-						x: "0%",
-						opacity: 1,
-						duration: 0.7,
-						ease: "power2.out",
-						onComplete: resolve,
-					}
-				);
-			});
+      // Animación de entrada del overlay (izquierda a derecha) - más suave
+      await new Promise<void>((resolve) => {
+        gsap.fromTo(
+          overlay,
+          { x: '-100%', opacity: 0.8 },
+          {
+            x: '0%',
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power2.out',
+            onComplete: resolve,
+          }
+        );
+      });
 
-			// Ejecutar callback para cambiar contenido
-			callback();
+      // Ejecutar callback para cambiar contenido
+      callback();
 
-			// Pausa para que se actualice el contenido completamente
-			await new Promise<void>((resolve) => {
-				setTimeout(resolve, 350);
-			});
+      // Pausa para que se actualice el contenido completamente
+      await new Promise<void>((resolve) => {
+        setTimeout(resolve, 350);
+      });
 
-			// Animación de salida del overlay (desvanecerse mientras se desliza)
-			await new Promise<void>((resolve) => {
-				gsap.to(overlay, {
-					x: "100%",
-					opacity: 0,
-					duration: 0.9,
-					ease: "power2.inOut",
-					onComplete: () => {
-						// Asegurar que se elimine del DOM
-						if (overlay && overlay.parentNode) {
-							overlay.parentNode.removeChild(overlay);
-						}
-						resolve();
-					},
-				});
-			});
-		} catch (error) {
-			console.error("Error en transición:", error);
-			// Fallback sin transición
-			callback();
-			// Asegurar que se elimine cualquier overlay
-			const overlays = document.querySelectorAll(".slide-transition-overlay");
-			overlays.forEach((o) => o.remove());
-		} finally {
-			this.isTransitioning = false;
-		}
-	}
+      // Animación de salida del overlay (desvanecerse mientras se desliza)
+      await new Promise<void>((resolve) => {
+        gsap.to(overlay, {
+          x: '100%',
+          opacity: 0,
+          duration: 0.9,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            // Asegurar que se elimine del DOM
+            if (overlay && overlay.parentNode) {
+              overlay.parentNode.removeChild(overlay);
+            }
+            resolve();
+          },
+        });
+      });
+    } catch (error) {
+      console.error('Error en transición:', error);
+      // Fallback sin transición
+      callback();
+      // Asegurar que se elimine cualquier overlay
+      const overlays = document.querySelectorAll('.slide-transition-overlay');
+      overlays.forEach((o) => o.remove());
+    } finally {
+      this.isTransitioning = false;
+    }
+  }
 
-	// Transición diagonal con clip-path (alternativa más precisa)
-	public async diagonalClipTransition(callback: () => void): Promise<void> {
-		if (this.isTransitioning) return;
+  // Transición diagonal con clip-path (alternativa más precisa)
+  public async diagonalClipTransition(callback: () => void): Promise<void> {
+    if (this.isTransitioning) return;
 
-		this.isTransitioning = true;
+    this.isTransitioning = true;
 
-		try {
-			// Crear overlay con clip-path
-			const overlay = this.createTransitionOverlay();
-			overlay.style.clipPath = "polygon(0% 0%, 0% 0%, 0% 0%)";
-			document.body.appendChild(overlay);
+    try {
+      // Crear overlay con clip-path
+      const overlay = this.createTransitionOverlay();
+      overlay.style.clipPath = 'polygon(0% 0%, 0% 0%, 0% 0%)';
+      document.body.appendChild(overlay);
 
-			// Animación de entrada diagonal con clip-path
-			await new Promise<void>((resolve) => {
-				gsap.to(overlay, {
-					clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-					duration: 0.8,
-					ease: "power2.inOut",
-					onComplete: resolve,
-				});
-			});
+      // Animación de entrada diagonal con clip-path
+      await new Promise<void>((resolve) => {
+        gsap.to(overlay, {
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          duration: 0.8,
+          ease: 'power2.inOut',
+          onComplete: resolve,
+        });
+      });
 
-			// Ejecutar callback
-			callback();
+      // Ejecutar callback
+      callback();
 
-			// Animación de salida diagonal
-			await new Promise<void>((resolve) => {
-				gsap.to(overlay, {
-					clipPath: "polygon(100% 100%, 100% 100%, 100% 100%)",
-					duration: 0.8,
-					ease: "power2.inOut",
-					onComplete: () => {
-						overlay.remove();
-						resolve();
-					},
-				});
-			});
-		} finally {
-			this.isTransitioning = false;
-		}
-	}
+      // Animación de salida diagonal
+      await new Promise<void>((resolve) => {
+        gsap.to(overlay, {
+          clipPath: 'polygon(100% 100%, 100% 100%, 100% 100%)',
+          duration: 0.8,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            overlay.remove();
+            resolve();
+          },
+        });
+      });
+    } finally {
+      this.isTransitioning = false;
+    }
+  }
 
-	// Transición más sutil para elementos específicos
-	public async fadeTransition(
-		elements: NodeListOf<Element> | Element[],
-		callback: () => void
-	): Promise<void> {
-		if (this.isTransitioning) return;
+  // Transición más sutil para elementos específicos
+  public async fadeTransition(
+    elements: NodeListOf<Element> | Element[],
+    callback: () => void
+  ): Promise<void> {
+    if (this.isTransitioning) return;
 
-		this.isTransitioning = true;
+    this.isTransitioning = true;
 
-		try {
-			// Fade out
-			await new Promise<void>((resolve) => {
-				gsap.to(elements, {
-					opacity: 0,
-					y: -20,
-					duration: 0.3,
-					ease: "power2.out",
-					stagger: 0.05,
-					onComplete: resolve,
-				});
-			});
+    try {
+      // Fade out
+      await new Promise<void>((resolve) => {
+        gsap.to(elements, {
+          opacity: 0,
+          y: -20,
+          duration: 0.3,
+          ease: 'power2.out',
+          stagger: 0.05,
+          onComplete: resolve,
+        });
+      });
 
-			// Ejecutar callback
-			callback();
+      // Ejecutar callback
+      callback();
 
-			// Fade in
-			await new Promise<void>((resolve) => {
-				gsap.fromTo(
-					elements,
-					{ opacity: 0, y: 20 },
-					{
-						opacity: 1,
-						y: 0,
-						duration: 0.4,
-						ease: "power2.out",
-						stagger: 0.05,
-						onComplete: resolve,
-					}
-				);
-			});
-		} finally {
-			this.isTransitioning = false;
-		}
-	}
+      // Fade in
+      await new Promise<void>((resolve) => {
+        gsap.fromTo(
+          elements,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: 'power2.out',
+            stagger: 0.05,
+            onComplete: resolve,
+          }
+        );
+      });
+    } finally {
+      this.isTransitioning = false;
+    }
+  }
 
-	// Transición tipo "slide" horizontal
-	public async slideTransition(callback: () => void): Promise<void> {
-		if (this.isTransitioning) return;
+  // Transición tipo "slide" horizontal
+  public async slideTransition(callback: () => void): Promise<void> {
+    if (this.isTransitioning) return;
 
-		this.isTransitioning = true;
+    this.isTransitioning = true;
 
-		const mainContent = document.querySelector("main") || document.body;
+    const mainContent = document.querySelector('main') || document.body;
 
-		try {
-			// Slide out hacia la izquierda
-			await new Promise<void>((resolve) => {
-				gsap.to(mainContent, {
-					x: "-100%",
-					opacity: 0.5,
-					duration: 0.5,
-					ease: "power2.inOut",
-					onComplete: resolve,
-				});
-			});
+    try {
+      // Slide out hacia la izquierda
+      await new Promise<void>((resolve) => {
+        gsap.to(mainContent, {
+          x: '-100%',
+          opacity: 0.5,
+          duration: 0.5,
+          ease: 'power2.inOut',
+          onComplete: resolve,
+        });
+      });
 
-			// Ejecutar callback
-			callback();
+      // Ejecutar callback
+      callback();
 
-			// Slide in desde la derecha
-			await new Promise<void>((resolve) => {
-				gsap.fromTo(
-					mainContent,
-					{ x: "100%", opacity: 0.5 },
-					{
-						x: "0%",
-						opacity: 1,
-						duration: 0.5,
-						ease: "power2.inOut",
-						onComplete: resolve,
-					}
-				);
-			});
-		} finally {
-			this.isTransitioning = false;
-		}
-	}
+      // Slide in desde la derecha
+      await new Promise<void>((resolve) => {
+        gsap.fromTo(
+          mainContent,
+          { x: '100%', opacity: 0.5 },
+          {
+            x: '0%',
+            opacity: 1,
+            duration: 0.5,
+            ease: 'power2.inOut',
+            onComplete: resolve,
+          }
+        );
+      });
+    } finally {
+      this.isTransitioning = false;
+    }
+  }
 
-	// Transición tipo "wipe" vertical (cortina desde abajo)
-	public async wipeTransition(callback: () => void): Promise<void> {
-		if (this.isTransitioning) return;
+  // Transición tipo "wipe" vertical (cortina desde abajo)
+  public async wipeTransition(callback: () => void): Promise<void> {
+    if (this.isTransitioning) return;
 
-		this.isTransitioning = true;
+    this.isTransitioning = true;
 
-		try {
-			// Crear overlay que viene desde abajo
-			const overlay = document.createElement("div");
-			overlay.className = "wipe-transition-overlay";
-			overlay.style.cssText = `
+    try {
+      // Crear overlay que viene desde abajo
+      const overlay = document.createElement('div');
+      overlay.className = 'wipe-transition-overlay';
+      overlay.style.cssText = `
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -437,8 +433,8 @@ export class PageTransitions {
 				justify-content: center;
 			`;
 
-			// Añadir logo al overlay wipe
-			overlay.innerHTML = `
+      // Añadir logo al overlay wipe
+      overlay.innerHTML = `
 				<div style="text-align: center;">
 					<img src="/LOGO SACRED.png" alt="Sacred Logo" style="
 						height: 100px;
@@ -448,72 +444,66 @@ export class PageTransitions {
 				</div>
 			`;
 
-			document.body.appendChild(overlay);
+      document.body.appendChild(overlay);
 
-			// Animación de wipe hacia arriba
-			await new Promise<void>((resolve) => {
-				gsap.to(overlay, {
-					y: "0%",
-					duration: 0.5,
-					ease: "power2.inOut",
-					onComplete: resolve,
-				});
-			});
+      // Animación de wipe hacia arriba
+      await new Promise<void>((resolve) => {
+        gsap.to(overlay, {
+          y: '0%',
+          duration: 0.5,
+          ease: 'power2.inOut',
+          onComplete: resolve,
+        });
+      });
 
-			// Ejecutar callback
-			callback();
+      // Ejecutar callback
+      callback();
 
-			// Wipe hacia arriba y salir
-			await new Promise<void>((resolve) => {
-				gsap.to(overlay, {
-					y: "-100%",
-					duration: 0.5,
-					ease: "power2.inOut",
-					onComplete: () => {
-						overlay.remove();
-						resolve();
-					},
-				});
-			});
-		} finally {
-			this.isTransitioning = false;
-		}
-	}
+      // Wipe hacia arriba y salir
+      await new Promise<void>((resolve) => {
+        gsap.to(overlay, {
+          y: '-100%',
+          duration: 0.5,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            overlay.remove();
+            resolve();
+          },
+        });
+      });
+    } finally {
+      this.isTransitioning = false;
+    }
+  }
 
-	// Verificar si hay una transición en curso
-	public isInTransition(): boolean {
-		return this.isTransitioning;
-	}
+  // Verificar si hay una transición en curso
+  public isInTransition(): boolean {
+    return this.isTransitioning;
+  }
 
-	// Método para inicializar manualmente si es necesario
-	public init(): void {
-		try {
-			if (!barba.running) {
-				this.initBarba();
-			}
-		} catch (error) {
-			console.log("Inicialización en modo simple sin Barba");
-		}
-	}
+  // Método para inicializar manualmente si es necesario
+  public init(): void {
+    try {
+      if (!barba.running) {
+        this.initBarba();
+      }
+    } catch (error) {}
+  }
 
-	// Método para destruir Barba si es necesario
-	public destroy(): void {
-		try {
-			if (barba.running) {
-				barba.destroy();
-			}
-		} catch (error) {
-			console.log("No hay instancia de Barba que destruir");
-		}
-	}
+  // Método para destruir Barba si es necesario
+  public destroy(): void {
+    try {
+      if (barba.running) {
+        barba.destroy();
+      }
+    } catch (error) {}
+  }
 }
 
 // Instancia singleton
 export const pageTransitions = PageTransitions.getInstance();
 
 // Helper function para ejecutar transición desde cualquier componente
-export async function executePageTransition(
-	callback: () => void
-): Promise<void> {
-	await pageTransitions.setLanguageWithTransition("", callback);
+export async function executePageTransition(callback: () => void): Promise<void> {
+  await pageTransitions.setLanguageWithTransition('', callback);
 }

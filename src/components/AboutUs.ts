@@ -1,22 +1,20 @@
 // Componente AboutUs
-import { languageManager, t } from "../utils/language";
+import { languageManager, t } from '../utils/language';
 
 export function AboutUs(): HTMLElement {
-	const aboutUs = document.createElement("section");
-	aboutUs.className = "center-component center-component-first";
-	aboutUs.id = "about";
+  const aboutUs = document.createElement('section');
+  aboutUs.className = 'center-component center-component-first';
+  aboutUs.id = 'about';
 
-	// Función para renderizar el contenido
-	const renderContent = () => {
-		aboutUs.innerHTML = `
+  // Función para renderizar el contenido
+  const renderContent = () => {
+    aboutUs.innerHTML = `
 		<div class="grid lg:grid-cols-2 gap-12 items-start">
 			<!-- Contenido de texto a la izquierda -->
 			<div class="text-left">
-				<h2 class="text-3xl font-bold text-ocean-800 mb-6">${t("about.title")}</h2>
-				<p class="text-gray-600 text-lg leading-relaxed mb-6">${t(
-			"about.description"
-		)}</p>
-				<p class="text-gray-600 text-lg leading-relaxed mb-8">${t("about.textInfo")}</p>
+				<h2 class="text-3xl font-bold text-ocean-800 mb-6">${t('about.title')}</h2>
+				<p class="text-gray-600 text-lg leading-relaxed mb-6">${t('about.description')}</p>
+				<p class="text-gray-600 text-lg leading-relaxed mb-8">${t('about.textInfo')}</p>
 				
 				<!-- Estadísticas -->
 				<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
@@ -28,7 +26,7 @@ export function AboutUs(): HTMLElement {
 							</svg>
 						</div>
 						<div class="text-2xl font-bold text-gray-800 mb-1">50+</div>
-						<div class="text-sm text-gray-600">${t("about.stats.destinations")}</div>
+						<div class="text-sm text-gray-600">${t('about.stats.destinations')}</div>
 					</div>
 					<div class="text-left">
 						<div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-3">
@@ -37,7 +35,7 @@ export function AboutUs(): HTMLElement {
 							</svg>
 						</div>
 						<div class="text-2xl font-bold text-gray-800 mb-1">10k+</div>
-						<div class="text-sm text-gray-600">${t("about.stats.clients")}</div>
+						<div class="text-sm text-gray-600">${t('about.stats.clients')}</div>
 					</div>
 					<div class="text-left">
 						<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3">
@@ -46,7 +44,7 @@ export function AboutUs(): HTMLElement {
 							</svg>
 						</div>
 						<div class="text-2xl font-bold text-gray-800 mb-1">10</div>
-						<div class="text-sm text-gray-600">${t("about.stats.experience")}</div>
+						<div class="text-sm text-gray-600">${t('about.stats.experience')}</div>
 					</div>
 				</div>
 			</div>
@@ -80,15 +78,15 @@ export function AboutUs(): HTMLElement {
 			</div>
 		</div>
 		`;
-	};
+  };
 
-	// Renderizar contenido inicial
-	renderContent();
+  // Renderizar contenido inicial
+  renderContent();
 
-	// Suscribirse a cambios de idioma
-	languageManager.subscribe(() => {
-		renderContent();
-	});
+  // Suscribirse a cambios de idioma
+  languageManager.subscribe(() => {
+    renderContent();
+  });
 
-	return aboutUs;
+  return aboutUs;
 }

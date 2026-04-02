@@ -1,8 +1,8 @@
 export const languages = {
-    en: {
-        code: "EN",
-        name: "English (US)",
-        flag: `<svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  en: {
+    code: 'EN',
+    name: 'English (US)',
+    flag: `<svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <defs>
                 <clipPath id="circle-clip-en">
                     <circle cx="50" cy="50" r="50"/>
@@ -19,11 +19,11 @@ export const languages = {
                 <rect width="40" height="53.85" fill="#3c3b6e"/>
             </g>
         </svg>`,
-    },
-    es: {
-        code: "ES",
-        name: "Español (ES)",
-        flag: `<svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  },
+  es: {
+    code: 'ES',
+    name: 'Español (ES)',
+    flag: `<svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <defs>
                 <clipPath id="circle-clip-es">
                     <circle cx="50" cy="50" r="50"/>
@@ -34,5 +34,5 @@ export const languages = {
                 <rect width="100" height="50" y="25" fill="#ffc400"/>
             </g>
         </svg>`,
-    },
+  },
 };

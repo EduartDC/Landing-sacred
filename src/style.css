@@ -46,7 +46,10 @@
     background-attachment: fixed;
     background-blend-mode: soft-light;
     /* Mezcla suave con la imagen */
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
   }
 
   #barba-wrapper {
@@ -319,7 +322,7 @@
   /* Asegurar que el título del Hero sea blanco */
   #home h1,
   .hero-container h1,
-  section[id="home"] h1 {
+  section[id='home'] h1 {
     color: white !important;
   }
 
@@ -352,7 +355,6 @@
 
   /* AboutUs - Estadísticas y galería */
   @media (max-width: 640px) {
-
     /* Iconos de estadísticas más pequeños en móvil */
     .center-component .w-16.h-16 {
       width: 3rem !important;
@@ -383,7 +385,6 @@
   }
 
   @media (min-width: 641px) and (max-width: 768px) {
-
     /* Tablet - iconos medianos */
     .center-component .w-16.h-16 {
       width: 3.5rem !important;
@@ -397,7 +398,6 @@
 
   /* Info - Características con iconos */
   @media (max-width: 640px) {
-
     /* Iconos de características más visibles */
     .center-component .rounded-full svg {
       min-width: 32px !important;
@@ -412,7 +412,6 @@
 
   /* Services - Carrusel de tours */
   @media (max-width: 640px) {
-
     /* Cards de tours - altura optimizada */
     .tour-card {
       height: auto !important;
@@ -475,7 +474,6 @@
 
   /* Testimonials - Carrusel de testimonios */
   @media (max-width: 640px) {
-
     /* Cards de testimonios */
     .testimonial-card {
       padding: 1.5rem !important;
@@ -500,7 +498,6 @@
 
   /* Contact - Formulario */
   @media (max-width: 640px) {
-
     /* Inputs y textareas */
     .center-component input,
     .center-component textarea,
@@ -511,7 +508,7 @@
     }
 
     /* Botón de envío */
-    .center-component button[type="submit"] {
+    .center-component button[type='submit'] {
       width: 100% !important;
       padding: 1rem !important;
       font-size: 1rem !important;
@@ -573,13 +570,15 @@
     border-radius: 0.75rem !important;
     border: 1px solid rgba(229, 231, 235, 1) !important;
     /* border-gray-200 */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
     /* shadow-md */
   }
 }
 
 /* Sticky Navbar Styles */
-nav[class*="sticky"] {
+nav[class*='sticky'] {
   will-change: background-color, box-shadow;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(12px);
@@ -588,7 +587,6 @@ nav[class*="sticky"] {
 
 /* Navbar - Optimizaciones responsive */
 @media (max-width: 640px) {
-
   /* Layout de 2 filas: Fila 1 (logo+nombre centrado), Fila 2 (menú izq + idioma der) */
   nav .max-w-7xl {
     display: grid !important;
@@ -599,7 +597,7 @@ nav[class*="sticky"] {
   }
 
   /* Logo y título en la primera fila - centrado */
-  nav .max-w-7xl>a {
+  nav .max-w-7xl > a {
     order: 1 !important;
     justify-self: center !important;
     text-align: center !important;
@@ -608,7 +606,7 @@ nav[class*="sticky"] {
   }
 
   /* Mostrar el nombre de la página */
-  nav .max-w-7xl>a span {
+  nav .max-w-7xl > a span {
     display: inline-block !important;
   }
 
@@ -695,7 +693,6 @@ nav[class*="sticky"] {
 }
 
 @media (min-width: 641px) and (max-width: 768px) {
-
   /* Logo mediano en tablet portrait */
   #navbar-container img {
     height: 36px !important;
@@ -712,6 +709,6 @@ html {
 }
 
 /* Ensure hero section shows properly with sticky navbar */
-section[id="home"] {
+section[id='home'] {
   margin-top: 0;
 }

@@ -83,9 +83,9 @@ export const es = {
 					"Explora la majestuosa ciudad maya de Chichén Itzá y descubre los secretos de una de las nuevas maravillas del mundo moderno.",
 				image: "about-uno.jpg",
 				location: "Chichén Itzá, Yucatán",
-				duration: "10 horas",
+				duration: "10 a 11 horas (Día Completo Intenso)",
 				fullDescription:
-					"Embárcate en un viaje extraordinario a través del tiempo en Chichén Itzá, una de las Nuevas Siete Maravillas del Mundo. Este tour completo te permite explorar la grandeza de la civilización maya mientras caminas por la imponente pirámide de Kukulkán, el observatorio astronómico El Caracol, y el sagrado Cenote Sagrado. Nuestros guías expertos te revelarán los misterios astronómicos y las leyendas ancestrales que hacen de este sitio un lugar único en el mundo.",
+          'Camina entre leyendas y descubre la grandeza del imperio Maya. Únete a Legacy of Chichén, un viaje en el tiempo que combina el misticismo de una de las Nuevas Maravillas del Mundo con el encanto colonial de Yucatán. Descifra los secretos astronómicos de Chichén Itzá, piérdete en las vibrantes calles de la ciudad mágica de Valladolid y purifica tu cuerpo en las refrescantes aguas de un cenote milenario. La ruta definitiva para vivir el contraste histórico de la península.',
 				includes: [
 					{
 						icon: "truck",
@@ -120,30 +120,30 @@ export const es = {
 				],
 				itinerary: [
 					{
-						time: "7:00 AM",
-						title: "Recogida en tu Hotel",
-						description: "Inicio del viaje en transporte privado climatizado",
+						time: '⏱️ Pick-up',
+						title: 'Comodidad desde el inicio',
+						description: 'Pasamos a buscarte directamente a tu alojamiento en Tulum o zonas aledañas para empezar el día sin estrés.'
 					},
 					{
-						time: "9:30 AM",
-						title: "Llegada a Chichén Itzá",
-						description: "Comenzamos el recorrido guiado por la zona arqueológica",
+						time: '⏱️ 2.5 hrs',
+						title: 'Ecos del pasado',
+						description: 'Recorre templos majestuosos y observatorios mayas con un guía que hará que la historia cobre vida frente a tus ojos.'
 					},
 					{
-						time: "12:30 PM",
-						title: "Almuerzo Buffet",
-						description: "Disfruta de auténtica comida yucateca",
+						time: '⏱️ 1.5 hrs',
+						title: 'El color de Valladolid',
+						description: 'Visita esta joya colonial, camina por sus pintorescas calles y saborea la aclamada y auténtica comida yucateca.'
 					},
 					{
-						time: "2:00 PM",
-						title: "Visita al Cenote Ik Kil",
-						description: "Tiempo libre para nadar en este cenote sagrado",
+						time: '⏱️ 1.5 hrs',
+						title: 'Sumersión milenaria',
+						description: 'Refréscate nadando en un cenote semiabierto, un santuario natural envuelto en leyendas locales.'
 					},
 					{
-						time: "4:00 PM",
-						title: "Regreso",
-						description: "Retorno a tu hotel con recuerdos inolvidables",
-					},
+						time: '⏱️ Drop-off',
+						title: 'Regreso a casa',
+						description: 'Te llevamos de vuelta a tu alojamiento a una excelente hora para que sigas disfrutando tu tarde en el paraíso.'
+					}
 				],
 				recommendations: [
 					"Ropa cómoda y ligera de algodón",
@@ -173,9 +173,9 @@ export const es = {
 					"Sumérgete en las aguas cristalinas de cenotes sagrados y vive una experiencia mística única en cavernas subterráneas.",
 				image: "cenote.jpg",
 				location: "Cenotes de Tulum",
-				duration: "6 horas",
+				duration: "6 a 7 horas (Día Completo Ligero)",
 				fullDescription:
-					"Descubre la magia oculta bajo la selva maya en este tour exclusivo a tres cenotes únicos. Sumérgete en aguas cristalinas que han sido sagradas para la cultura maya durante milenios. Desde cenotes abiertos hasta cavernas místicas iluminadas por la luz natural, cada parada ofrece una experiencia diferente. Nuestros guías te explicarán la importancia espiritual de estos lugares mientras disfrutas de un día refrescante en medio de la naturaleza.",
+					"Un viaje al inframundo maya para reconectar con tu esencia. Adéntrate en Mystic Waters, una expedición íntima por los secretos acuáticos más guardados de la selva. Navega por majestuosos ríos subterráneos, flota en cenotes sagrados abrazados por la jungla y deja que el silencio de las cavernas ancestrales renueve tu energía. Una experiencia profunda que equilibra aventura, relajación y la verdadera esencia gastronómica de la región.",
 				includes: [
 					{
 						icon: "truck",
@@ -210,35 +210,35 @@ export const es = {
 				],
 				itinerary: [
 					{
-						time: "8:00 AM",
-						title: "Recogida en Hotel",
-						description: "Inicio del tour en transporte privado",
+						time: '⏱️ Pick-up',
+						title: 'Comodidad desde el inicio',
+						description: 'Pasamos a buscarte directamente a tu alojamiento en Tulum o zonas aledañas para empezar el día sin estrés.'
 					},
 					{
-						time: "9:00 AM",
-						title: "Cenote Dos Ojos",
-						description: "Snorkel en el sistema de cavernas más extenso",
+						time: '⏱️ 2 hrs',
+						title: 'El misterio de Sac Actun',
+						description: 'Sumérgete en uno de los sistemas de cavernas y ríos subterráneos más impresionantes y majestuosos del mundo.'
 					},
 					{
-						time: "11:00 AM",
-						title: "Cenote Gran Cenote",
-						description: "Nado en aguas abiertas rodeadas de selva",
+						time: '⏱️ 1.5 hrs',
+						title: 'Oasis en Tak Bi Ha',
+						description: 'Nada y relájate en un espectacular cenote abierto, rodeado de vibrante naturaleza exuberante.'
 					},
 					{
-						time: "1:00 PM",
-						title: "Almuerzo Regional",
-						description: "Comida típica de Quintana Roo",
+						time: '⏱️ 1 hr',
+						title: 'Paz en Nicte Ha',
+						description: 'Descubre un cenote sagrado de aguas tranquilas y cristalinas; el espacio perfecto para la introspección y la calma.'
 					},
 					{
-						time: "2:30 PM",
-						title: "Cenote Escondido",
-						description: "Descubre este cenote privado poco conocido",
+						time: '⏱️ 1 hr',
+						title: 'Festín tradicional',
+						description: 'Recarga energías degustando los sabores más auténticos de la región en una clásica taquería local.'
 					},
 					{
-						time: "4:00 PM",
-						title: "Regreso",
-						description: "Retorno a tu hotel con todos los recuerdos",
-					},
+						time: '⏱️ Drop-off',
+						title: 'Regreso a casa',
+						description: 'Te llevamos de vuelta a tu alojamiento a una excelente hora para que sigas disfrutando tu tarde en el paraíso.'
+					}
 				],
 				recommendations: [
 					"Traje de baño y toalla",
@@ -266,11 +266,11 @@ export const es = {
 				title: "Bohemian Ritual",
 				description:
 					"Conecta con la espiritualidad maya a través de ceremonias ancestrales y rituales de purificación en espacios sagrados.",
-				image: "ritual.jpg",
+				image: "azulik/azulik_all.jpg",
 				location: "Cobá y Comunidades Mayas",
-				duration: "8 horas",
+				duration: "4.5 a 5 horas (Tour de Tarde/Noche)",
 				fullDescription:
-					"Vive una experiencia espiritual profunda conectando con las tradiciones ancestrales mayas. Este tour te lleva más allá del turismo convencional para participar en ceremonias auténticas guiadas por chamanes locales. Escala la pirámide más alta de la península en Cobá, participa en un temazcal purificador, y aprende sobre las plantas medicinales sagradas. Una experiencia transformadora que honra las raíces culturales de esta tierra.",
+					"Donde la arquitectura orgánica abraza la selva al caer el sol. Bohemian Ritual es una invitación a vivir el lado más sofisticado y espiritual de Tulum. Déjate envolver por los laberintos eco-artísticos de Azulik, contemplando un atardecer que te robará el aliento desde las alturas de la jungla. Cierra esta velada mágica con una exclusiva \"Ceremonia de Tacos\", una experiencia culinaria que celebra el color, el alma y el sabor del verdadero México.",
 				includes: [
 					{
 						icon: "truck",
@@ -305,40 +305,30 @@ export const es = {
 				],
 				itinerary: [
 					{
-						time: "7:00 AM",
-						title: "Recogida",
-						description: "Salida temprana hacia la selva de Quintana Roo",
+						time: '⏱️ Pick-up',
+						title: 'Comodidad desde el inicio',
+						description: 'Pasamos a buscarte directamente a tu alojamiento en Tulum o zonas aledañas para empezar el día sin estrés.'
 					},
 					{
-						time: "9:00 AM",
-						title: "Zona Arqueológica Cobá",
-						description: "Escala la pirámide Nohoch Mul (42 metros)",
+						time: '⏱️ 1.5 hrs',
+						title: 'Caminata sensorial',
+						description: 'Recorre sus espacios de diseño eco-artístico, pasarelas de madera y terrazas elevadas que se funden con la jungla.'
 					},
 					{
-						time: "11:00 AM",
-						title: "Ceremonia Maya",
-						description: "Ritual de bienvenida con chamán local",
+						time: '⏱️ 1 hr',
+						title: 'Atardecer de autor',
+						description: 'Contempla la caída del sol desde un santuario arquitectónico, un momento de conexión pura con la belleza natural.'
 					},
 					{
-						time: "12:30 PM",
-						title: "Almuerzo Comunitario",
-						description: "Comida tradicional con familias mayas",
+						time: '⏱️ 1.5 hrs',
+						title: 'Ceremonia de Tacos',
+						description: 'Disfruta de una cena curada donde los ingredientes locales y las recetas con historia son los protagonistas.'
 					},
 					{
-						time: "2:00 PM",
-						title: "Temazcal Sagrado",
-						description: "Ceremonia de purificación con hierbas",
-					},
-					{
-						time: "3:30 PM",
-						title: "Taller de Medicina",
-						description: "Aprende sobre plantas y remedios ancestrales",
-					},
-					{
-						time: "5:00 PM",
-						title: "Regreso",
-						description: "Retorno con el alma renovada",
-					},
+						time: '⏱️ Drop-off',
+						title: 'Regreso a casa',
+						description: 'Te llevamos de vuelta a tu alojamiento a una excelente hora para que sigas disfrutando tu tarde en el paraíso.'
+					}
 				],
 				recommendations: [
 					"Ropa de algodón ligera y respetuosa",
@@ -350,10 +340,10 @@ export const es = {
 					"Donativo voluntario para la comunidad",
 				],
 				gallery: [
-					"/ritual.jpg",
-					"/about-uno.jpg",
-					"/about-tres.jpg",
-					"/about-cuatro.jpg",
+					"/azulik/azulik_2.jpg",
+					"/azulik/azulik_3.jpg",
+					"/azulik/azulik_4.jpg",
+					"/azulik/azulik_all.jpg",
 				],
 				activityLevel: "Moderado a Intenso",
 				ageRestriction: "Mayores de 12 años (consultar para temazcal)",
@@ -368,9 +358,9 @@ export const es = {
 					"Captura la belleza de la Riviera Maya en un tour fotográfico por los paisajes más espectaculares y rincones secretos.",
 				image: "photography.jpg",
 				location: "Riviera Maya",
-				duration: "5 horas",
+				duration: "8 a 9 horas (Día Completo)",
 				fullDescription:
-					"El paraíso de los amantes de la fotografía. Este tour está diseñado específicamente para capturar los momentos más instagrameables de la Riviera Maya. Visita locaciones secretas conocidas solo por locales, con la mejor luz del día. Incluye tips profesionales de fotografía, tiempo sin prisa en cada parada, y acceso a miradores exclusivos. Perfecto para influencers, fotógrafos aficionados y cualquiera que quiera inmortalizar la belleza del Caribe mexicano.",
+					"Despierta tu lado creativo en las locaciones más instagrameables de la Riviera. Visual Routes no es solo un tour, es un recorrido de autor diseñado para capturar la magia visual de Yucatán. Desde el imponente rayo de luz en el mítico Cenote Suytun, hasta la alucinante arquitectura orgánica de Azulik y la icónica escultura \"Ven a la Luz\". Vive un día donde el arte, la naturaleza y la gastronomía local se fusionan para darte escenarios de película y recuerdos inolvidables.",
 				includes: [
 					{
 						icon: "truck",
@@ -405,35 +395,35 @@ export const es = {
 				],
 				itinerary: [
 					{
-						time: "2:00 PM",
-						title: "Inicio del Tour",
-						description: "Recogida y briefing fotográfico",
+						time: '⏱️ Pick-up',
+						title: 'Comodidad desde el inicio',
+						description: 'Pasamos a buscarte directamente a tu alojamiento en Tulum o zonas aledañas para empezar el día sin estrés.'
 					},
 					{
-						time: "2:30 PM",
-						title: "Playa Secreta",
-						description: "Primera parada en playa virgen sin turistas",
+						time: '⏱️ 1.5 hrs',
+						title: 'La postal perfecta en Cenote Suytun',
+						description: 'Sumérgete en sus aguas cristalinas y captura la foto definitiva bajo su emblemático y mágico rayo de luz.'
 					},
 					{
-						time: "3:30 PM",
-						title: "Laguna de Colores",
-						description: "Tonos turquesa perfectos para fotos",
+						time: '⏱️ 1 hr',
+						title: 'Sabores de origen',
+						description: 'Hacemos una pausa para deleitarnos con auténticos tacos mexicanos en una joya culinaria local.'
 					},
 					{
-						time: "4:30 PM",
-						title: "Mirador Panorámico",
-						description: "Vista 360° de la Riviera Maya",
+						time: '⏱️ 2 hrs',
+						title: 'Atardecer en Azulik',
+						description: 'Adéntrate en un universo de arte inmersivo y arquitectura orgánica; el escenario bohemio ideal para la golden hour.'
 					},
 					{
-						time: "5:30 PM",
-						title: "Golden Hour",
-						description: "Última parada para fotos del atardecer",
+						time: '⏱️ 45 min',
+						title: 'Escultura "Ven a la Luz"',
+						description: 'Una parada obligatoria frente a la icónica obra de arte de Tulum para cerrar tu galería con broche de oro.'
 					},
 					{
-						time: "7:00 PM",
-						title: "Fin del Tour",
-						description: "Regreso con tu galería llena",
-					},
+						time: '⏱️ Drop-off',
+						title: 'Regreso a casa',
+						description: 'Te llevamos de vuelta a tu alojamiento a una excelente hora para que sigas disfrutando tu tarde en el paraíso.'
+					}
 				],
 				recommendations: [
 					"Cámara profesional o smartphone de alta gama",
@@ -463,9 +453,9 @@ export const es = {
 					"Descubre la ciudad amurallada frente al mar Caribe y conoce los orígenes de esta antigua fortaleza maya.",
 				image: "tulum.jpg",
 				location: "Tulum, Quintana Roo",
-				duration: "7 horas",
+				duration: "5 a 6 horas (Medio Día)",
 				fullDescription:
-					"Explora las únicas ruinas mayas construidas frente al mar Caribe. Tulum fue un puerto comercial estratégico y una ciudad amurallada que protegía a la élite maya. Este tour combina historia, arqueología y playa paradisíaca. Camina por los templos antiguos mientras escuchas las leyendas del Dios Descendente, explora las murallas defensivas y termina el día relajándote en una de las playas más hermosas del mundo, justo a los pies de las ruinas.",
+					"Ruinas frente al mar y cenotes cristalinos: lo mejor de Tulum en un solo día. Si buscas la esencia pura de la Riviera Maya sin agotar tus energías, Tulum Origins es para ti. Maravíllate con la icónica zona arqueológica construida sobre el acantilado frente al mar Caribe, disfruta de la gastronomía regional y sumérgete en el paraíso escondido del cenote Tak Bi Ha. El balance perfecto entre cultura, relajación natural y tiempo libre.",
 				includes: [
 					{
 						icon: "truck",
@@ -500,40 +490,30 @@ export const es = {
 				],
 				itinerary: [
 					{
-						time: "8:00 AM",
-						title: "Recogida",
-						description: "Inicio del viaje por la carretera costera",
+						time: '⏱️ Pick-up',
+						title: 'Comodidad desde el inicio',
+						description: 'Pasamos a buscarte directamente a tu alojamiento en Tulum o zonas aledañas para empezar el día sin estrés.'
 					},
 					{
-						time: "9:30 AM",
-						title: "Llegada a Tulum",
-						description: "Entrada prioritaria antes de las multitudes",
+						time: '⏱️ 2 hrs',
+						title: 'La postal del Caribe',
+						description: 'Disfruta de una visita guiada por las ruinas de Tulum, con tiempo libre para explorar, tomar fotos y admirar las vistas al mar.'
 					},
 					{
-						time: "10:00 AM",
-						title: "Recorrido Arqueológico",
-						description: "Tour guiado por templos y murallas",
+						time: '⏱️ 1 hr',
+						title: 'Sazón local',
+						description: 'Hacemos una parada estratégica para recargar fuerzas con auténtica y deliciosa comida regional mexicana.'
 					},
 					{
-						time: "12:00 PM",
-						title: "Playa de Tulum",
-						description: "Tiempo libre para nadar en aguas cristalinas",
+						time: '⏱️ 1.5 hrs',
+						title: 'Inmersión en Tak Bi Ha',
+						description: 'Trasládate a este espectacular cenote cerrado para nadar, flotar y relajarte en un entorno de formaciones geológicas únicas.'
 					},
 					{
-						time: "1:30 PM",
-						title: "Almuerzo",
-						description: "Comida con vista al mar Caribe",
-					},
-					{
-						time: "3:00 PM",
-						title: "Pueblo de Tulum",
-						description: "Visita opcional al centro bohemio",
-					},
-					{
-						time: "5:00 PM",
-						title: "Regreso",
-						description: "Retorno con el atardecer caribeño",
-					},
+						time: '⏱️ Drop-off',
+						title: 'Regreso a casa',
+						description: 'Te llevamos de vuelta a tu alojamiento a una excelente hora para que sigas disfrutando tu tarde en el paraíso.'
+					}
 				],
 				recommendations: [
 					"Traje de baño bajo la ropa",
@@ -563,9 +543,9 @@ export const es = {
 					"Explora las profundidades de la selva maya, descubre fauna exótica y conecta con la naturaleza virgen en una aventura ecológica.",
 				image: "about-tres.jpg",
 				location: "Selva Maya, Quintana Roo",
-				duration: "8 horas",
+				duration: "8 a 9 horas (Día Completo)",
 				fullDescription:
-					"Adéntrate en el corazón verde de la península de Yucatán. Este tour ecológico te lleva más allá de las rutas tradicionales para explorar la impresionante biodiversidad de la selva maya.",
+					"Despierta tu espíritu explorador en el corazón de la selva. Routes of the Rainforest es tu pasaporte a la aventura pura. Adéntrate en la antigua ciudad de Cobá bajo la sombra de árboles centenarios, conecta con la vibrante fauna de Punta Laguna y participa en un auténtico ritual de purificación. Entre paseos en canoa, ruinas escondidas y convivencia real con comunidades mayas, este recorrido te hará sentir el verdadero pulso de la selva.",
 				includes: [
 					{
 						icon: "truck",
@@ -600,10 +580,35 @@ export const es = {
 				],
 				itinerary: [
 					{
-						time: "6:00 AM",
-						title: "Recogida",
-						description: "Salida al amanecer selvático",
+						time: '⏱️ Pick-up',
+						title: 'Comodidad desde el inicio',
+						description: 'Pasamos a buscarte directamente a tu alojamiento en Tulum o zonas aledañas para empezar el día sin estrés.'
 					},
+					{
+						time: '⏱️ 2 hrs',
+						title: 'Exploración entre la selva',
+						description: 'Camina por senderos sombreados mientras descubres pirámides y templos mayas devorados por la jungla.'
+					},
+					{
+						time: '⏱️ 2.5 hrs',
+						title: 'Aventura en Punta Laguna',
+						description: 'Vive una reserva natural al máximo: participa en un ritual, avista monos en su hábitat, cruza la laguna en canoa y vuela en tirolesa.'
+					},
+					{
+						time: '⏱️ 1 hr',
+						title: 'Sabor a comunidad',
+						description: 'Comparte y disfruta de un almuerzo tradicional servido directamente en el comedor de una auténtica comunidad maya.'
+					},
+					{
+						time: '⏱️ 1.5 hrs',
+						title: 'Recompensa cristalina',
+						description: 'Refréscate nadando y explorando las fascinantes formaciones del cenote subterráneo Aktun Bej.'
+					},
+					{
+						time: '⏱️ Drop-off',
+						title: 'Regreso a casa',
+						description: 'Te llevamos de vuelta a tu alojamiento a una excelente hora para que sigas disfrutando tu tarde en el paraíso.'
+					}
 				],
 				recommendations: [
 					"Ropa ligera de manga larga",
@@ -843,6 +848,22 @@ export const es = {
 			importantTitle: "Importante",
 			importantText:
 				"Te recogeremos directamente en tu hotel en {area}. No olvides tu cámara y muchas ganas de vivir una experiencia única.",
+		},
+		faq: {
+			questions: [
+				{
+					q: "¿Hay opciones vegetarianas o veganas disponibles?",
+					a: "Sí, proporcionamos opciones vegetarianas bajo petición. Por favor háznoslo saber al momento de reservar."
+				},
+				{
+					q: "¿Qué sucede si llueve el día del tour?",
+					a: "La lluvia en la Riviera Maya suele ser de corta duración. Nuestros tours operan normalmente, pero en caso de clima extremo que no permita actividades, reprogramaremos o reembolsaremos."
+				},
+				{
+					q: "¿Se admiten cancelaciones?",
+					a: "Puedes cancelar sin costo de penalización hasta 24 horas antes del inicio de la experiencia."
+				}
+			]
 		},
 		backButton: "Ver todos los tours",
 	},

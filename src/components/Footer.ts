@@ -1,13 +1,13 @@
 // Componente Footer
-import { languageManager, t } from "../utils/language";
+import { languageManager, t } from '../utils/language';
 
 export function Footer(): HTMLElement {
-	const footer = document.createElement("footer");
-	footer.className =
-		"w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-gradient-to-b from-gray-900 to-gray-950 backdrop-blur-md border-t border-emerald-600/30 py-12";
+  const footer = document.createElement('footer');
+  footer.className =
+    'w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-gradient-to-b from-gray-900 to-gray-950 backdrop-blur-md border-t border-emerald-600/30 py-12';
 
-	const renderContent = () => {
-		footer.innerHTML = `
+  const renderContent = () => {
+    footer.innerHTML = `
     <div class="max-w-screen-xl mx-auto px-4 md:px-6">
       <div class="grid md:grid-cols-4 gap-8 mb-8">
         <!-- Sobre Sacred Routes -->
@@ -16,7 +16,7 @@ export function Footer(): HTMLElement {
             <img src="/LOGO SACRED.png" alt="Sacred Logo" class="h-12 w-auto brightness-110" />
           </div>
           <p class="text-white/80 text-sm leading-relaxed mb-4">
-            ${t("footer.description")}
+            ${t('footer.description')}
           </p>
           <div class="flex gap-3">
             <a href="https://facebook.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white/10 hover:bg-emerald-600 flex items-center justify-center transition-all duration-300 hover:scale-110">
@@ -39,38 +39,34 @@ export function Footer(): HTMLElement {
         
         <!-- Enlaces Rápidos -->
         <div>
-          <h4 class="text-white font-bold mb-4 text-lg">${t(
-											"footer.quickLinks"
-										)}</h4>
+          <h4 class="text-white font-bold mb-4 text-lg">${t('footer.quickLinks')}</h4>
           <ul class="space-y-3 text-sm">
             <li><a href="#home" class="text-white/70 hover:text-emerald-400 transition-colors duration-200 flex items-center gap-2 group">
               <span class="group-hover:translate-x-1 transition-transform">→</span> ${t(
-															"navbar.home"
-														)}
+                'navbar.home'
+              )}
             </a></li>
             <li><a href="#about" class="text-white/70 hover:text-emerald-400 transition-colors duration-200 flex items-center gap-2 group">
               <span class="group-hover:translate-x-1 transition-transform">→</span> ${t(
-															"navbar.about"
-														)}
+                'navbar.about'
+              )}
             </a></li>
             <li><a href="#services" class="text-white/70 hover:text-emerald-400 transition-colors duration-200 flex items-center gap-2 group">
               <span class="group-hover:translate-x-1 transition-transform">→</span> ${t(
-															"navbar.services"
-														)}
+                'navbar.services'
+              )}
             </a></li>
             <li><a href="#contact" class="text-white/70 hover:text-emerald-400 transition-colors duration-200 flex items-center gap-2 group">
               <span class="group-hover:translate-x-1 transition-transform">→</span> ${t(
-															"navbar.contact"
-														)}
+                'navbar.contact'
+              )}
             </a></li>
           </ul>
         </div>
         
         <!-- Tours Populares -->
         <div>
-          <h4 class="text-white font-bold mb-4 text-lg">${t(
-											"footer.tours"
-										)}</h4>
+          <h4 class="text-white font-bold mb-4 text-lg">${t('footer.tours')}</h4>
           <ul class="space-y-3 text-sm text-white/70">
             <li class="hover:text-emerald-400 transition-colors cursor-pointer">Legacy of Chichen</li>
             <li class="hover:text-emerald-400 transition-colors cursor-pointer">Mystic Waters</li>
@@ -81,16 +77,14 @@ export function Footer(): HTMLElement {
         
         <!-- Contacto -->
         <div>
-          <h4 class="text-white font-bold mb-4 text-lg">${t(
-											"footer.contact"
-										)}</h4>
+          <h4 class="text-white font-bold mb-4 text-lg">${t('footer.contact')}</h4>
           <div class="space-y-3 text-sm">
             <div class="flex items-start gap-3 text-white/70">
               <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
               </svg>
               <div>
-                <p class="font-semibold text-white">${t("footer.phone")}</p>
+                <p class="font-semibold text-white">${t('footer.phone')}</p>
                 <a href="tel:+529841234567" class="hover:text-emerald-400 transition-colors">+52 984 123 4567</a>
               </div>
             </div>
@@ -99,7 +93,7 @@ export function Footer(): HTMLElement {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
               <div>
-                <p class="font-semibold text-white">${t("footer.email")}</p>
+                <p class="font-semibold text-white">${t('footer.email')}</p>
                 <a href="mailto:info@sacredroutes.com" class="hover:text-emerald-400 transition-colors">info@sacredroutes.com</a>
               </div>
             </div>
@@ -109,7 +103,7 @@ export function Footer(): HTMLElement {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
               </svg>
               <div>
-                <p class="font-semibold text-white">${t("footer.location")}</p>
+                <p class="font-semibold text-white">${t('footer.location')}</p>
                 <p>Playa del Carmen, Q.R.</p>
                 <p>Riviera Maya, México</p>
               </div>
@@ -121,7 +115,7 @@ export function Footer(): HTMLElement {
       <div class="border-t border-white/10 pt-6">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <p class="text-white/60 text-sm text-center md:text-left">
-            &copy; 2025 ${t("footer.brand")}. ${t("footer.rights")}
+            &copy; 2025 ${t('footer.brand')}. ${t('footer.rights')}
           </p>
           <div class="flex gap-6 text-xs text-white/60">
             <a href="#" class="hover:text-emerald-400 transition-colors">Términos y Condiciones</a>
@@ -132,25 +126,25 @@ export function Footer(): HTMLElement {
     </div>
   `;
 
-		// Agregar funcionalidad de scroll suave para los enlaces
-		const links = footer.querySelectorAll("a[href^='#']");
-		links.forEach((link) => {
-			link.addEventListener("click", (e) => {
-				e.preventDefault();
-				const href = link.getAttribute("href");
-				if (href) {
-					const targetElement = document.querySelector(href);
-					targetElement?.scrollIntoView({ behavior: "smooth" });
-				}
-			});
-		});
-	};
+    // Agregar funcionalidad de scroll suave para los enlaces
+    const links = footer.querySelectorAll("a[href^='#']");
+    links.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        if (href) {
+          const targetElement = document.querySelector(href);
+          targetElement?.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  };
 
-	// Renderizar contenido inicial
-	renderContent();
+  // Renderizar contenido inicial
+  renderContent();
 
-	// Suscribirse a cambios de idioma
-	languageManager.subscribe(renderContent);
+  // Suscribirse a cambios de idioma
+  languageManager.subscribe(renderContent);
 
-	return footer;
+  return footer;
 }

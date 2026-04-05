@@ -835,12 +835,26 @@ export const es = {
 		},
 		cta: {
 			title: "¿Listo para la Aventura?",
-			description:
-				"Reserva ahora y vive una experiencia que recordarás para siempre",
-			bookButton: "Reservar Ahora",
+			description: "Reserva ahora y vive una experiencia que recordarás para siempre",
+			bookButton: "Consultar Disponibilidad",
 			whatsappButton: "WhatsApp",
-			guarantee:
-				"Mejor precio garantizado | Reserva segura | Confirmación inmediata",
+			formButton: "Formulario",
+			guarantee: "Mejor precio garantizado | Reserva segura | Confirmación inmediata",
+			price: "Desde",
+			bookByWhatsapp: "Reservar por WhatsApp",
+		},
+		sections: {
+			experience: "La Experiencia",
+			journey: "El Recorrido del Día",
+			journeySubtitle: "De principio a fin, una experiencia coreografiada para sorprenderte.",
+			testimonialsTitle: "Lo Que Dicen Nuestros Viajeros",
+			comfort: "Viaja Cómodo y Seguro",
+			comfortText: "Tu confort es nuestra prioridad. Relájate en nuestras unidades modernas y exclusivas mientras te llevamos al corazón de la aventura. Contamos con vehículos Honda y Toyota Hiace de modelo reciente.",
+			comfortFeature1: "Unidades climatizadas",
+			comfortFeature2: "Transporte privado y exclusivo",
+			comfortFeature3: "Seguridad",
+			comfortFeature4: "Operadores con experiencia",
+			faqTitle: "Preguntas Frecuentes",
 		},
 		recommendations: {
 			title: "Recomendaciones",
@@ -867,4 +881,19 @@ export const es = {
 		},
 		backButton: "Ver todos los tours",
 	},
+	footerLinks: {
+
+		terms: "Términos y Condiciones",
+		privacy: "Política de Privacidad",
+	},
+	contactBooking: {
+		moduleTitle: "Módulo de Reserva",
+		generalInquiry: "Sólo Contacto (Consulta general)",
+		estimatedTotal: "Total Estimado",
+		priceDisclaimer: "*Precios pueden variar. Sujeto a confirmación final.",
+	},
+	splash: {
+		status: "Preparando tu experiencia...",
+	},
 };
+

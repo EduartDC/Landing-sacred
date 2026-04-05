@@ -835,17 +835,31 @@ export const en = {
 		cta: {
 			title: "Ready for the Adventure?",
 			description: "Book now and live an experience you'll remember forever",
-			bookButton: "Book Now",
+			bookButton: "Check Availability",
 			whatsappButton: "WhatsApp",
-			guarantee:
-				"Best price guaranteed | Secure booking | Instant confirmation",
+			formButton: "Contact Form",
+			guarantee: "Best price guaranteed | Secure booking | Instant confirmation",
+			price: "From",
+			bookByWhatsapp: "Book via WhatsApp",
+		},
+		sections: {
+			experience: "The Experience",
+			journey: "The Day's Journey",
+			journeySubtitle: "From start to finish, an experience choreographed to surprise you.",
+			testimonialsTitle: "What Our Travelers Say",
+			comfort: "Travel Comfortably and Safely",
+			comfortText: "Your comfort is our priority. Relax in our modern and exclusive vehicles as we take you to the heart of the adventure. We operate recent-model Honda and Toyota Hiace vehicles.",
+			comfortFeature1: "Air-conditioned vehicles",
+			comfortFeature2: "Private and exclusive transport",
+			comfortFeature3: "Safety",
+			comfortFeature4: "Experienced operators",
+			faqTitle: "Frequently Asked Questions",
 		},
 		recommendations: {
 			title: "Recommendations",
 			description: "Prepare yourself to enjoy your experience to the fullest",
 			importantTitle: "Important",
-			importantText:
-				"We will pick you up directly at your hotel in {area}. Don't forget your camera and lots of enthusiasm to live a unique experience.",
+			importantText: "We will pick you up directly at your hotel in {area}. Don't forget your camera and lots of enthusiasm to live a unique experience.",
 		},
 		faq: {
 			questions: [
@@ -865,4 +879,18 @@ export const en = {
 		},
 		backButton: "View all tours",
 	},
+	footerLinks: {
+		terms: "Terms and Conditions",
+		privacy: "Privacy Policy",
+	},
+	contactBooking: {
+		moduleTitle: "Booking Module",
+		generalInquiry: "General Inquiry (No specific tour)",
+		estimatedTotal: "Estimated Total",
+		priceDisclaimer: "*Prices may vary. Subject to final confirmation.",
+	},
+	splash: {
+		status: "Preparing your experience...",
+	},
 };
+

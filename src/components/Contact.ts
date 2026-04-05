@@ -39,14 +39,14 @@ export function Contact(initialTourId?: string): HTMLElement {
 			<div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 mb-8 shadow-sm relative overflow-hidden">
 				<h4 class="text-blue-900 font-bold text-lg mb-4 flex items-center gap-2">
 					<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-					Módulo de Reserva / Booking Module
+					${t('contactBooking.moduleTitle')}
 				</h4>
 				
 				<div class="space-y-4">
 					<div class="form-group relative">
 						<label class="block text-gray-700 font-medium mb-1 text-sm">${t('contact.form.placeholders.tourName')} *</label>
 						<select id="contact-tour" name="tour_id" class="w-full px-4 py-3 bg-white border border-blue-200 rounded-lg text-gray-800 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-base appearance-none cursor-pointer relative z-10" style="background-color: white;">
-							<option value="">Sólo Contacto (General inquiry)</option>
+							<option value="">${t('contactBooking.generalInquiry')}</option>
 							${tours
                 .map(
                   (t: any) => `
@@ -80,8 +80,8 @@ export function Contact(initialTourId?: string): HTMLElement {
 
 					<div class="mt-4 p-4 bg-white/80 rounded-xl border border-emerald-200 flex flex-col md:flex-row items-start md:items-center justify-between" id="price-calculator" style="${tourId ? 'display:flex;' : 'display:none;'}">
 						<div class="flex flex-col mb-2 md:mb-0">
-							<span class="text-gray-700 font-bold">Total Estimado / Estimated Total</span>
-							<span class="text-gray-500 text-xs italic">*Precios pueden variar. Sujeto a confirmación final.</span>
+							<span class="text-gray-700 font-bold">${t('contactBooking.estimatedTotal')}</span>
+							<span class="text-gray-500 text-xs italic">${t('contactBooking.priceDisclaimer')}</span>
 						</div>
 						<div class="bg-emerald-50 px-6 py-2 border border-emerald-100 rounded-lg shadow-inner">
 							<span class="text-3xl font-black text-emerald-600" id="estimated-price" data-total="0">$0</span>
@@ -99,86 +99,65 @@ export function Contact(initialTourId?: string): HTMLElement {
         ${t('contact.subtitle')}
       </p>
       
-      <div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-8 mb-12 border border-emerald-100 shadow-lg">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-          </div>
-          <p class="text-gray-700 text-lg leading-relaxed mb-6 max-w-3xl mx-auto italic">
-            "${t('contact.description')}"
-          </p>
-          <div class="inline-block bg-white px-6 py-3 rounded-full shadow-md border border-emerald-200">
-            <p class="text-emerald-700 font-semibold text-lg">
-              ${t('contact.callToAction')}
-            </p>
-          </div>
-        </div>
-      </div>
-      
+
       <div class="grid lg:grid-cols-2 gap-12">
+
         <div class="space-y-8">
           <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
             <div class="flex items-center space-x-4 mb-4">
-              <div class="w-14 h-14 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center shadow-lg">
-                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-              </div>
+              <svg class="w-6 h-6 text-gray-700 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <polyline points="2,4 12,13 22,4"/>
+              </svg>
               <div>
                 <h3 class="text-gray-800 font-bold text-lg">${t('contact.info.email')}</h3>
                 <p class="text-emerald-600 font-semibold text-lg">aventuras@sacredroutes.com</p>
               </div>
             </div>
-            <p class="text-gray-600 text-sm leading-relaxed">${t(
-              'contact.info.emailDescription'
-            )}</p>
+            <p class="text-gray-600 text-sm leading-relaxed">${t('contact.info.emailDescription')}</p>
           </div>
           
           <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
             <div class="flex items-center space-x-4 mb-4">
-              <div class="w-14 h-14 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
-                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-              </div>
+              <svg class="w-6 h-6 text-gray-700 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14H22v2.92z"/>
+              </svg>
               <div>
-                <h3 class="text-gray-800 font-bold text-lg">${t(
-                  'contact.info.phone'
-                )} / WhatsApp</h3>
+                <h3 class="text-gray-800 font-bold text-lg">${t('contact.info.phone')} / WhatsApp</h3>
                 <p class="text-blue-600 font-semibold text-lg">+52 984 123 4567</p>
               </div>
             </div>
-            <p class="text-gray-600 text-sm leading-relaxed">${t(
-              'contact.info.phoneDescription'
-            )}</p>
+            <p class="text-gray-600 text-sm leading-relaxed">${t('contact.info.phoneDescription')}</p>
           </div>
           
           <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
             <div class="flex items-center space-x-4 mb-4">
-              <div class="w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
-                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-              </div>
+              <svg class="w-6 h-6 text-gray-700 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
               <div>
                 <h3 class="text-gray-800 font-bold text-lg">${t('contact.info.address')}</h3>
                 <p class="text-purple-600 font-semibold">${t('contact.info.addressCity')}</p>
                 <p class="text-gray-600 text-sm">${t('contact.info.addressRegion')}</p>
               </div>
             </div>
-            <p class="text-gray-600 text-sm leading-relaxed">${t(
-              'contact.info.addressDescription'
-            )}</p>
+            <p class="text-gray-600 text-sm leading-relaxed">${t('contact.info.addressDescription')}</p>
           </div>
           
           <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200 shadow-lg">
             <div class="flex items-center space-x-4 mb-4">
-              <div class="w-14 h-14 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
-                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              </div>
+              <svg class="w-6 h-6 text-gray-700 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"/>
+                <polyline points="12 7 12 12 15 12"/>
+              </svg>
               <div>
                 <h3 class="text-gray-800 font-bold text-lg">${t('contact.info.hours')}</h3>
                 <p class="text-amber-700 font-semibold">${t('contact.info.hoursSchedule')}</p>
                 <p class="text-gray-600 text-sm">${t('contact.info.hoursTime')}</p>
               </div>
             </div>
-            <p class="text-gray-600 text-sm leading-relaxed">${t(
-              'contact.info.hoursDescription'
-            )}</p>
+            <p class="text-gray-600 text-sm leading-relaxed">${t('contact.info.hoursDescription')}</p>
           </div>
         </div>
         
@@ -189,9 +168,6 @@ export function Contact(initialTourId?: string): HTMLElement {
           </p>
           
           <div class="text-center mb-8">
-            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-            </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-2">${formTitle}</h3>
             <p class="text-gray-600 leading-relaxed">${t('contact.formHeader.description')}</p>
           </div>

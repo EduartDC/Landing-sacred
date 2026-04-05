@@ -68,10 +68,13 @@ export function Footer(): HTMLElement {
         <div>
           <h4 class="text-white font-bold mb-4 text-lg">${t('footer.tours')}</h4>
           <ul class="space-y-3 text-sm text-white/70">
-            <li class="hover:text-emerald-400 transition-colors cursor-pointer">Legacy of Chichen</li>
-            <li class="hover:text-emerald-400 transition-colors cursor-pointer">Mystic Waters</li>
-            <li class="hover:text-emerald-400 transition-colors cursor-pointer">Bohemian Ritual</li>
-            <li class="hover:text-emerald-400 transition-colors cursor-pointer">Visual Routes</li>
+            ${(() => {
+              const translations = languageManager.getTranslations();
+              const tours = (translations.services as any).tours as Array<{id: string; title: string}>;
+              return tours.slice(0,4).map(tour => `
+                <li class="hover:text-emerald-400 transition-colors cursor-pointer" data-tour-id="${tour.id}">${tour.title}</li>
+              `).join('');
+            })()}
           </ul>
         </div>
         
@@ -118,17 +121,28 @@ export function Footer(): HTMLElement {
             &copy; 2025 ${t('footer.brand')}. ${t('footer.rights')}
           </p>
           <div class="flex gap-6 text-xs text-white/60">
-            <a href="#" class="hover:text-emerald-400 transition-colors">Términos y Condiciones</a>
-            <a href="#" class="hover:text-emerald-400 transition-colors">Política de Privacidad</a>
+            <a href="#terms" class="hover:text-emerald-400 transition-colors">${t('footerLinks.terms')}</a>
+            <a href="#privacy" class="hover:text-emerald-400 transition-colors">${t('footerLinks.privacy')}</a>
           </div>
         </div>
       </div>
     </div>
   `;
 
-    // Agregar funcionalidad de scroll suave para los enlaces
-    const links = footer.querySelectorAll("a[href^='#']");
-    links.forEach((link) => {
+    // Links de páginas legales → navegación por hash (disparan el router)
+    const routeLinks = footer.querySelectorAll("a[href='#terms'], a[href='#privacy']");
+    routeLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href')!;
+        window.location.hash = href;
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+      });
+    });
+
+    // Resto de links → scroll suave a sección
+    const scrollLinks = footer.querySelectorAll("a[href^='#']:not([href='#terms']):not([href='#privacy'])");
+    scrollLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const href = link.getAttribute('href');

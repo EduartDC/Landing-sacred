@@ -1,4 +1,5 @@
 import { languageManager, t } from '../../utils/language';
+import { executePageTransition } from '../../utils/transitions';
 import { getLanguageSelectorHTML, setupLanguageSelectorListeners } from './LanguageSelector';
 import { getNavLinksHTML, setupNavLinksListeners, updateActiveNavLink } from './NavLinks';
 import { getMobileMenuButtonHTML, setupMobileMenuListeners } from './MobileMenu';
@@ -44,6 +45,23 @@ export function Navbar(): HTMLElement {
     setupLanguageSelectorListeners(navbar);
     setupNavLinksListeners(navbar);
     setupMobileMenuListeners(navbar);
+
+    // Brand link: dispara transición si estamos en una página distinta al home
+    const brandLink = navbar.querySelector('a[href="#home"]');
+    if (brandLink) {
+      const newLink = brandLink.cloneNode(true) as HTMLElement;
+      brandLink.parentNode?.replaceChild(newLink, brandLink);
+      newLink.addEventListener('click', async (e) => {
+        const currentHash = window.location.hash;
+        // Solo animar si no estamos ya en home
+        if (currentHash && currentHash !== '#home' && !currentHash.startsWith('#home?')) {
+          e.preventDefault();
+          await executePageTransition(() => {
+            window.location.hash = '#home';
+          });
+        }
+      });
+    }
   };
 
   languageManager.subscribe(() => {

@@ -43,6 +43,7 @@ export class LanguageManager {
     if (language !== this.currentLanguage) {
       this.currentLanguage = language;
       this.saveLanguage(language);
+      document.documentElement.lang = language;
       this.notifyListeners();
     }
   }
@@ -126,6 +127,8 @@ export class LanguageManager {
           this.currentLanguage = browserLang;
         }
       }
+      // Sincronizar el atributo lang del documento
+      document.documentElement.lang = this.currentLanguage;
     } catch (error) {
       console.warn('Could not load language from localStorage:', error);
     }

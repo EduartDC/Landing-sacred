@@ -60,45 +60,67 @@ export function Tour(tourId: string): HTMLElement {
 
 		tourPage.innerHTML = `
 			<!-- 1. Hero Section -->
-			<section class="relative h-[85vh] min-h-[600px] flex items-end pb-16 lg:pb-24 justify-center overflow-hidden bg-[#2c3e2e]">
+			<section class="relative min-h-screen md:h-[85vh] md:min-h-[600px] flex items-center md:items-end pb-8 md:pb-24 pt-20 justify-center overflow-hidden bg-[#2c3e2e]">
 				<img src="/${tour.image}" alt="${tour.title}" loading="eager" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay">
 				<div class="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/40 to-transparent z-10"></div>
-				
-				<div class="container relative z-20 px-4 text-center max-w-4xl pt-24 animate-fade-up">
-					<h1 class="text-5xl md:text-7xl font-bold text-white mb-6 font-serif drop-shadow-lg leading-tight uppercase tracking-wider">${tour.title}</h1>
-					<p class="text-xl md:text-3xl text-gray-200 mb-10 font-light italic opacity-90">"${tour.fullDescription.split('.')[0]}."</p>
-					
-					<!-- Quick Facts -->
-					<div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-10">
-						<div class="flex items-center gap-2 bg-black/40 backdrop-blur-md px-5 py-3 rounded-full border border-white/10 text-white shadow-lg">
-							<span class="text-xl">⏱️</span>
-							<span class="text-sm font-bold tracking-wider uppercase">${tour.duration}</span>
+
+				<div class="container relative z-20 px-4 text-center max-w-4xl animate-fade-up">
+					<h1 class="text-3xl sm:text-4xl md:text-7xl font-bold text-white mb-4 md:mb-6 font-serif drop-shadow-lg leading-tight uppercase tracking-wider">${tour.title}</h1>
+					<p class="hidden sm:block text-base md:text-3xl text-gray-200 mb-6 md:mb-10 font-light italic opacity-90 line-clamp-2">"${tour.fullDescription.split('.')[0]}."</p>
+
+					<!-- Quick Facts — fila horizontal en móvil con scroll si es necesario -->
+					<div class="flex flex-row flex-wrap justify-center gap-2 md:gap-6 mb-6 md:mb-10">
+
+						<!-- Pill 1: Duración -->
+						<div class="flex items-center gap-2 bg-black/50 backdrop-blur-md px-3 py-2 md:px-5 md:py-3 rounded-full border border-white/15 text-white shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M9 2l1.5 2.5L12 2l1.5 2.5L15 2"/>
+								<circle cx="12" cy="14" r="7"/>
+								<polyline points="12 10 12 14 15 14"/>
+							</svg>
+							<span class="text-xs font-bold tracking-wide uppercase">${tour.duration}</span>
 						</div>
-						<div class="flex items-center gap-2 bg-black/40 backdrop-blur-md px-5 py-3 rounded-full border border-white/10 text-white shadow-lg">
-							<span class="text-xl">⭐</span>
-							<span class="text-sm font-bold tracking-wider uppercase">${tour.activityLevel}</span>
+
+						<!-- Pill 2: Nivel de actividad -->
+						<div class="flex items-center gap-2 bg-black/50 backdrop-blur-md px-3 py-2 md:px-5 md:py-3 rounded-full border border-white/15 text-white shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+							</svg>
+							<span class="text-xs font-bold tracking-wide uppercase">${tour.activityLevel}</span>
 						</div>
-						<div class="flex items-center gap-2 bg-black/40 backdrop-blur-md px-5 py-3 rounded-full border border-white/10 text-white shadow-lg">
-							<span class="text-xl">👥</span>
-							<span class="text-sm font-bold tracking-wider uppercase">${tour.groupSize}</span>
+
+						<!-- Pill 3: Tamaño de grupo -->
+						<div class="flex items-center gap-2 bg-black/50 backdrop-blur-md px-3 py-2 md:px-5 md:py-3 rounded-full border border-white/15 text-white shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+							<svg width="17" height="15" viewBox="0 0 28 20" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<circle cx="6" cy="6" r="3" opacity="0.6"/>
+								<path d="M1 20c0-3.314 2.239-5 5-5" opacity="0.6"/>
+								<circle cx="22" cy="6" r="3" opacity="0.6"/>
+								<path d="M27 20c0-3.314-2.239-5-5-5" opacity="0.6"/>
+								<circle cx="14" cy="5" r="3.5"/>
+								<path d="M7 20c0-3.866 3.134-6 7-6s7 2.134 7 6"/>
+							</svg>
+							<span class="text-xs font-bold tracking-wide uppercase">${tour.groupSize}</span>
 						</div>
+
 					</div>
 
-					<div class="flex flex-col md:flex-row justify-center items-center gap-4 mx-auto w-full max-w-md md:max-w-xl">
-						<button id="hero-book-btn" class="bg-[#25D366] text-white px-8 py-4 md:px-10 md:py-5 rounded-full font-bold text-lg shadow-[0_10px_30px_rgba(37,211,102,0.3)] hover:scale-105 hover:bg-[#20bd5a] transition-all flex items-center justify-center gap-3 w-full md:w-auto">
-							<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.066.381-.057c.106-.123.49-5.7.618-.767.128-.197.256-.164.384-.116.128.048.81.382.949.452s.231.109.264.169c.032.06.032.343-.112.748z"/></svg>
-							Consultar Disponibilidad
+					<!-- Botones CTA -->
+					<div class="flex flex-col sm:flex-row justify-center items-center gap-3 mx-auto w-full max-w-sm sm:max-w-xl">
+						<button id="hero-book-btn" class="bg-[#25D366] text-white px-6 py-3.5 md:px-10 md:py-5 rounded-full font-bold text-base md:text-lg shadow-[0_10px_30px_rgba(37,211,102,0.3)] hover:scale-105 hover:bg-[#20bd5a] transition-all flex items-center justify-center gap-3 w-full sm:w-auto">
+							<svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.066.381-.057c.106-.123.49-5.7.618-.767.128-.197.256-.164.384-.116.128.048.81.382.949.452s.231.109.264.169c.032.06.032.343-.112.748z"/></svg>
+							Escríbenos
 						</button>
-						<button id="hero-contact-btn" class="bg-white/20 backdrop-blur-md border border-white/40 text-white px-8 py-4 md:px-10 md:py-5 rounded-full font-bold text-lg hover:bg-white/30 hover:scale-105 transition-all flex items-center justify-center gap-3 w-full md:w-auto">
-							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-							Formulario
+						<button id="hero-contact-btn" class="bg-white/20 backdrop-blur-md border border-white/40 text-white px-6 py-3.5 md:px-10 md:py-5 rounded-full font-bold text-base md:text-lg hover:bg-white/30 hover:scale-105 transition-all flex items-center justify-center gap-3 w-full sm:w-auto">
+							<svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+							Solicitar Cotización
 						</button>
 					</div>
 				</div>
 			</section>
 
+
 			<!-- 2. Sticky Bar -->
-			<div id="sticky-bar" class="fixed top-0 md:top-auto bottom-0 md:top-0 left-0 w-full bg-white/95 backdrop-blur-md border-t md:border-b border-gray-200 z-50 flex justify-between items-center px-4 md:px-8 py-4 transform translate-y-full md:-translate-y-full transition-transform duration-300 shadow-xl opacity-0">
+			<div id="sticky-bar" class="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md border-t border-gray-200 z-50 flex justify-between items-center px-4 md:px-8 py-4 transform translate-y-full transition-transform duration-300 shadow-xl opacity-0">
 				<div>
 					<span class="text-xs text-gray-500 block uppercase tracking-wider font-bold">Desde</span>
 					<span class="font-bold text-xl md:text-2xl text-[#2c5228]">$${tour.price} USD</span>
@@ -258,7 +280,7 @@ export function Tour(tourId: string): HTMLElement {
 
 
 			<!-- 9. FAQ -->
-			<section class="pb-24 bg-[#faf9f6]">
+			<section class="py-16 md:py-24 bg-[#faf9f6]">
 				<div class="container mx-auto px-4 max-w-3xl">
 					<div class="text-center mb-12 animate-on-scroll">
 						<h2 class="text-3xl font-bold text-[#3d2e24] mb-4 font-serif">Preguntas Frecuentes</h2>
@@ -317,10 +339,10 @@ export function Tour(tourId: string): HTMLElement {
 				window.addEventListener('scroll', () => {
 					const currentScroll = window.scrollY;
 					if (currentScroll > 600) {
-						stickyBar.classList.remove('opacity-0', 'translate-y-full', 'md:-translate-y-full');
+						stickyBar.classList.remove('opacity-0', 'translate-y-full');
 						stickyBar.classList.add('opacity-100', 'translate-y-0');
 					} else {
-						stickyBar.classList.add('opacity-0', 'translate-y-full', 'md:-translate-y-full');
+						stickyBar.classList.add('opacity-0', 'translate-y-full');
 						stickyBar.classList.remove('opacity-100', 'translate-y-0');
 					}
 				});

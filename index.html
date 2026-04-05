@@ -1,186 +1,234 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sacred Tours | Experiencias únicas en la Riviera Maya</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
 
-    <!-- ═══ SPLASH SCREEN — inline para carga instantánea ═══ -->
-    <style>
-      #sacred-loader {
-        position: fixed;
-        inset: 0;
-        z-index: 99999;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        background: #0d1f0e;
-        transition: opacity 0.7s ease, visibility 0.7s ease;
+<head>
+  <meta charset="UTF-8" />
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sacred Routes Expeditions | Experiencias únicas en la Riviera Maya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet" />
+
+  <!-- ═══ SPLASH SCREEN — inline para carga instantánea ═══ -->
+  <style>
+    #sacred-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      background: #0d1f0e;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+
+    #sacred-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Logo / nombre */
+    .sl-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: sl-fade-in 0.8s ease both;
+    }
+
+    .sl-brand-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      color: #e8dcc8;
+      text-transform: uppercase;
+    }
+
+    .sl-brand-sub {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(0.7rem, 2vw, 0.9rem);
+      letter-spacing: 0.55em;
+      color: #a89070;
+      text-transform: uppercase;
+    }
+
+    /* Línea decorativa animada */
+    .sl-line {
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c8a96e, transparent);
+      animation: sl-line-grow 1.2s ease 0.3s forwards;
+    }
+
+    @keyframes sl-line-grow {
+      to {
+        width: min(280px, 60vw);
       }
-      #sacred-loader.hidden {
+    }
+
+    /* Barra de progreso */
+    .sl-progress-track {
+      width: min(200px, 50vw);
+      height: 2px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 99px;
+      overflow: hidden;
+      animation: sl-fade-in 0.5s ease 0.5s both;
+    }
+
+    .sl-progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #5a9e6a, #c8a96e);
+      border-radius: 99px;
+      animation: sl-progress 2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+    }
+
+    @keyframes sl-progress {
+      0% {
+        width: 0%;
+      }
+
+      60% {
+        width: 75%;
+      }
+
+      85% {
+        width: 90%;
+      }
+
+      100% {
+        width: 95%;
+      }
+    }
+
+    /* Texto estado */
+    .sl-status {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #5a7a5a;
+      text-transform: uppercase;
+      animation: sl-fade-in 0.5s ease 0.8s both;
+    }
+
+    /* Partículas decorativas */
+    .sl-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .sl-particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: #c8a96e;
+      opacity: 0;
+      animation: sl-float var(--dur, 4s) ease-in-out var(--delay, 0s) infinite;
+    }
+
+    @keyframes sl-float {
+      0% {
         opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
+        transform: translateY(100vh) scale(0);
       }
 
-      /* Logo / nombre */
-      .sl-brand {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        animation: sl-fade-in 0.8s ease both;
-      }
-      .sl-brand-name {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(2.5rem, 8vw, 5rem);
-        font-weight: 700;
-        letter-spacing: 0.25em;
-        color: #e8dcc8;
-        text-transform: uppercase;
-      }
-      .sl-brand-sub {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(0.7rem, 2vw, 0.9rem);
-        letter-spacing: 0.55em;
-        color: #a89070;
-        text-transform: uppercase;
+      10% {
+        opacity: 0.6;
       }
 
-      /* Línea decorativa animada */
-      .sl-line {
-        width: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, #c8a96e, transparent);
-        animation: sl-line-grow 1.2s ease 0.3s forwards;
-      }
-      @keyframes sl-line-grow {
-        to { width: min(280px, 60vw); }
+      90% {
+        opacity: 0.2;
       }
 
-      /* Barra de progreso */
-      .sl-progress-track {
-        width: min(200px, 50vw);
-        height: 2px;
-        background: rgba(255,255,255,0.08);
-        border-radius: 99px;
-        overflow: hidden;
-        animation: sl-fade-in 0.5s ease 0.5s both;
-      }
-      .sl-progress-bar {
-        height: 100%;
-        width: 0;
-        background: linear-gradient(90deg, #5a9e6a, #c8a96e);
-        border-radius: 99px;
-        animation: sl-progress 2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
-      }
-      @keyframes sl-progress {
-        0%   { width: 0%; }
-        60%  { width: 75%; }
-        85%  { width: 90%; }
-        100% { width: 95%; }
-      }
-
-      /* Texto estado */
-      .sl-status {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: 0.75rem;
-        letter-spacing: 0.3em;
-        color: #5a7a5a;
-        text-transform: uppercase;
-        animation: sl-fade-in 0.5s ease 0.8s both;
-      }
-
-      /* Partículas decorativas */
-      .sl-particles {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-        pointer-events: none;
-      }
-      .sl-particle {
-        position: absolute;
-        width: 2px;
-        height: 2px;
-        border-radius: 50%;
-        background: #c8a96e;
+      100% {
         opacity: 0;
-        animation: sl-float var(--dur, 4s) ease-in-out var(--delay, 0s) infinite;
+        transform: translateY(-10vh) scale(1.5);
       }
-      @keyframes sl-float {
-        0%   { opacity: 0;    transform: translateY(100vh) scale(0); }
-        10%  { opacity: 0.6; }
-        90%  { opacity: 0.2; }
-        100% { opacity: 0;    transform: translateY(-10vh) scale(1.5); }
-      }
+    }
 
-      @keyframes sl-fade-in {
-        from { opacity: 0; transform: translateY(12px); }
-        to   { opacity: 1; transform: translateY(0); }
+    @keyframes sl-fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
       }
 
-      /* Ocultar scroll mientras carga */
-      body.loading { overflow: hidden; }
-    </style>
-  </head>
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-  <body class="loading">
+    /* Ocultar scroll mientras carga */
+    body.loading {
+      overflow: hidden;
+    }
+  </style>
+</head>
 
-    <!-- ═══ SPLASH SCREEN ═══ -->
-    <div id="sacred-loader" role="status" aria-label="Cargando Sacred Tours">
-      <!-- Partículas flotantes -->
-      <div class="sl-particles" aria-hidden="true">
-        <span class="sl-particle" style="left:10%; --dur:5s;  --delay:0s;"  ></span>
-        <span class="sl-particle" style="left:25%; --dur:7s;  --delay:1s;"  ></span>
-        <span class="sl-particle" style="left:40%; --dur:4.5s;--delay:0.5s;"></span>
-        <span class="sl-particle" style="left:55%; --dur:6s;  --delay:1.5s;"></span>
-        <span class="sl-particle" style="left:70%; --dur:5.5s;--delay:0.3s;"></span>
-        <span class="sl-particle" style="left:82%; --dur:4s;  --delay:0.8s;"></span>
-        <span class="sl-particle" style="left:92%; --dur:6.5s;--delay:0.2s;"></span>
-      </div>
+<body class="loading">
 
-      <!-- Marca -->  
-      <div class="sl-brand">
-        <div class="sl-brand-name">Sacred</div>
-        <div class="sl-line"></div>
-        <div class="sl-brand-sub">Tours &amp; Experiences</div>
-      </div>
-
-      <!-- Progreso -->
-      <div class="sl-progress-track">
-        <div class="sl-progress-bar"></div>
-      </div>
-
-      <!-- Estado -->
-      <p class="sl-status">Preparando tu experiencia...</p>
+  <!-- ═══ SPLASH SCREEN ═══ -->
+  <div id="sacred-loader" role="status" aria-label="Cargando Sacred Tours">
+    <!-- Partículas flotantes -->
+    <div class="sl-particles" aria-hidden="true">
+      <span class="sl-particle" style="left:10%; --dur:5s;  --delay:0s;"></span>
+      <span class="sl-particle" style="left:25%; --dur:7s;  --delay:1s;"></span>
+      <span class="sl-particle" style="left:40%; --dur:4.5s;--delay:0.5s;"></span>
+      <span class="sl-particle" style="left:55%; --dur:6s;  --delay:1.5s;"></span>
+      <span class="sl-particle" style="left:70%; --dur:5.5s;--delay:0.3s;"></span>
+      <span class="sl-particle" style="left:82%; --dur:4s;  --delay:0.8s;"></span>
+      <span class="sl-particle" style="left:92%; --dur:6.5s;--delay:0.2s;"></span>
     </div>
-    <!-- Formulario oculto para Netlify Forms detection -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <textarea name="message"></textarea>
-    </form>
 
-    <!-- Navbar sticky fuera del wrapper de Barba -->
-    <nav id="navbar-container">
-      <!-- Navbar sticky se montará aquí -->
-    </nav>
-
-    <div id="barba-wrapper" data-barba="wrapper">
-      <div data-barba="container" data-barba-namespace="home">
-        <div id="app"></div>
-      </div>
+    <!-- Marca -->
+    <div class="sl-brand">
+      <div class="sl-brand-name">Sacred Routes Expeditions</div>
+      <div class="sl-line"></div>
+      <div class="sl-brand-sub">Tours &amp; Experiences</div>
     </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+    <!-- Progreso -->
+    <div class="sl-progress-track">
+      <div class="sl-progress-bar"></div>
+    </div>
+
+    <!-- Estado -->
+    <p class="sl-status">Preparando tu experiencia...</p>
+  </div>
+  <!-- Formulario oculto para Netlify Forms detection -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <textarea name="message"></textarea>
+  </form>
+
+  <!-- Navbar sticky fuera del wrapper de Barba -->
+  <nav id="navbar-container">
+    <!-- Navbar sticky se montará aquí -->
+  </nav>
+
+  <div id="barba-wrapper" data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace="home">
+      <div id="app"></div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>

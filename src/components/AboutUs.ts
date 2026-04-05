@@ -54,11 +54,11 @@ export function AboutUs(): HTMLElement {
 					<!-- Columna izquierda - más arriba -->
 					<div class="space-y-4">
 						<div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-							<img src="/about-uno.jpg" alt="Sacred About 1" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" style="object-position: left bottom;">
+							<img src="/about-uno.jpg" alt="Sacred About 1" loading="lazy" decoding="async" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" style="object-position: left bottom;">
 							<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
 						</div>
 						<div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-							<img src="/about-tres.jpg" alt="Sacred About 3" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+							<img src="/about-tres.jpg" alt="Sacred About 3" loading="lazy" decoding="async" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
 							<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
 						</div>
 					</div>
@@ -66,11 +66,11 @@ export function AboutUs(): HTMLElement {
 					<!-- Columna derecha - más abajo -->
 					<div class="space-y-4 pt-8">
 						<div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-							<img src="/about-dos.jpg" alt="Sacred About 2" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+							<img src="/about-dos.jpg" alt="Sacred About 2" loading="lazy" decoding="async" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
 							<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
 						</div>
 						<div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-							<img src="/about-cuatro.jpg" alt="Sacred About 4" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+							<img src="/about-cuatro.jpg" alt="Sacred About 4" loading="lazy" decoding="async" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
 							<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
 						</div>
 					</div>

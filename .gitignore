@@ -27,3 +27,6 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Image originals (backups locales, no subir al repo)
+public/_originals/

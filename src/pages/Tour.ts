@@ -61,7 +61,7 @@ export function Tour(tourId: string): HTMLElement {
 		tourPage.innerHTML = `
 			<!-- 1. Hero Section -->
 			<section class="relative h-[85vh] min-h-[600px] flex items-end pb-16 lg:pb-24 justify-center overflow-hidden bg-[#2c3e2e]">
-				<img src="/${tour.image}" alt="${tour.title}" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay">
+				<img src="/${tour.image}" alt="${tour.title}" loading="eager" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay">
 				<div class="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/40 to-transparent z-10"></div>
 				
 				<div class="container relative z-20 px-4 text-center max-w-4xl pt-24 animate-fade-up">
@@ -123,7 +123,7 @@ export function Tour(tourId: string): HTMLElement {
 				<div class="container mx-auto px-4 max-w-6xl">
 					<!-- Banner -->
 					<div class="w-full h-64 md:h-80 rounded-[2rem] overflow-hidden mb-16 shadow-xl relative animate-on-scroll">
-						<img src="/transporte.png" alt="Transporte Banner" class="w-full h-full object-cover">
+						<img src="/transporte.png" alt="Transporte Banner" loading="lazy" decoding="async" class="w-full h-full object-cover">
 						<div class="absolute inset-0 bg-black/30 flex items-center justify-center">
 							<h2 class="text-4xl md:text-6xl font-bold font-serif text-white drop-shadow-lg">Viaja Cómodo y Seguro</h2>
 						</div>
@@ -157,18 +157,18 @@ export function Tour(tourId: string): HTMLElement {
 						<div class="grid grid-cols-2 gap-4 h-[500px] animate-on-scroll" style="animation-delay: 0.2s;">
 							<div class="grid grid-rows-2 gap-4">
 								<div class="rounded-[2rem] overflow-hidden shadow-md">
-									<img src="/honda_exterior.png" alt="Honda Exterior" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+									<img src="/honda_exterior.png" alt="Honda Exterior" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
 								</div>
 								<div class="rounded-[2rem] overflow-hidden shadow-md">
-									<img src="/honda_interior.png" alt="Honda Interior" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+									<img src="/honda_interior.png" alt="Honda Interior" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
 								</div>
 							</div>
 							<div class="grid grid-rows-2 gap-4 mt-8 -mb-8">
 								<div class="rounded-[2rem] overflow-hidden shadow-md">
-									<img src="/hiace_exterior.png" alt="Hiace Exterior" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+									<img src="/hiace_exterior.png" alt="Hiace Exterior" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
 								</div>
 								<div class="rounded-[2rem] overflow-hidden shadow-md">
-									<img src="/hice_interior.png" alt="Hiace Interior" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+									<img src="/hice_interior.png" alt="Hiace Interior" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
 								</div>
 							</div>
 						</div>
@@ -218,7 +218,7 @@ export function Tour(tourId: string): HTMLElement {
 							
 							return `
 							<div class="${spanClass} rounded-3xl overflow-hidden relative group bg-gray-800 animate-on-scroll" style="animation-delay: ${0.1 * i}s;">
-								<img src="${img}" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-[2s] ease-out">
+								<img src="${img}" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-[2s] ease-out">
 								<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
 							</div>
 							`;

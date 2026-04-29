@@ -2,7 +2,7 @@ export const languages = {
   en: {
     code: 'EN',
     name: 'English (US)',
-    flag: `<svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    flag: `<svg class="flag-icon h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <defs>
                 <clipPath id="circle-clip-en">
                     <circle cx="50" cy="50" r="50"/>
@@ -23,7 +23,7 @@ export const languages = {
   es: {
     code: 'ES',
     name: 'Español (ES)',
-    flag: `<svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    flag: `<svg class="flag-icon h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <defs>
                 <clipPath id="circle-clip-es">
                     <circle cx="50" cy="50" r="50"/>

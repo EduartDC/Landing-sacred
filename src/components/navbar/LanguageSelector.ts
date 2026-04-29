@@ -7,10 +7,10 @@ export function getLanguageSelectorHTML(): string {
 
   return `
     <div class="relative">
-        <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-ocean-800 rounded-lg cursor-pointer hover:bg-jungle-100 transition-colors duration-200">
+        <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center font-medium justify-center px-2 py-1.5 md:px-4 md:py-2 text-base md:text-sm text-ocean-800 rounded-md md:rounded-lg cursor-pointer hover:bg-jungle-100 transition-colors duration-200 gap-1">
             ${currentLanguageInfo.flag}
-            ${currentLanguageInfo.code}
-            <svg class="w-2.5 h-2.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <span class="lang-code">${currentLanguageInfo.code}</span>
+            <svg class="chevron-icon w-1.5 h-1.5 md:w-2.5 md:h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
             </svg>
         </button>

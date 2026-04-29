@@ -4,8 +4,9 @@
  * Estrategia:
  * - Imágenes fotográficas (hero, fondos): resize a 1920px + quality 82
  * - Imágenes de galería/detalle: resize a 1280px + quality 85
+ * - Imágenes de header de tour: resize a 1920px + quality 82
  * - Logos/iconos PNG: mantener dimensiones + quality 90 (sin pérdida)
- * - Todos los originals se guardan en public/_originals/
+ * - Todos los originals se guardan en public/_originals/ (con estructura de subdirs)
  */
 
 import sharp from 'sharp';
@@ -16,6 +17,9 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
 const BACKUP_DIR = path.join(PUBLIC_DIR, '_originals');
+
+// ── Subdirectorios de tours a procesar ───────────────────────────────────────
+const TOUR_SUBDIRS = ['legacy', 'azulik', 'mystic', 'tulum', 'forest'];
 
 // ── Configuración específica por archivo ─────────────────────────────────────
 // Si un archivo tiene configuración específica, se usa esa. Si no, la genérica.
@@ -49,88 +53,144 @@ const getFiles = (dir) =>
     .filter(e => !e.name.startsWith('_'))
     .map(e => ({ name: e.name, path: path.join(dir, e.name) }));
 
+/**
+ * Determina la configuración de compresión para un archivo dado.
+ * Para archivos en subdirectorios de tours usa reglas basadas en nombre.
+ */
+function getConfig(fileName, subdir) {
+  // Primero revisar config específica por nombre
+  if (SPECIFIC[fileName]) return SPECIFIC[fileName];
+
+  const ext = path.extname(fileName).toLowerCase();
+
+  // Imágenes de tour
+  if (subdir) {
+    // Headers de tour → más grandes, alta calidad
+    if (fileName.includes('header')) {
+      return { maxWidth: 1920, quality: 82, type: ext === '.webp' ? 'webp' : 'jpeg' };
+    }
+    // Galería de tour → tamaño medio
+    return { maxWidth: 1280, quality: 85, type: ext === '.webp' ? 'webp' : 'jpeg' };
+  }
+
+  // Genérica para archivos sin config específica en root
+  return {
+    maxWidth: 1920,
+    quality: 85,
+    type: ext === '.png' ? 'png' : ext === '.webp' ? 'webp' : 'jpeg',
+  };
+}
+
+// Pequeña pausa para liberar file handles en Windows
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+// ── Procesar un archivo ──────────────────────────────────────────────────────
+async function processFile({ name, path: filePath }, backupDir, subdir) {
+  const ext = path.extname(name).toLowerCase();
+  const cfg = getConfig(name, subdir);
+  const displayName = subdir ? `${subdir}/${name}` : name;
+
+  // Backup (solo una vez) — leer todo a buffer para evitar locks
+  const backupPath = path.join(backupDir, name);
+  let sourceBuffer;
+
+  if (!fs.existsSync(backupPath)) {
+    // Primera vez: el archivo actual es el original
+    sourceBuffer = fs.readFileSync(filePath);
+    fs.writeFileSync(backupPath, sourceBuffer);
+  } else {
+    // Ya hay backup: usar el original para re-comprimir fresh
+    sourceBuffer = fs.readFileSync(backupPath);
+  }
+
+  const originalSize = sourceBuffer.length;
+
+  try {
+    // Trabajar siempre desde buffer (evita file locking de Sharp en Windows)
+    const meta = await sharp(sourceBuffer, { limitInputPixels: false }).metadata();
+
+    let pipeline = sharp(sourceBuffer, { limitInputPixels: false });
+
+    if (cfg.maxWidth && meta.width && meta.width > cfg.maxWidth) {
+      pipeline = pipeline.resize(cfg.maxWidth, null, { withoutEnlargement: true });
+    }
+
+    if (cfg.type === 'jpeg') {
+      pipeline = pipeline.jpeg({ quality: cfg.quality, mozjpeg: true });
+    } else if (cfg.type === 'png') {
+      pipeline = pipeline.png({ quality: cfg.quality, compressionLevel: 9 });
+    } else if (cfg.type === 'webp') {
+      pipeline = pipeline.webp({ quality: cfg.quality, effort: 6 });
+    }
+
+    const outBuffer = await pipeline.toBuffer();
+    const newSize = outBuffer.length;
+
+    if (newSize < originalSize) {
+      fs.writeFileSync(filePath, outBuffer);
+      const saved = ((1 - newSize / originalSize) * 100).toFixed(1);
+      console.log(`✅ ${displayName.padEnd(32)} ${fmt(originalSize).padStart(10)} → ${fmt(newSize).padStart(9)}  (-${saved}%)`);
+      await sleep(50);
+      return { before: originalSize, after: newSize };
+    } else {
+      // Ya estaba optimizada — restaurar original
+      fs.writeFileSync(filePath, sourceBuffer);
+      console.log(`⏭️  ${displayName.padEnd(32)} ${fmt(originalSize).padStart(10)}   (ya optimizada, se mantiene)`);
+      await sleep(50);
+      return { before: originalSize, after: originalSize };
+    }
+  } catch (err) {
+    console.error(`❌ Error: ${displayName}: ${err.message}`);
+    return { before: originalSize, after: originalSize };
+  }
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
   if (!fs.existsSync(BACKUP_DIR)) {
     fs.mkdirSync(BACKUP_DIR, { recursive: true });
-    console.log(`\n📁 Backups en: public/_originals/\n`);
+  }
+  console.log(`\n📁 Backups en: public/_originals/\n`);
+
+  // Recopilar todos los archivos: root + subdirectorios
+  const allFiles = [];
+
+  // Root
+  const rootFiles = getFiles(PUBLIC_DIR);
+  for (const f of rootFiles) {
+    allFiles.push({ file: f, backupDir: BACKUP_DIR, subdir: null });
   }
 
-  const files = getFiles(PUBLIC_DIR);
-  console.log(`\n🖼️  Procesando ${files.length} imagen(es)...\n`);
+  // Subdirectorios de tours
+  for (const sub of TOUR_SUBDIRS) {
+    const subDir = path.join(PUBLIC_DIR, sub);
+    if (!fs.existsSync(subDir)) continue;
+
+    const subBackup = path.join(BACKUP_DIR, sub);
+    if (!fs.existsSync(subBackup)) {
+      fs.mkdirSync(subBackup, { recursive: true });
+    }
+
+    const subFiles = getFiles(subDir);
+    for (const f of subFiles) {
+      allFiles.push({ file: f, backupDir: subBackup, subdir: sub });
+    }
+  }
+
+  console.log(`🖼️  Procesando ${allFiles.length} imagen(es)...\n`);
   console.log('─'.repeat(72));
 
   let totalBefore = 0;
   let totalAfter = 0;
 
-  for (const { name, path: filePath } of files) {
-    const ext = path.extname(name).toLowerCase();
-    const cfg = SPECIFIC[name] || {
-      maxWidth: 1920,
-      quality: 85,
-      type: ext === '.png' ? 'png' : 'jpeg',
-    };
-
-    const originalSize = fs.statSync(filePath).size;
-    totalBefore += originalSize;
-
-    // Backup (solo una vez)
-    const backupPath = path.join(BACKUP_DIR, name);
-    if (!fs.existsSync(backupPath)) {
-      fs.copyFileSync(filePath, backupPath);
-    } else {
-      // Restaurar desde backup para re-comprimir fresh
-      fs.copyFileSync(backupPath, filePath);
-    }
-
-    try {
-      let pipeline = sharp(filePath, { limitInputPixels: false });
-
-      // Obtener metadata para decidir si resize es necesario
-      const meta = await sharp(filePath, { limitInputPixels: false }).metadata();
-
-      if (cfg.maxWidth && meta.width && meta.width > cfg.maxWidth) {
-        pipeline = pipeline.resize(cfg.maxWidth, null, { withoutEnlargement: true });
-      }
-
-      if (cfg.type === 'jpeg') {
-        pipeline = pipeline.jpeg({ quality: cfg.quality, mozjpeg: true });
-      } else if (cfg.type === 'png') {
-        pipeline = pipeline.png({ quality: cfg.quality, compressionLevel: 9 });
-      } else if (cfg.type === 'webp') {
-        pipeline = pipeline.webp({ quality: cfg.quality, effort: 6 });
-      }
-
-      const buffer = await pipeline.toBuffer();
-      const newSize = buffer.length;
-
-      // Determinar nombre de salida (si cambió extensión, renombrar)
-      let outPath = filePath;
-      if (cfg.type === 'jpeg' && (ext === '.png')) {
-        // Mantener el mismo nombre pero con contenido JPEG (los browsers no les importa la extensión)
-        // Guardamos como JPEG dentro del mismo .png para no romper referencias en el código
-        outPath = filePath;
-      }
-
-      if (newSize < originalSize) {
-        fs.writeFileSync(outPath, buffer);
-        const saved = ((1 - newSize / originalSize) * 100).toFixed(1);
-        totalAfter += newSize;
-        console.log(`✅ ${name.padEnd(28)} ${fmt(originalSize).padStart(10)} → ${fmt(newSize).padStart(9)}  (-${saved}%)`);
-      } else {
-        // Restaurar original si ya estaba bien comprimida
-        fs.copyFileSync(backupPath, filePath);
-        totalAfter += originalSize;
-        console.log(`⏭️  ${name.padEnd(28)} ${fmt(originalSize).padStart(10)}   (ya optimizada, se mantiene)`);
-      }
-    } catch (err) {
-      totalAfter += originalSize;
-      console.error(`❌ Error: ${name}: ${err.message}`);
-    }
+  for (const { file, backupDir, subdir } of allFiles) {
+    const result = await processFile(file, backupDir, subdir);
+    totalBefore += result.before;
+    totalAfter += result.after;
   }
 
   const saved = totalBefore - totalAfter;
-  const pct = ((saved / totalBefore) * 100).toFixed(1);
+  const pct = totalBefore > 0 ? ((saved / totalBefore) * 100).toFixed(1) : '0.0';
 
   console.log('\n' + '─'.repeat(72));
   console.log(`\n🎉 ¡Listo!`);

@@ -81,11 +81,11 @@ export const en = {
 				title: "Legacy of Chichen",
 				description:
 					"Explore the majestic Mayan city of Chichén Itzá and discover the secrets of one of the new wonders of the modern world.",
-				image: "about-uno.jpg",
+				image: "legacy/legacy_header.jpg",
 				location: "Chichén Itzá, Yucatán",
-				duration: "10 a 11 horas (Día Completo Intenso)",
+				duration: "8 a 9 horas (Día Completo)",
 				fullDescription:
-          'Camina entre leyendas y descubre la grandeza del imperio Maya. Únete a Legacy of Chichén, un viaje en el tiempo que combina el misticismo de una de las Nuevas Maravillas del Mundo con el encanto colonial de Yucatán. Descifra los secretos astronómicos de Chichén Itzá, piérdete en las vibrantes calles de la ciudad mágica de Valladolid y purifica tu cuerpo en las refrescantes aguas de un cenote milenario. La ruta definitiva para vivir el contraste histórico de la península.',
+					'Walk among legends and discover the greatness of the Mayan empire. Join Legacy of Chichén, a journey through time that combines the mysticism of one of the New Wonders of the World with the colonial charm of Yucatán. Decipher the astronomical secrets of Chichén Itzá, lose yourself in the vibrant streets of the magical city of Valladolid, and purify your body in the refreshing waters of an ancient cenote. The ultimate route to experience the historic contrast of the peninsula.',
 				includes: [
 					{
 						icon: "truck",
@@ -126,18 +126,18 @@ export const en = {
 					},
 					{
 						time: '⏱️ 2.5 hrs',
-						title: 'Ecos del pasado',
-						description: 'Recorre templos majestuosos y observatorios mayas con un guía que hará que la historia cobre vida frente a tus ojos.'
+						title: 'Echoes of the past',
+						description: 'Explore majestic temples and Mayan observatories with a guide who will bring history to life before your eyes.'
 					},
 					{
-						time: '⏱️ 1.5 hrs',
-						title: 'El color de Valladolid',
-						description: 'Visita esta joya colonial, camina por sus pintorescas calles y saborea la aclamada y auténtica comida yucateca.'
+						time: '⏱️ 2.0 hrs',
+						title: 'The colors of Valladolid',
+						description: 'Visit this colonial gem, stroll through its picturesque streets, and savor the acclaimed and authentic Yucatecan cuisine.'
 					},
 					{
-						time: '⏱️ 1.5 hrs',
-						title: 'Sumersión milenaria',
-						description: 'Refréscate nadando en un cenote semiabierto, un santuario natural envuelto en leyendas locales.'
+						time: '⏱️ 2.5 hrs',
+						title: 'Ancient immersion',
+						description: 'Cool off swimming in a semi-open cenote, a natural sanctuary wrapped in local legends.'
 					},
 					{
 						time: '⏱️ Drop-off',
@@ -152,13 +152,16 @@ export const en = {
 					"Biodegradable sunscreen",
 					"Swimsuit and towel for the cenote",
 					"Camera or smartphone with full battery",
+					"Biodegradable insect repellent",
 					"Cash for souvenirs and tips",
 				],
 				gallery: [
-					"/about-uno.jpg",
-					"/about-dos.jpg",
-					"/about-tres.jpg",
-					"/about-cuatro.jpg",
+					"/legacy/legacy_1.jpg",
+					"/legacy/legacy_2.jpg",
+					"/legacy/legacy_3.jpg",
+					"/legacy/legacy_4.jpg",
+					"/legacy/legacy_5.jpg",
+					"/legacy/legacy_6.jpg",
 				],
 				activityLevel: "Moderate",
 				ageRestriction: "All ages welcome",
@@ -171,11 +174,11 @@ export const en = {
 				title: "Mystic Waters",
 				description:
 					"Immerse yourself in the crystal-clear waters of sacred cenotes and live a unique mystical experience in underground caverns.",
-				image: "cenote.jpg",
+				image: "mystic/mystic_header.jpg",
 				location: "Tulum Cenotes",
-				duration: "6 a 7 horas (Día Completo Ligero)",
+				duration: "7 a 8 horas (Día Completo Ligero)",
 				fullDescription:
-					"Un viaje al inframundo maya para reconectar con tu esencia. Adéntrate en Mystic Waters, una expedición íntima por los secretos acuáticos más guardados de la selva. Navega por majestuosos ríos subterráneos, flota en cenotes sagrados abrazados por la jungla y deja que el silencio de las cavernas ancestrales renueve tu energía. Una experiencia profunda que equilibra aventura, relajación y la verdadera esencia gastronómica de la región.",
+					"A journey to the Mayan underworld to reconnect with your essence. Venture into Mystic Waters, an intimate expedition through the jungle's most closely guarded aquatic secrets. Navigate majestic underground rivers, float in sacred cenotes embraced by the jungle, and let the silence of ancestral caverns renew your energy. A profound experience that balances adventure, relaxation, and the true gastronomic essence of the region.",
 				includes: [
 					{
 						icon: "truck",
@@ -216,23 +219,23 @@ export const en = {
 					},
 					{
 						time: '⏱️ 2 hrs',
-						title: 'El misterio de Sac Actun',
-						description: 'Sumérgete en uno de los sistemas de cavernas y ríos subterráneos más impresionantes y majestuosos del mundo.'
+						title: 'The mystery of Sac Actun',
+						description: 'Dive into one of the most impressive and majestic cave and underground river systems in the world.'
 					},
 					{
 						time: '⏱️ 1.5 hrs',
-						title: 'Oasis en Tak Bi Ha',
-						description: 'Nada y relájate en un espectacular cenote abierto, rodeado de vibrante naturaleza exuberante.'
+						title: 'Oasis at Tak Bi Ha',
+						description: 'Swim and relax in a spectacular open cenote, surrounded by vibrant lush nature.'
 					},
 					{
-						time: '⏱️ 1 hr',
-						title: 'Paz en Nicte Ha',
-						description: 'Descubre un cenote sagrado de aguas tranquilas y cristalinas; el espacio perfecto para la introspección y la calma.'
+						time: '⏱️ 1.5 hrs',
+						title: 'Peace at Nicte Ha',
+						description: 'Discover a sacred cenote with calm, crystal-clear waters; the perfect space for introspection and tranquility.'
 					},
 					{
-						time: '⏱️ 1 hr',
-						title: 'Festín tradicional',
-						description: 'Recarga energías degustando los sabores más auténticos de la región en una clásica taquería local.'
+						time: '⏱️ 1.5 hrs',
+						title: 'Traditional feast',
+						description: 'Recharge your energy savoring the most authentic flavors of the region at a classic local taqueria.'
 					},
 					{
 						time: '⏱️ Drop-off',
@@ -243,17 +246,17 @@ export const en = {
 				recommendations: [
 					"Swimsuit and towel",
 					"Extra clothes for change",
-					"Biodegradable sunscreen (mandatory)",
-					"Natural mosquito repellent",
+					"Biodegradable sunscreen",
+					"Mosquito repellent",
 					"Sandals or water shoes",
 					"Underwater camera or waterproof case",
-					"Cash for tips",
 				],
 				gallery: [
-					"/cenote.jpg",
-					"/about-dos.jpg",
-					"/about-tres.jpg",
-					"/about-cuatro.jpg",
+					"/mystic/mystic_1.webp",
+					"/mystic/mystic_2.webp",
+					"/mystic/mystic_3.jpg",
+					"/mystic/mystic_4.jpg",
+					"/mystic/mystic_5.jpg",
 				],
 				activityLevel: "Easy to Moderate",
 				ageRestriction: "Children over 6 years old",
@@ -268,9 +271,9 @@ export const en = {
 					"Connect with Mayan spirituality through ancestral ceremonies and purification rituals in sacred spaces.",
 				image: "azulik/azulik_all.jpg",
 				location: "Cobá and Mayan Communities",
-				duration: "4.5 a 5 horas (Tour de Tarde/Noche)",
+				duration: "5 a 6 horas (Tour de Tarde/Noche)",
 				fullDescription:
-					"Donde la arquitectura orgánica abraza la selva al caer el sol. Bohemian Ritual es una invitación a vivir el lado más sofisticado y espiritual de Tulum. Déjate envolver por los laberintos eco-artísticos de Azulik, contemplando un atardecer que te robará el aliento desde las alturas de la jungla. Cierra esta velada mágica con una exclusiva \"Ceremonia de Tacos\", una experiencia culinaria que celebra el color, el alma y el sabor del verdadero México.",
+					"Where organic architecture embraces the jungle as the sun sets. Bohemian Ritual is an invitation to experience the most sophisticated and spiritual side of Tulum. Let yourself be wrapped by the eco-artistic labyrinths of Azulik, contemplating a sunset that will take your breath away from the heights of the jungle. Close this magical evening with an exclusive \"Taco Ceremony\", a culinary experience that celebrates the color, soul, and flavor of the real Mexico.",
 				includes: [
 					{
 						icon: "truck",
@@ -311,23 +314,23 @@ export const en = {
 					},
 					{
 						time: '⏱️ 1.5 hrs',
-						title: 'Caminata sensorial',
-						description: 'Recorre sus espacios de diseño eco-artístico, pasarelas de madera y terrazas elevadas que se funden con la jungla.'
+						title: 'Sensory walk',
+						description: 'Explore eco-artistic design spaces, wooden walkways, and elevated terraces that blend with the jungle.'
 					},
 					{
 						time: '⏱️ 1 hr',
-						title: 'Atardecer de autor',
-						description: 'Contempla la caída del sol desde un santuario arquitectónico, un momento de conexión pura con la belleza natural.'
+						title: 'Signature sunset',
+						description: 'Watch the sun set from an architectural sanctuary, a moment of pure connection with natural beauty.'
 					},
 					{
 						time: '⏱️ 1.5 hrs',
-						title: 'Ceremonia de Tacos',
-						description: 'Disfruta de una cena curada donde los ingredientes locales y las recetas con historia son los protagonistas.'
+						title: 'Taco Ceremony',
+						description: 'Enjoy a curated dinner where local ingredients and recipes with history take center stage.'
 					},
 					{
 						time: '⏱️ Drop-off',
 						title: 'Return home',
-						description: 'We take you back to your accommodation at an excellent time so you can continue enjoying your afternoon in paradise.'
+						description: 'We take you back to your accommodation at an excellent time so you can continue enjoying your evening in paradise.'
 					}
 				],
 				recommendations: [
@@ -351,111 +354,16 @@ export const en = {
 				pickupArea: "Tulum, Playa del Carmen",
 			},
 			{
-				id: "visual-routes",
-				price: 200,
-				title: "Visual Routes",
-				description:
-					"Capture the beauty of the Riviera Maya on a photographic tour through the most spectacular landscapes and secret corners.",
-				image: "photography.jpg",
-				location: "Riviera Maya",
-				duration: "8 a 9 horas (Día Completo)",
-				fullDescription:
-					"Despierta tu lado creativo en las locaciones más instagrameables de la Riviera. Visual Routes no es solo un tour, es un recorrido de autor diseñado para capturar la magia visual de Yucatán. Desde el imponente rayo de luz en el mítico Cenote Suytun, hasta la alucinante arquitectura orgánica de Azulik y la icónica escultura \"Ven a la Luz\". Vive un día donde el arte, la naturaleza y la gastronomía local se fusionan para darte escenarios de película y recuerdos inolvidables.",
-				includes: [
-					{
-						icon: "truck",
-						title: "Private Transportation",
-						description: "Comfortable mobility between secret locations",
-					},
-					{
-						icon: "user",
-						title: "Photographer Guide",
-						description: "Local guide with photography experience",
-					},
-					{
-						icon: "ticket",
-						title: "Exclusive Access",
-						description: "Entries to private photographic spots",
-					},
-					{
-						icon: "utensils-crossed",
-						title: "Gourmet Snacks",
-						description: "Refreshments and drinks during the tour",
-					},
-					{
-						icon: "droplets",
-						title: "Props & Accessories",
-						description: "Decorative elements for your photos",
-					},
-					{
-						icon: "camera",
-						title: "Drone Session",
-						description: "Professional aerial photos included",
-					},
-				],
-				itinerary: [
-					{
-						time: '⏱️ Pick-up',
-						title: 'Comfort from the start',
-						description: 'We pick you up directly at your accommodation in Tulum or surrounding areas to start the day stress-free.'
-					},
-					{
-						time: '⏱️ 1.5 hrs',
-						title: 'La postal perfecta en Cenote Suytun',
-						description: 'Sumérgete en sus aguas cristalinas y captura la foto definitiva bajo su emblemático y mágico rayo de luz.'
-					},
-					{
-						time: '⏱️ 1 hr',
-						title: 'Sabores de origen',
-						description: 'Hacemos una pausa para deleitarnos con auténticos tacos mexicanos en una joya culinaria local.'
-					},
-					{
-						time: '⏱️ 2 hrs',
-						title: 'Atardecer en Azulik',
-						description: 'Adéntrate en un universo de arte inmersivo y arquitectura orgánica; el escenario bohemio ideal para la golden hour.'
-					},
-					{
-						time: '⏱️ 45 min',
-						title: 'Escultura "Ven a la Luz"',
-						description: 'Una parada obligatoria frente a la icónica obra de arte de Tulum para cerrar tu galería con broche de oro.'
-					},
-					{
-						time: '⏱️ Drop-off',
-						title: 'Return home',
-						description: 'We take you back to your accommodation at an excellent time so you can continue enjoying your afternoon in paradise.'
-					}
-				],
-				recommendations: [
-					"Professional camera or high-end smartphone",
-					"Extra batteries and memory cards",
-					"Colorful and eye-catching outfit",
-					"Outfit changes for variety",
-					"Accessories (hats, glasses, jewelry)",
-					"Fun and spontaneous attitude",
-					"Tag @SacredRoutes in your posts",
-				],
-				gallery: [
-					"/photography.jpg",
-					"/about-dos.jpg",
-					"/about-uno.jpg",
-					"/about-tres.jpg",
-				],
-				activityLevel: "Easy",
-				ageRestriction: "All ages (ideal for adults)",
-				groupSize: "Small groups (maximum 6 people)",
-				pickupArea: "Playa del Carmen, Tulum",
-			},
-			{
 				id: "tulum-origins",
 				price: 110,
 				title: "Tulum Origins",
 				description:
 					"Discover the walled city facing the Caribbean Sea and learn about the origins of this ancient Mayan fortress.",
-				image: "tulum.jpg",
+				image: "tulum/tulum_header.jpg",
 				location: "Tulum, Quintana Roo",
-				duration: "5 a 6 horas (Medio Día)",
+				duration: "6 a 7 horas (Medio Día)",
 				fullDescription:
-					"Ruinas frente al mar y cenotes cristalinos: lo mejor de Tulum en un solo día. Si buscas la esencia pura de la Riviera Maya sin agotar tus energías, Tulum Origins es para ti. Maravíllate con la icónica zona arqueológica construida sobre el acantilado frente al mar Caribe, disfruta de la gastronomía regional y sumérgete en el paraíso escondido del cenote Tak Bi Ha. El balance perfecto entre cultura, relajación natural y tiempo libre.'s most beautiful beaches, right at the foot of the ruins.",
+					"Ruins facing the sea and crystal-clear cenotes: the best of Tulum in a single day. If you're looking for the pure essence of the Riviera Maya without exhausting your energy, Tulum Origins is for you. Marvel at the iconic archaeological zone built on the cliff overlooking the Caribbean Sea, enjoy regional gastronomy, and dive into the hidden paradise of Tak Bi Ha cenote. The perfect balance between culture, natural relaxation, and free time.",
 				includes: [
 					{
 						icon: "truck",
@@ -496,18 +404,18 @@ export const en = {
 					},
 					{
 						time: '⏱️ 2 hrs',
-						title: 'La postal del Caribe',
-						description: 'Disfruta de una visita guiada por las ruinas de Tulum, con tiempo libre para explorar, tomar fotos y admirar las vistas al mar.'
+						title: 'The Caribbean postcard',
+						description: 'Enjoy a guided tour of the Tulum ruins, with free time to explore, take photos, and admire the ocean views.'
 					},
 					{
-						time: '⏱️ 1 hr',
-						title: 'Sazón local',
-						description: 'Hacemos una parada estratégica para recargar fuerzas con auténtica y deliciosa comida regional mexicana.'
+						time: '⏱️ 1.5 hr',
+						title: 'Local flavor',
+						description: 'We make a strategic stop to recharge with authentic and delicious regional Mexican food.'
 					},
 					{
-						time: '⏱️ 1.5 hrs',
-						title: 'Inmersión en Tak Bi Ha',
-						description: 'Trasládate a este espectacular cenote cerrado para nadar, flotar y relajarte en un entorno de formaciones geológicas únicas.'
+						time: '⏱️ 2 hrs',
+						title: 'Immersion in Tak Bi Ha',
+						description: 'Head to this spectacular enclosed cenote to swim, float, and relax surrounded by unique geological formations.'
 					},
 					{
 						time: '⏱️ Drop-off',
@@ -525,10 +433,11 @@ export const en = {
 					"Camera with full battery",
 				],
 				gallery: [
-					"/tulum.jpg",
-					"/about-cuatro.jpg",
-					"/about-dos.jpg",
-					"/about-uno.jpg",
+					"/tulum/tulum_1.jpg",
+					"/tulum/tulum_2.jpg",
+					"/tulum/tulum_3.jpg",
+					"/tulum/tulum_4.jpg",
+					"/tulum/tulum_5.jpg"
 				],
 				activityLevel: "Easy to Moderate",
 				ageRestriction: "All ages welcome",
@@ -541,11 +450,11 @@ export const en = {
 				title: "Routes of the Rainforest",
 				description:
 					"Explore the depths of the Mayan jungle, discover exotic wildlife, and connect with untouched nature on an ecological adventure.",
-				image: "about-tres.jpg",
+				image: "forest/forest_header.jpg",
 				location: "Mayan Jungle, Quintana Roo",
 				duration: "8 a 9 horas (Día Completo)",
 				fullDescription:
-					"Despierta tu espíritu explorador en el corazón de la selva. Routes of the Rainforest es tu pasaporte a la aventura pura. Adéntrate en la antigua ciudad de Cobá bajo la sombra de árboles centenarios, conecta con la vibrante fauna de Punta Laguna y participa en un auténtico ritual de purificación. Entre paseos en canoa, ruinas escondidas y convivencia real con comunidades mayas, este recorrido te hará sentir el verdadero pulso de la selva.",
+					"Awaken your explorer spirit in the heart of the jungle. Routes of the Rainforest is your passport to pure adventure. Venture into the ancient city of Cobá under the shade of centuries-old trees, connect with the vibrant wildlife of Punta Laguna, and participate in an authentic purification ritual. Between canoe rides, hidden ruins, and real interaction with Mayan communities, this tour will make you feel the true pulse of the jungle.",
 				includes: [
 					{
 						icon: "truck",
@@ -586,23 +495,23 @@ export const en = {
 					},
 					{
 						time: '⏱️ 2 hrs',
-						title: 'Exploración entre la selva',
-						description: 'Camina por senderos sombreados mientras descubres pirámides y templos mayas devorados por la jungla.'
+						title: 'Jungle exploration',
+						description: 'Walk through shaded trails while discovering pyramids and Mayan temples swallowed by the jungle.'
 					},
 					{
 						time: '⏱️ 2.5 hrs',
-						title: 'Aventura en Punta Laguna',
-						description: 'Vive una reserva natural al máximo: participa en un ritual, avista monos en su hábitat, cruza la laguna en canoa y vuela en tirolesa.'
+						title: 'Adventure at Punta Laguna',
+						description: 'Experience a nature reserve to the fullest: participate in a ritual, spot monkeys in their habitat, cross the lagoon by canoe, and fly on a zipline.'
 					},
 					{
 						time: '⏱️ 1 hr',
-						title: 'Sabor a comunidad',
-						description: 'Comparte y disfruta de un almuerzo tradicional servido directamente en el comedor de una auténtica comunidad maya.'
+						title: 'Community flavor',
+						description: 'Share and enjoy a traditional lunch served directly in the dining room of an authentic Mayan community.'
 					},
 					{
 						time: '⏱️ 1.5 hrs',
-						title: 'Recompensa cristalina',
-						description: 'Refréscate nadando y explorando las fascinantes formaciones del cenote subterráneo Aktun Bej.'
+						title: 'Crystal reward',
+						description: 'Cool off swimming and exploring the fascinating formations of the underground cenote Aktun Bej.'
 					},
 					{
 						time: '⏱️ Drop-off',
@@ -616,7 +525,11 @@ export const en = {
 					"Eco-friendly repellent",
 				],
 				gallery: [
-					"/about-tres.jpg"
+					"forest/forest_1.webp",
+					"forest/forest_2.webp",
+					"forest/forest_3.jpg",
+					"forest/forest_4.jpg",
+					"forest/forest_5.jpg",
 				],
 				activityLevel: "Moderate",
 				ageRestriction: "Over 8 years old",

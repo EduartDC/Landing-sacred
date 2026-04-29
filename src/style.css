@@ -166,23 +166,21 @@
       overflow: hidden !important;
     }
 
-    /* Video del Hero - asegurar cobertura completa */
+    /* Video del Hero en móvil - object-fit cubre sin JavaScript */
     .hero-video {
       position: absolute !important;
-      top: 50% !important;
-      left: 50% !important;
-      min-width: 100% !important;
-      min-height: 100% !important;
-      width: auto !important;
-      height: auto !important;
-      transform: translateX(-50%) translateY(-50%) !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
       object-fit: cover !important;
+      object-position: center !important;
       z-index: 0 !important;
     }
 
-    /* Contenido del Hero - mejorar legibilidad */
+    /* Contenido del Hero - empujar hacia abajo para no quedar bajo el navbar */
     section#home .relative.z-20 {
       padding: 1rem !important;
+      padding-top: 5rem !important; /* compensar navbar fijo ~80px */
     }
 
     /* Título del Hero en móviles */
@@ -259,18 +257,15 @@
     }
   }
 
-  /* Estilos para video de fondo del Hero */
+  /* Video de fondo del Hero — object-fit cubre cualquier tamaño de viewport */
   .hero-video {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translateX(-50%) translateY(-50%);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     z-index: 0;
-    /* Eliminar controles y interactividad */
     pointer-events: none;
     outline: none;
   }
@@ -547,6 +542,32 @@
       min-width: 40px !important;
       min-height: 40px !important;
     }
+
+    /* Barra inferior del footer: evitar que el botón WA tape el copyright y los links legales */
+    footer .border-t.border-white\/10.pt-6 .flex.flex-col {
+      padding-bottom: 1rem !important;
+    }
+
+    /* Copyright con espacio para no solapar con WA button */
+    footer .text-white\/60.text-sm {
+      padding-right: 4rem !important;
+    }
+
+    /* Links legales - stack vertical y sin WA encima */
+    footer .flex.gap-6.text-xs {
+      flex-direction: column !important;
+      gap: 0.75rem !important;
+      align-items: flex-start !important;
+      padding-right: 4.5rem !important;
+    }
+
+    footer .flex.gap-6.text-xs a {
+      font-size: 0.8rem !important;
+      padding: 0.25rem 0 !important;
+      min-height: 44px !important;
+      display: flex !important;
+      align-items: center !important;
+    }
   }
 
   /* Background pattern - Ocultar en móviles para mejor rendimiento */
@@ -587,108 +608,149 @@ nav[class*='sticky'] {
 
 /* Navbar - Optimizaciones responsive */
 @media (max-width: 640px) {
-  /* Layout de 2 filas: Fila 1 (logo+nombre centrado), Fila 2 (menú izq + idioma der) */
-  nav .max-w-7xl {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto auto !important;
-    gap: 0.75rem !important;
-    width: 100% !important;
-  }
-
-  /* Logo y título en la primera fila - centrado */
-  nav .max-w-7xl > a {
-    order: 1 !important;
-    justify-self: center !important;
-    text-align: center !important;
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Mostrar el nombre de la página */
-  nav .max-w-7xl > a span {
-    display: inline-block !important;
-  }
-
-  /* Contenedor de botones en la segunda fila */
-  nav .flex.items-center.space-x-1 {
-    order: 2 !important;
-    grid-column: 1 !important;
-    grid-row: 2 !important;
+  /* Contenedor del nav: una sola fila logo | (hamburger + idioma) */
+  #navbar-container nav .max-w-7xl {
     display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
     justify-content: space-between !important;
     width: 100% !important;
-    flex-direction: row-reverse !important;
+    padding: 0.5rem 1rem !important;
+    gap: 0.5rem !important;
   }
 
-  /* Logo más pequeño en móvil */
+  /* Logo + texto: ocupa el espacio disponible pero no crece de más */
+  #navbar-container nav .max-w-7xl > a {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Texto de marca: cortar con elipsis si es muy largo */
+  #navbar-container nav .max-w-7xl > a span {
+    font-size: 1rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 160px !important;
+  }
+
+  /* Logo más pequeño */
   #navbar-container img {
-    height: 32px !important;
+    height: 28px !important;
+    flex-shrink: 0 !important;
   }
 
-  /* Brand text más pequeño */
-  #navbar-container .text-2xl {
-    font-size: 1.25rem !important;
+  /* Grupo de controles (idioma + hamburger): no se encoge */
+  #navbar-container nav .flex.items-center.md\:order-2 {
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
   }
 
-  /* Botón hamburguesa más grande y accesible */
+  /* Botón hamburguesa accesible */
   #navbar-container button[data-collapse-toggle] {
     padding: 0.5rem !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-    margin-top: 8px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   #navbar-container button[data-collapse-toggle] svg {
-    width: 24px !important;
-    height: 24px !important;
+    width: 22px !important;
+    height: 22px !important;
   }
 
-  /* Menú mobile - fondo sólido y visible */
-  #navbar-container .md\\:hidden.w-full {
-    padding: 1rem 0 !important;
+  /* Menú móvil: panel full-width debajo del navbar */
+  #navbar-container #navbar-language:not(.hidden) {
+    display: block !important;
+    position: fixed !important;
+    top: 56px !important;          /* altura aprox del navbar en móvil */
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
     background-color: rgba(255, 255, 255, 0.98) !important;
-    backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(12px) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+    border-top: 1px solid rgba(0,0,0,0.06) !important;
+    z-index: 9998 !important;
+    padding: 0.5rem 0 !important;
+    border-radius: 0 !important;
   }
 
-  /* Container del menú con fondo sólido */
-  #navbar-container #navbar-language {
-    background-color: rgba(255, 255, 255, 0.98) !important;
-    backdrop-filter: blur(10px) !important;
-    margin-top: 0.5rem !important;
-    border-radius: 0.5rem !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  /* Links del menú full-width */
+  #navbar-container #navbar-language ul {
+    flex-direction: column !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
   }
 
-  /* Links del menú mobile - texto oscuro visible */
-  #navbar-container .nav-link {
-    padding: 0.75rem 1rem !important;
+  #navbar-container #navbar-language .nav-link {
+    display: block !important;
+    padding: 0.9rem 1.5rem !important;
     font-size: 1rem !important;
-    color: #1f2937 !important;
     font-weight: 500 !important;
+    color: #1f2937 !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+    border-radius: 0 !important;
   }
 
-  /* Link activo más visible */
-  #navbar-container .nav-link.active {
-    background-color: rgba(16, 185, 129, 0.1) !important;
+  #navbar-container #navbar-language .nav-link:last-child {
+    border-bottom: none !important;
+  }
+
+  #navbar-container #navbar-language .nav-link:hover,
+  #navbar-container #navbar-language .nav-link.active {
+    background-color: rgba(16,185,129,0.08) !important;
     color: #059669 !important;
   }
 
-  /* Hover state visible */
-  #navbar-container .nav-link:hover {
-    background-color: rgba(16, 185, 129, 0.05) !important;
+  /* Botón de idioma */
+  #navbar-container button[data-dropdown-toggle] {
+    padding: 0.4rem 0.6rem !important;
+    min-height: 40px !important;
+    min-width: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
-  /* Dropdown de idiomas en móvil */
-  #navbar-container button {
-    padding: 0.5rem 1rem !important;
-    min-height: 44px !important;
+  /* Chevron del selector de idioma - pequeño */
+  #navbar-container button[data-dropdown-toggle] .chevron-icon {
+    width: 8px !important;
+    height: 8px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    flex-shrink: 0 !important;
   }
 
-  /* Flags más visibles */
-  #navbar-container svg {
-    min-width: 20px !important;
-    min-height: 20px !important;
+  /* Bandera del selector de idioma - tamaño visible */
+  #navbar-container button[data-dropdown-toggle] .flag-icon {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    min-height: 22px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Botón de idioma - tamaño proporcional al resto del navbar */
+  #navbar-container button[data-dropdown-toggle] {
+    font-size: 1.4rem !important;
+    line-height: 1 !important;
+    padding: 0.35rem 0.5rem !important;
+  }
+
+  /* Ocultar código de idioma en móvil - solo bandera + flecha */
+  #navbar-container .lang-code {
+    display: none !important;
   }
 }
 
@@ -699,7 +761,7 @@ nav[class*='sticky'] {
   }
 
   #navbar-container .text-2xl {
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
   }
 }
 

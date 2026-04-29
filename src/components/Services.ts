@@ -26,27 +26,8 @@ export function Services(): HTMLElement {
 
     const toursHTML = extendedTours
       .map((tour, index) => {
-        // Asignar imágenes específicas según el tour
-        let imagePath = '';
-        switch (tour.id) {
-          case 'legacy-chichen':
-            imagePath = '/about-uno.jpg';
-            break;
-          case 'mystic-waters':
-            imagePath = '/about-dos.jpg';
-            break;
-          case 'bohemian-ritual':
-            imagePath = '/about-tres.jpg';
-            break;
-          case 'visual-routes':
-            imagePath = '/about-cuatro.jpg';
-            break;
-          case 'tulum-origins':
-            imagePath = '/about-uno.jpg'; // Reutilizar imagen
-            break;
-          default:
-            imagePath = '/about-uno.jpg';
-        }
+        // Usar la imagen definida en los datos del tour
+        const imagePath = `/${tour.image}`;
 
         return `
 			<div class="tour-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
@@ -99,13 +80,13 @@ export function Services(): HTMLElement {
 				</div>
 				
 				<!-- Controles del carrusel -->
-				<button class="carousel-btn carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-200 z-10">
+				<button class="carousel-btn carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-200 z-10 flex items-center justify-center">
 					<svg class="w-6 h-6 text-ocean-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
 					</svg>
 				</button>
 				
-				<button class="carousel-btn carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-200 z-10">
+				<button class="carousel-btn carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-200 z-10 flex items-center justify-center">
 					<svg class="w-6 h-6 text-ocean-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
 					</svg>

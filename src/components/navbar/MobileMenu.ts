@@ -17,8 +17,26 @@ export function setupMobileMenuListeners(navbar: HTMLElement): void {
     const newMobileButton = mobileButton.cloneNode(true);
     mobileButton.parentNode?.replaceChild(newMobileButton, mobileButton);
 
-    newMobileButton.addEventListener('click', () => {
+    // Toggle al hacer clic en el botón hamburguesa
+    newMobileButton.addEventListener('click', (e: Event) => {
+      e.stopPropagation();
       mobileMenu.classList.toggle('hidden');
+    });
+
+    // Cerrar al hacer clic en un enlace del menú
+    const navLinks = mobileMenu.querySelectorAll('.nav-link');
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Cerrar al hacer clic fuera del menú y del botón
+    document.addEventListener('click', (e: Event) => {
+      const target = e.target as Node;
+      if (!newMobileButton.contains(target) && !mobileMenu.contains(target)) {
+        mobileMenu.classList.add('hidden');
+      }
     });
   }
 }

@@ -31,7 +31,6 @@ export function Contact(initialTourId?: string): HTMLElement {
       'legacy-chichen',
       'bohemian-ritual',
       'mystic-waters',
-      'visual-routes',
     ];
     const tours = desiredOrder.map((id) => rawTours.find((t: any) => t.id === id)).filter(Boolean);
 
